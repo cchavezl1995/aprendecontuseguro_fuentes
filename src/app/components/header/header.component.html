@@ -1,0 +1,323 @@
+<nav (clickOutside)="onClickedOutside()" class="navbar navbar-expand-lg navbar-light NAVBAR"
+  style="z-index: 777;background-color:white">
+  <button (click)="showCollapse(); opcionesMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+  <a class="navbar-brand logoBanco d-none d-lg-block" href="#">
+    <img (click)="goHome()" class="logoResponsive" src="assets/img/logo-cardif.png" alt="CarDif" />
+  </a>
+  <a class="navbar-brand logoBanco d-block d-xl-none d-lg-none" href="#" (clickOutside)="onClickedOutsideDatos()">
+    <img (click)="goHome()" class="logoResponsive" src="assets/img/logo-cardif.png" alt="CarDif" />
+    <!--<svg xmlns="http://www.w3.org/2000/svg" width="82" height="29" viewBox="0 0 82 29">
+      <g fill="none" fill-rule="evenodd">
+        <g fill="#EC111A" fill-rule="nonzero">
+          <g>
+            <path 
+              d="M21.2 5.38h-8.17a9.057 9.057 0 0 0-9.001 8.05A9.057 9.057 0 0 1 11.952 0h14.086l-4.839 5.38zM4.853 23.495h8.176a9.064 9.064 0 0 0 9.001-8.05 9.057 9.057 0 0 1-7.93 13.431H0l4.853-5.38z" />
+            <circle cx="13.029" cy="14.438" r="7.275" />
+          </g>
+        </g>
+      </g>
+    </svg>-->
+  </a>
+
+  <button (click)=" personaMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation"> <span class="icon-user iconSize"></span> </button>
+
+  <div *ngIf="personaMovil" class="collapse navbar-collapse botonResponsive" id="navbarSupportedContent2">
+    <ul class="navbar-nav ml-auto botonResponsive listaMovil">
+      <li class="nav-item dropdown" *ngIf="!login.isActive()"> <a class="nav-link active enlace txt-nav"
+          routerLink="/inicia-sesion/1" routerLinkActive="activated"><i class="icon-user iconSize "></i><span
+            class="textLi  " style="font-size: 17.6px !important;"> Inicia sesión</span></a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="!login.isActive()"> <a class="nav-link active enlace txt-nav linkRegistro"
+          routerLink="/registro/2" routerLinkActive="activated"><i class="fas fa-sign-in-alt"></i><span class="textLi "
+            style="font-size: 17.6px !important;">Regístrate</span></a> </li>
+      <li class="nav-item dropdown" *ngIf="login.isActive()">
+        <a class="dropdown-item" routerLink="/perfil" routerLinkActive="activated">
+          <table style="height:200px;width: 200px; ">
+            <tr align="center" > <i class="icon-user iconSize2" ></i> </tr>
+            <tr align="center" > <span class="textLi" style="font-weight: bold;">&nbsp; {{login.getDataUser().nombres}} {{login.getDataUser().apellidoPaterno}}&nbsp;</span> </tr>
+            <tr align="center" > <button class="btnPerfil" routerLink="/perfil" routerLinkActive="activated" > Configuración de perfil </button>  <tr>
+            </table>
+        </a>
+        <!--<a class="dropdown-item" routerLink="/perfil" routerLinkActive="activated" >
+          <table>
+          <tr align="center">
+          <td align="center"><i class="fas fa-user-plus" style="color: #333333;"></i> </td>
+          <td align="center"><p style="margin-left: 5%;margin-top: 10%;font-weight: bold;">Agregar otro invitado</p> </td>
+        </tr>
+        </table>
+        </a> -->
+        <a class="dropdown-item" (click)="login.logOut(); exitLogin()">
+        
+          <table>
+            <tr align="center">
+            <td align="center"><i class="fa fa-sign-out" style="color: #EC1C24;"></i> </td>
+            <td align="center"><p style="margin-left: 8%;margin-top: 15%;color: #EC1C24;font-weight: bold;">Cerra Sesión</p> </td>
+          </tr>
+          </table>
+  
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+  <div  class="d-none d-lg-block" >
+
+
+    <!--style="background-color: #9be4ff;"009DD6 -->
+
+  <div *ngIf="opcionesMovil"  class="collapse navbar-collapse botonResponsive manito" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto botonResponsive">
+      <li class="nav-item active" *ngIf="carrusel==0" style="background-color: #9be4ff;" >
+        <a class="nav-link2 active enlace" routerLink="/inicio"
+          (click)="goHome(); AddLog('inicio','Navega a la página de inicio')" routerLinkActive="activated">
+          <span  ><p style="color:#009DD6 ;" >Inicio</p></span><span class="sr-only">(current)</span>
+        </a>       
+      </li>
+
+      <li class="nav-item active" *ngIf="carrusel!=0"  >
+        <a class="nav-link2 active enlace" routerLink="/inicio" 
+          (click)="goHome(); AddLog('inicio','Navega a la página de inicio')" routerLinkActive="activated">
+          <span  ><p >Inicio</p></span><span class="sr-only">(current)</span>
+        </a>       
+      </li>
+      
+      <li class="nav-item active"  *ngIf="login.isActive() &&  rutalistado"  style="background-color: #9be4ff;"  >
+        <a class="nav-link active enlace" routerLink="/lista-de-cursos"
+          routerLinkActive="activated"  (click)="goVerlistado()">
+          <span class="textLi"><p style="color:#009DD6 ;">Ver listado de cursos</p></span><span class="sr-only">(current)</span>
+        </a>
+      </li>
+
+      <li class="nav-item active" *ngIf="login.isActive() &&  !rutalistado" >
+        <a class="nav-link active enlace" routerLink="/lista-de-cursos"
+          routerLinkActive="activated" (click)="goVerlistado()">
+          <span class="textLi">Ver listado de cursos</span><span class="sr-only">(current)</span>
+        </a>
+
+      </li>
+      
+  <li class="nav-item inicia" *ngIf="!login.isActive()"> <a class="nav-link active enlace" routerLink="/inicia-sesion/1"
+      routerLinkActive="activated">
+      <table>
+        <tr>
+          <td><i class="icon-user iconSize mr-1"></i></td><span class="textLi"> Inicia sesión</span>
+          <td></td>
+        </tr>
+      </table>
+    </a>
+  </li>
+  <li class="nav-item registrate" style="box-shadow: #cf141b !important" *ngIf="!login.isActive()"> <a
+      style="width:240px" class="nav-link active btn-info enlace linkRegistro" routerLink="/registro/2"
+      routerLinkActive="activated">
+      <table>
+        <tr>
+          <td><i class="icon-Login iconSize mr-1"></i></td>
+          <td><span style="color: #fff;padding-bottom: 2px;" class="textLi">&nbsp; Regístrate</span></td>
+        </tr>
+      </table>
+    </a> </li>
+  <li class="nav-item dropdown inicia" *ngIf="login.isActive()">
+    <a (click)="datosSesionFun()" (clickOutside)="onClickedOutsideDatos()" href="#" id="datosSesion"
+      class="nav-link active enlace" data-toggle="dropdown">
+      <table>
+        <tr>
+          <td><i class="icon-user iconSize"></i></td>
+          <td><span class="textLi">&nbsp;Hola, {{login.getDataUser().nombres}}&nbsp;</span><i
+              class="fas fa-chevron-down"></i><b class="caret"></b></td>
+        </tr>
+      </table>
+    </a>
+    <ul (clickOutside)="onClickedOutsideDatos()" class="dropdown-menu  show lineRed" *ngIf="datosSesion" >
+      
+      <a class="dropdown-item"  >
+        <table style="height:200px;width: 200px; ">
+        <tr align="center" > <i class="icon-user iconSize2" ></i> </tr>
+        <tr align="center" > <span class="textLi" style="font-weight: bold;">&nbsp; {{login.getDataUser().nombres}} {{login.getDataUser().apellidoPaterno}}&nbsp;</span> </tr>
+        <tr align="center" > <button class="btnPerfil" routerLink="/perfil" routerLinkActive="activated" > Configuración de perfil </button>  <tr>
+        </table>
+      </a>
+
+      <div style="background-color: #333333;height: 1px;width: auto;opacity: 0.2;"></div>
+     
+      <!--<a class="dropdown-item" routerLink="/perfil" routerLinkActive="activated" >
+        <table>
+        <tr align="center">
+        <td align="center"><i class="fas fa-user-plus" style="color: #333333;"></i> </td>
+        <td align="center"><p style="margin-left: 5%;margin-top: 10%;font-weight: bold;">Agregar otro invitado</p> </td>
+      </tr>
+      </table>
+      </a>-->
+
+      <div style="background-color: #333333;height: 1px;width: auto;opacity: 0.2;"></div>
+      
+      <a class="dropdown-item" (click)="login.logOut(); exitLogin()">
+        
+        <table>
+          <tr align="center">
+          <td align="center"><i class="fa fa-sign-out" style="color: #EC1C24;"></i> </td>
+          <td align="center"><p style="margin-left: 8%;margin-top: 15%;color: #EC1C24;font-weight: bold;">Cerra Sesión</p> </td>
+        </tr>
+        </table>
+
+      </a>
+    </ul>
+  </li>
+  <li class="nav-item " *ngIf="login.isActive()">
+    <div class="nav-link active enlace" style="width:10%">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </li>
+  </ul>
+  </div>
+</div>
+
+
+
+
+<div  class="d-block d-xl-none d-lg-none" >
+
+
+  <div *ngIf="opcionesMovil" class="collapse navbar-collapse botonResponsive manito" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto botonResponsive">
+      <li class="nav-item active"   >
+        <a class="nav-link2 active enlace" routerLink="/inicio"
+          (click)="goHome(); " routerLinkActive="activated">
+          <span  ><p>Inicio</p></span><span class="sr-only">(current)</span>
+        </a>  
+        <a class="nav-link2 active enlace" routerLink="/inicio"
+          (click)="goHome(); " routerLinkActive="activated">
+          <span  ><p >Aprende Idiomas</p></span><span class="sr-only">(current)</span>
+        </a> 
+        <a class="nav-link2 active enlace" routerLink="/inicio"
+          (click)="goHome(); " routerLinkActive="activated">
+          <span  ><p >Habilidades de Negocio</p></span><span class="sr-only">(current)</span>
+        </a>  
+        <a class="nav-link2 active enlace" routerLink="/inicio"
+          (click)="goHome(); " routerLinkActive="activated">
+          <span  ><p >Desarrollo Humano</p></span><span class="sr-only">(current)</span>
+        </a>  
+        <a class="nav-link2 active enlace" routerLink="/inicio"
+          (click)="goHome(); " routerLinkActive="activated">
+          <span  ><p >Ciencia de Datos</p></span><span class="sr-only">(current)</span>
+        </a>  
+        <a class="nav-link2 active enlace" routerLink="/inicio"
+          (click)="goHome();" routerLinkActive="activated">
+          <span  ><p >Tecnología</p></span><span class="sr-only">(current)</span>
+        </a>  
+        <a class="nav-link2 active enlace" routerLink="/lista-de-cursos"
+           routerLinkActive="activated">
+          <span  ><p >Ver listado de Cursos</p></span><span class="sr-only">(current)</span>
+        </a> 
+        <a class="nav-link2 active enlace" routerLink="/score-credito"
+          routerLinkActive="activated">
+          <span  ><p >Sobre Coursera</p></span><span class="sr-only">(current)</span>
+        </a>      
+      </li>
+
+      
+    <li class="nav-item inicia" *ngIf="!login.isActive()"> <a class="nav-link active enlace" routerLink="/inicia-sesion/1"
+      routerLinkActive="activated">
+      <table>
+        <tr>
+          <td><i class="icon-user iconSize mr-1"></i></td><span class="textLi"> Inicia sesión</span>
+          <td></td>
+        </tr>
+      </table>
+    </a>
+  </li>
+  <li class="nav-item registrate" style="box-shadow: #cf141b !important" *ngIf="!login.isActive()"> <a
+      style="width:240px" class="nav-link active btn-info enlace linkRegistro" routerLink="/registro/2"
+      routerLinkActive="activated">
+      <table>
+        <tr>
+          <td><i class="icon-Login iconSize mr-1"></i></td>
+          <td><span style="color: #fff;padding-bottom: 2px;" class="textLi">&nbsp; Regístrate</span></td>
+        </tr>
+      </table>
+    </a> </li>
+  <li class="nav-item dropdown inicia" *ngIf="login.isActive()">
+    <a (click)="datosSesionFun()" (clickOutside)="onClickedOutsideDatos()" href="#" id="datosSesion"
+      class="nav-link active enlace" data-toggle="dropdown">
+      <table>
+        <tr>
+          <td><i class="icon-user iconSize"></i></td>
+          <td><span class="textLi">&nbsp;Hola, {{login.getDataUser().nombres}}&nbsp;</span><i
+              class="fas fa-chevron-down"></i><b class="caret"></b></td>
+        </tr>
+      </table>
+    </a>
+    <ul (clickOutside)="onClickedOutsideDatos()" class="dropdown-menu  show lineRed" *ngIf="datosSesion" >
+      
+      <a class="dropdown-item"  >
+        <table style="height:200px;width: 200px; ">
+        <tr align="center" > <i class="icon-user iconSize2" ></i> </tr>
+        <tr align="center" > <span class="textLi" style="font-weight: bold;">&nbsp; {{login.getDataUser().nombres}} {{login.getDataUser().apellidoPaterno}}&nbsp;</span> </tr>
+        <tr align="center" > <button class="btnPerfil" routerLink="/perfil" routerLinkActive="activated" > Configuración de perfil </button>  <tr>
+        </table>
+      </a>
+
+      <div style="background-color: #333333;height: 1px;width: auto;opacity: 0.2;"></div>
+     
+      <a class="dropdown-item" routerLink="/perfil" routerLinkActive="activated" >
+        <table>
+        <tr align="center">
+        <td align="center"><i class="fas fa-user-plus" style="color: #333333;"></i> </td>
+        <td align="center"><p style="margin-left: 5%;margin-top: 10%;font-weight: bold;">Agregar otro invitado</p> </td>
+      </tr>
+      </table>
+      </a>
+
+      <div style="background-color: #333333;height: 1px;width: auto;opacity: 0.2;"></div>
+      
+      <a class="dropdown-item" (click)="login.logOut(); exitLogin()">
+        
+        <table>
+          <tr align="center">
+          <td align="center"><i class="fa fa-sign-out" style="color: #EC1C24;"></i> </td>
+          <td align="center"><p style="margin-left: 8%;margin-top: 15%;color: #EC1C24;font-weight: bold;">Cerra Sesión</p> </td>
+        </tr>
+        </table>
+
+      </a>
+    </ul>
+  </li>
+  <li class="nav-item " *ngIf="login.isActive()">
+    <div class="nav-link active enlace" style="width:10%">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </li>
+  </ul>
+  </div>
+</div>
+
+
+
+
+
+
+</nav>
+
+
+
+<!--
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M32VG3X');</script> 
+
+
+-->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169891887-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-169891887-2');
+</script>
+
+ 

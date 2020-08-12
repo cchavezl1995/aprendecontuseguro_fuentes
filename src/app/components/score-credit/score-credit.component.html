@@ -1,0 +1,265 @@
+<div class="sticky-top">
+    <app-header></app-header>
+    </div>
+<app-block-loader [blocked]="loader"></app-block-loader>
+<div>
+    <div class="d-block d-xl-none d-lg-none imgMovil" style="width:100%;height:700px;
+            background-image: url('assets/img/fraude2/score/score-woman.png');
+            margin-top: 20px;">
+
+        <h1 class="tituloModulo ">
+            <br>Explora cursos de <br> las 
+            universidades <br> y compañías <br> líderes en el <br> mundo </h1>
+
+            <button *ngIf="login.isActive()" class="btnMain20" style="margin-top: 25%; margin-left:18%;margin-right:18%"
+            routerLink="/lista-de-cursos" (click)="goVerlistado()">Ver listado de cursos
+        </button>
+        <button *ngIf="!login.isActive()" class="btnMain20" style="margin-top: 15%; margin-left:18%;"
+            (click)="login.goLogin()">Únete aquí
+        </button>
+    </div>
+    <div  class="d-none d-lg-block" style="width:100%;height:499px;
+            background-image: url('assets/img/fraude2/score/score-woman.png'), linear-gradient(90deg, #009DD6 60%,  #91DDF8 40%);
+            background-position: right 170px bottom, right bottom;
+            background-repeat: no-repeat,no-repeat;
+            margin-top: -39px;
+            background-size: 350px 396px, contain;">
+        <div
+            style="width:100%;height:40px;background-color: rgba(0,0,0,0.1);margin-top: 39px;color: white;padding-top: 5px;">
+            <div style="margin-left: 19.1%;">
+                <span routerLink="/inicio" class="crumbModulo">Inicio > </span>
+                <span routerLink="/conoce-mas" class="crumbModulo"><b>Sobre Coursera</b></span>
+            </div>
+        </div>
+        <h1 class="tituloModulo8"style="margin-top: 5%;">Explora cursos de las <br>
+            universidades y compañías <br> líderes en el mundo </h1>
+        <button *ngIf="login.isActive()" class="btnMain40" style="margin-top: 2%; margin-left:17%;"
+            routerLink="/lista-de-cursos" (click)="goVerlistado()">Ver listado de cursos
+        </button>
+        <button *ngIf="!login.isActive()" class="btnMain40" style="margin-top: 2%; margin-left:17%;"
+            (click)="login.goLogin()">Únete aquí
+        </button>
+    </div>
+    <br>
+    <br> 
+    
+    
+    <div
+    style="position: absolute;width:100%;height:180px;
+    background:url('assets/img/fraude2/score/coursera-seeklogo.com.png') no-repeat bottom 90px left 50%;
+    background-size: 190px 30px, contain;">                   
+    </div>
+
+    <div style="margin-top: 5%;">
+    <div class="row m-5" >
+        <div class="col-lg-10 col-md-10 offset-md-1 col-sm-12">
+            <div class="row">
+                <div class="col-lg-2 col-md-1 col-sm-0"></div>
+                <div class="col-lg-8 col-md-10 col-sm-12" style="width: 770px; text-align: justify;">
+                    <h2 class="font-weight-bold text-dark text-center mt-5 mb-5" style="font-size: 35px;">
+                        La plataforma #1 de aprendizaje en línea.
+                    </h2>
+                    <br>
+                    <p style="font-size: 22px;">Coursera es una plataforma de educación virtual, que reúne contenidos y clases de muchas universidades a través del mundo,
+                        con el fin de brindar una educación de calidad, con cursos en inglés y español.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div  class="d-block d-xl-none d-lg-none" >
+
+        <div class="imgInteres">
+            <img src="../../../assets/img/fraude2/score/carreras_movil.png" class="card-img-top" style="width: 100%;height: auto;">
+        </div>   
+            
+    </div>
+
+    <div  class="d-none d-lg-block" >
+
+        <div class="imgInteres">
+            <img src="../../../assets/img/security/score3.PNG" class="card-img-top" style="width: 100%;height: auto;">
+        </div>   
+            
+    </div>
+
+
+
+
+        <div class="container">
+            <div class="row m-4">
+                <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
+                    <div class="row">                          
+                        <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0">
+                                <h1 class="font-weight-bold text-dark text-left mt-1 mb-5">
+                                    +200 universidades y empresas líderes
+                                </h1>
+                                <div class="col-md-12 text-left">
+                                    <p  style="font-size: 20px;">
+                                        Los mejores cursos en línea del mundo, enseñados por expertos académicos y de la industria.</p>   
+                                </div>
+                                <div class="col-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            </div>
+
+
+            
+
+
+            <div  class="d-block d-xl-none d-lg-none" >
+
+                <div class="imgInteres">
+                    <img src="../../../assets/img/security/universidades_movil.png" class="card-img-top" style="width: 100%;height: auto;">    
+                </div>   
+                    
+            </div>
+        
+            <div  class="d-none d-lg-block" >
+        
+                <div class="imgInteres">
+                    <img src="../../../assets/img/security/universidades.PNG" class="card-img-top" style="width: 100%;height: auto;">
+                </div>   
+                    
+            </div>
+
+
+
+            
+        <div class="container" >
+            <div class="row m-4">
+                <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
+                    <div class="row">                          
+                        <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0"  style="margin-left: 4%;">
+                                <h1 class="font-weight-bold text-dark text-left mt-2 mb-5" style="font-size: 35px;" >
+                                    ¿Qué hace de la experiencia educativa en Coursera algo tan especial?
+                                </h1>
+                                <div class="col-md-12 text-left text-secondary">
+                                    <p  style="font-size: 20px;">
+                                        Con Coursera mejorarás tu set de habilidades con una experiencia educativa en línea que te encantará.</p>   
+                                </div>
+                                <div class="col-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        
+
+            <div class="container">
+                <div class="row m-4">
+                    <div class="col-lg-1 col-md-12 offset-lg-1 offset-md-1 col-sm-12"></div>
+                    <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
+                        <div class="row">                          
+                            <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0" style="margin-left: 4%;margin-right: 4%;"> 
+                                    
+
+                                <div class="row">
+                                    <!--<div class="col-1"></div>-->
+                                    <div class="col-12">
+                                      
+                                        <div class="row ">
+                                                                                   
+                                          <div class="col-lg-4 col-md-4 col-sm-12 col-12 black border-right">
+                                            <img src="assets/img/ico-aprendizaje.png">
+                                            <p  style="font-weight: bold; margin-top: 20px;color: black;font-size: 25px;" >Domina habilidades <br> cotizadas</p>
+                                            <p  class="text-secondary" style="font-weight: lighter ; margin-top: 20px;font-size: 18px;" >
+                                              Especializaciones impactantes en <br> habilidades de tecnología y negocios.</p>
+                                          </div>               
+                                
+                                          <div class="col-lg-4 col-md-4 col-sm-12 col-12 black">
+                                            <img src="assets/img/ico-tiempo.png">
+                                            
+                                            <p  style="font-weight: bold; margin-top: 20px;color: black;font-size: 25px;" >Aprendizaje flexible a tu <br>
+                                                 propio ritmo</p>
+                                            <p  class="text-secondary" style="font-weight: lighter ; margin-top: 20px;font-size: 18px;" >
+                                              Aprende habilidades en cualqier  <br> momento y lugar.</p>
+                                          </div>
+                                          <div class="col-lg-4 col-md-4 col-sm-12 col-12 black border-left">
+                                            <img src="assets/img/ico-certificado.png">
+                                            <p  style="font-weight: bold; margin-top: 20px;color: black;font-size: 25px;" >Obtén un valioso <br>certificado
+                                            <br>
+                                            </p>
+                                            <p  class="text-secondary" style="font-weight: lighter ; margin-top: 20px;font-size: 18px;" >
+                                              Impulsa tu hoja de vida con certificados reconocidos por las mejores empresas.</p>
+                                          </div>
+                                          <!-- <div class="footerEnd"></div> -->
+                                        </div>
+                                      
+                                    </div>
+                                    
+                                    <!-- <div class="footerEnd"></div> -->
+                                  </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-12 offset-lg-1 offset-md-1 col-sm-12"></div>
+    
+                    </div>
+                </div>
+
+
+
+                <div class="container"  >
+                    <div class="row m-4" >
+                        <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
+                            <div class="row">                          
+                                <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0 "  style="margin-left: 15%;margin-top: 2%;" >
+
+                                    <div style="width: 68%;height: 1.5px; background-color: #555a60;opacity: 0.2;"></div>
+                                             <p  style="font-size: 20px;margin-top: 2%">
+                                        Amplía los conocimientos necesarios para que tus ideas o emprendimiento empiecen a crecer.
+                                             </p> 
+                                        <div class="col-md-8 text-center text-secondary">
+                                            <!--
+                                            <button *ngIf="login.isActive()" class="btnOrange2" style="margin-top: 55px; margin-left:25%;"
+                                            routerLink="/servicio-score-credito">Ver listado de cursos
+                                            </button>  
+                                            -->
+
+                                            <button *ngIf="login.isActive()" class="btnOrange2" style="margin-top: 55px;"
+                                            routerLink="/lista-de-cursos" (click)="goVerlistado()">Ver listado de cursos
+                                            </button>  
+
+                                            <button *ngIf="!login.isActive()" class="btnOrange2" style="margin-top: 55px;"
+                                            (click)="login.goLogin()">Únete aquí
+                                            </button> 
+                                            
+
+                                        </div>
+                                        <div class="col-2">
+
+
+
+
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        </div>
+                    </div>
+
+                    
+                    
+    <!--                
+    <div class="container d-block d-xl-none d-lg-none quieroUnirmeMovile" (click)="login.goLogin()"
+        *ngIf="!login.isActive()">
+        <p><i class="icon-Login iconSize"></i>&nbsp;&nbsp;&nbsp;Quiero unirme</p>
+    </div>
+    -->
+
+</div>

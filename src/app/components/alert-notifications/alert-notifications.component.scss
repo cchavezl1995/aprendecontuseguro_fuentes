@@ -1,0 +1,129 @@
+$des_eco6_backColor: #009DD6;
+
+.imgMovil{
+  //background-image: url("/../../../assets/img/fraude2/alerts/alerts-man.png") !important;    
+  background-size: 470px;
+  background-color: $des_eco6_backColor;
+  background-position: right -105px bottom 0% !important;
+  background-repeat: no-repeat;
+}
+
+.social {
+  position: absolute;
+  left: -75px; 
+  top: 42px;
+}
+.social-cont {
+  position: relative;
+}
+@media (min-width: 845px) {
+  .social {
+    left: 68px;
+    z-index: 999;
+  }
+}
+ 
+  .social ul {
+    list-style: none;
+  }
+ 
+  .social ul li a {
+    border-radius: 50%;
+    display: inline-block;
+    color:gray;
+    background: #fff;
+    padding: 15px 15px;
+    text-decoration: none;
+    -webkit-transition:all 500ms ease;
+    -o-transition:all 500ms ease;
+    transition:all 500ms ease; 
+  }
+
+  .social ul li .icon-facebook:hover {background:#3b5998;color:white;} 
+  .social ul li .icon-twitter:hover {background: #00abf0;color:white;}
+  .social ul li .icon-linkedin:hover {background: #007bb5;color:white;}
+
+ 
+.icon-facebook {
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+
+
+
+.tituloInteres{
+  font-family: OpenSans;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.55;
+  letter-spacing: normal;
+  color: #333333;
+}
+.containerIntereses{
+  min-height: 578px;
+  background-color: #f6f8fa;
+}
+.cardInteres{
+  border-radius: 6px;
+  box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  height: 400px;
+  max-width: 325px;
+}
+.cardInteres > .card-body > h4{
+  font-family: OpenSans;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: #555a60;
+}
+.cardInteres > .card-body > .card-text{
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.79;
+  letter-spacing: normal;
+  color: #9b9b9b;
+}
+.linkConoceMas{
+  border-top: 1px solid lightgray;
+  margin-top: -30px;
+  padding-top: 15px;
+  font-family: OpenSans;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.88;
+  letter-spacing: normal;
+  color: #5e5e5e;
+  cursor:pointer;
+}
+.imgInteres{
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  height: 187px;
+}
+@media only screen and (max-width: 769px) {
+
+
+  .tituloInteres{
+      text-align: center;
+  }
+
+  .cardInteres{
+      margin:auto !important;
+  }
+
+}
