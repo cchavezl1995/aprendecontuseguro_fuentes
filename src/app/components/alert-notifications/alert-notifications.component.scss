@@ -1,3 +1,23 @@
+#flecha{
+  background:url("../../../assets/img/security/flecha_blanco.png") no-repeat;
+  height: 70px;
+  width: 120px;
+  margin-bottom: -10px;
+  margin-left:80%;
+}
+
+#flecha:hover{
+  background:url("../../../assets/img/security/flecha_rojo.png") no-repeat;
+  height: 70px;
+  width: 120px;
+  margin-bottom: -10px;
+  margin-left:80%;
+}
+
+
+
+
+
 $des_eco6_backColor: #009DD6;
 
 .imgMovil{

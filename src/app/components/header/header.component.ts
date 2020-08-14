@@ -190,7 +190,7 @@ export class HeaderComponent implements OnInit {
     this.rutahome=true;
     this.rutalistado=false;
     this.router.navigateByUrl('/inicio').then(e => {
-      //window.location.reload();
+      window.location.reload();
       console.log(this.ruta);
     });
   }
