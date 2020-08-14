@@ -36,7 +36,7 @@
             style="font-size: 17.6px !important;">Regístrate</span></a> </li>
       <li class="nav-item dropdown" *ngIf="login.isActive()">
         <a class="dropdown-item" routerLink="/perfil" routerLinkActive="activated">
-          <table style="height:200px;width: 200px; ">
+          <table style="height:200px;width: 260px; ">
             <tr align="center" > <i class="icon-user iconSize2" ></i> </tr>
             <tr align="center" > <span class="textLi" style="font-weight: bold;">&nbsp; {{login.getDataUser().nombres}} {{login.getDataUser().apellidoPaterno}}&nbsp;</span> </tr>
             <tr align="center" > <button class="btnPerfil" routerLink="/perfil" routerLinkActive="activated" > Configuración de perfil </button>  <tr>
@@ -135,7 +135,7 @@
     <ul (clickOutside)="onClickedOutsideDatos()" class="dropdown-menu  show lineRed" *ngIf="datosSesion" >
       
       <a class="dropdown-item"  >
-        <table style="height:200px;width: 200px; ">
+        <table style="height:200px;width: 260px; ">
         <tr align="center" > <i class="icon-user iconSize2" ></i> </tr>
         <tr align="center" > <span class="textLi" style="font-weight: bold;">&nbsp; {{login.getDataUser().nombres}} {{login.getDataUser().apellidoPaterno}}&nbsp;</span> </tr>
         <tr align="center" > <button class="btnPerfil" routerLink="/perfil" routerLinkActive="activated" > Configuración de perfil </button>  <tr>

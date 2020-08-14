@@ -30,7 +30,7 @@ $color-nolink: #034797;
 
 .dropdown-submenu.pull-left>.dropdown-menu {
     left: -100%;
-    //margin-left: 10px;
+    margin-left: 10px;
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
@@ -83,7 +83,7 @@ $color-nolink: #034797;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
         left: 10px;
-        width: calc(80% + 80px);
+        width: calc(90% + 90px);
         //padding-left: 20px;
     }
     .ecoHeaderNoMovil{
@@ -168,7 +168,7 @@ $color-nolink: #034797;
     display: block;
     width: 100%; 
     background-color: white; 
-    left: 0;
+    left: 0px;
     border: none
 }
 
