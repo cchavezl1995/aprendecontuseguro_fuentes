@@ -17,7 +17,8 @@ import sha256 from "sha256";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  verbarra1 : boolean=false;
+  verbarra2 : boolean=false;
   socials = [
     {
       id: 1,
@@ -327,14 +328,32 @@ export class ProfileComponent implements OnInit {
   onKeyUp(event: any) {
     if (event.target.name == 'claveNueva') {
       this.checkStrength(event.target.value);
+      if(this.claveNueva.length>0){
+        this.verbarra1=true;
+      }else {
+        this.verbarra1=false;
+      }
+      
     } else if (event.target.name == 'claveConfirmada') {
       this.checkStrength2(event.target.value);
+
+      if(this.claveConfirmada.length>0){
+        this.verbarra2=true;
+      }else {
+        this.verbarra2=false;
+      }
+
     }
+
+    
+
+
   }
 
   checkStrength(password: string) {
     var strength: number = 0;
     //If password contains both lower and uppercase characters, increase strength value.
+    
     if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
       strength += 1;
 

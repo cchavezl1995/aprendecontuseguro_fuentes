@@ -3,7 +3,7 @@
     <div *ngIf="noUser">
         <h3 class="title titLogin text-center"></h3>
 
-        <p class="text-center mt-3">Estás a tres pasos de disfrutar los beneficios que <br> Scotiabank y BNP Paribas Cardif tienen para ti
+        <p class="text-center mt-3">Estás a tres pasos de disfrutar los beneficios que <br> Scotiabank y BNP Paribas Cardif tienen para ti.
         </p>
         <div *ngIf="errorTipo || errorNum" class="alert alert-dismissible"
             style="background-color: rgba(235, 34, 48, 0.04);border: solid 1px #d0021b;">
@@ -24,7 +24,7 @@
             <!-- <p-steps [model]="items" [(activeIndex)]="count" styleClass="steps-custom" [readonly]="true"></p-steps> -->
             <app-steps [step]="1"></app-steps>
             <div class="form-group">
-                <label for="numeroCelular">Tipo de documento</label>
+                <label for="numeroCelular" style="opacity: 0.9;">Tipo de documento</label>
                 <select [ngClass]="{
                     'is-invalid': errorTipo
                     }" id="tipoDocumento" [(ngModel)]="form.idTipoDocumento" name="tipoDocumento" id="cboTipoDocumento" class="form-control"
@@ -35,7 +35,7 @@
                 <p *ngIf="errorTipo" class="text-danger">Selecciona el tipo de documento</p>
             </div>
             <div class="form-group">
-                <label for="numeroDocumento">Número de documento</label>
+                <label for="numeroDocumento"  style="opacity: 0.9;">Número de documento</label>
                 <input [ngClass]="{
                     'is-invalid': errorNum
                     }" [(ngModel)]="form.tipoDocumento" min="0" id="numeroDocumento" name="numeroDocumento"
