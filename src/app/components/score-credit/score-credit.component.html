@@ -26,17 +26,17 @@
             background-size: 350px 396px, contain;">
         <div
             style="width:100%;height:40px;background-color: rgba(0,0,0,0.1);margin-top: 39px;color: white;padding-top: 5px;">
-            <div style="margin-left: 19.1%;">
+            <div style="margin-left: 10%;">
                 <span routerLink="/inicio" class="crumbModulo">Inicio > </span>
                 <span routerLink="/conoce-mas" class="crumbModulo"><b>Sobre Coursera</b></span>
             </div>
         </div>
         <h1 class="tituloModulo8"style="margin-top: 5%;">Explora cursos de las <br>
             universidades y compañías <br> líderes en el mundo </h1>
-        <button *ngIf="login.isActive()" class="btnMain40" style="margin-top: 2%; margin-left:17%;"
+        <button *ngIf="login.isActive()" class="btnMain40" style="margin-top: 2%; margin-left:10%;"
             routerLink="/lista-de-cursos" (click)="goVerlistado()">Ver listado de cursos
         </button>
-        <button *ngIf="!login.isActive()" class="btnMain40" style="margin-top: 2%; margin-left:17%;"
+        <button *ngIf="!login.isActive()" class="btnMain40" style="margin-top: 2%; margin-left:10%;"
             (click)="login.goLogin()">Únete aquí
         </button>
     </div>

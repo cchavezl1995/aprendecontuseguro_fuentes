@@ -536,4 +536,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  goRegistrar() {
+
+    this.router.navigateByUrl('/registro/2').then(e => {
+      //window.location.reload();
+      //console.log(this.ruta);
+    });
+  }
+
 }

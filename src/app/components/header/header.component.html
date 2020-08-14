@@ -73,16 +73,16 @@
   <div *ngIf="opcionesMovil"  class="collapse navbar-collapse botonResponsive manito" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto botonResponsive">
       <li class="nav-item active" *ngIf="carrusel==0" style="background-color: #9be4ff;" >
-        <a class="nav-link2 active enlace" routerLink="/inicio"
+        <a class="nav-link active enlace" routerLink="/inicio"
           (click)="goHome(); AddLog('inicio','Navega a la página de inicio')" routerLinkActive="activated">
-          <span  ><p style="color:#009DD6 ;" >Inicio</p></span><span class="sr-only">(current)</span>
+          <span class="textLi" ><p style="color:#009DD6 ;" >Inicio</p></span><span class="sr-only">(current)</span>
         </a>       
       </li>
 
       <li class="nav-item active" *ngIf="carrusel!=0"  >
-        <a class="nav-link2 active enlace" routerLink="/inicio" 
+        <a class="nav-link active enlace" routerLink="/inicio" 
           (click)="goHome(); AddLog('inicio','Navega a la página de inicio')" routerLinkActive="activated">
-          <span  ><p >Inicio</p></span><span class="sr-only">(current)</span>
+          <span class="textLi" ><p >Inicio</p></span><span class="sr-only">(current)</span>
         </a>       
       </li>
       
@@ -209,10 +209,10 @@
           <span  ><p >Tecnología</p></span><span class="sr-only">(current)</span>
         </a>  
         <a class="nav-link2 active enlace" routerLink="/lista-de-cursos"
-           routerLinkActive="activated">
+           routerLinkActive="activated" *ngIf="login.isActive()">
           <span  ><p >Ver listado de Cursos</p></span><span class="sr-only">(current)</span>
         </a> 
-        <a class="nav-link2 active enlace" routerLink="/score-credito"
+        <a class="nav-link2 active enlace" routerLink="/conoce-mas"
           routerLinkActive="activated">
           <span  ><p >Sobre Coursera</p></span><span class="sr-only">(current)</span>
         </a>      

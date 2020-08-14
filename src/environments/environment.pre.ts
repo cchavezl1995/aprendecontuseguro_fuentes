@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-    protocol: "https",
-    host: "api.aprendecontuseguro.pe",
+    protocol: "http",
+    host: "qaprojects.grupomok.com",
     port: '',
     gate: 'api',
     user1: {

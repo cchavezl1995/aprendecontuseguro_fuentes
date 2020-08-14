@@ -20,6 +20,9 @@ import { HeaderComponent } from '../header/header.component';
 
 export class HomeComponent implements OnInit {
   carrusel : number=0;
+  p1 :boolean=true;
+  p2 :boolean=false;
+  p3 :boolean=false;
   cookieValue = 'UNKNOWN';
   api: string = URL;
   actualSlide: number = 0;
@@ -214,6 +217,25 @@ export class HomeComponent implements OnInit {
   cambiaInicio(){
     this.carrusel=0;
     window.location.reload();
+  }
+
+  goP1(){
+    this.p1=true;
+    this.p2=false;
+    this.p3=false;
+
+  }
+
+  goP2(){
+    this.p1=false;
+    this.p2=true;
+    this.p3=false;
+  }
+
+  goP3(){
+    this.p1=false;
+    this.p2=false;
+    this.p3=true;
   }
 
 }

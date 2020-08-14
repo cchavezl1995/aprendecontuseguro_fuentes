@@ -3728,20 +3728,22 @@ background-size: 400px;">
             <div class=" col-10" style="max-width: 1366px;margin:auto;">
                 <div style="background-color: #cf141b; height: 5PX;width: 60PX;"></div>
                 <br>
-                <h1 class="mb-4 dtLargo font-weight-bold text-dark" style="padding-left: 0px !important;">
+                <h2 class="mb-4 dtLargo font-weight-bold text-dark" style="padding-left: 0px !important;">
                     Preguntas frecuentes
-                </h1>
+                </h2>
                 <p class="txt-cont-inicio-movil">Aclara todas tus preguntas y dudas más frecuentes sobre nuestro
                     portafolio de servicios.</p>
                 <div id="accordion" style="margin: 0px 25px;">
                     <div class="card">
                         <div >
                             <h5 class="mb-0 text-secondary negrilla divTituloPregunta" style="width: 762px;
-                            height: 44px "> <span style="font-weight: bold;" >¿Cómo puedo usar los servicios de mi seguro?</span>
+                            height: 44px "> 
+                            <span *ngIf="p1"  style="font-weight: bold;color: #ec1c24;" >¿Cómo puedo usar los servicios de mi seguro?</span>
+                            <span *ngIf="!p1"  style="font-weight: bold;" >¿Cómo puedo usar los servicios de mi seguro?</span>
                             </h5>
 
                             <button class="btn btn-link oval" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+                                aria-expanded="true" aria-controls="collapseOne"  (click)="goP1()">
                                 <span class="abrirMas"><i class="fas fa-chevron-down"></i></span>
                                 <span class="abrirMenos"><i class="fas fa-chevron-up"></i></span>
                             </button>
@@ -3755,17 +3757,22 @@ background-size: 400px;">
                     <div>
                         <div class="card-header" id="headingOne"></div>
                     </div>
-                    <div class="card">
-                        <div >
+                    <div class="card" style="margin-top: 2%;">
+                        <div class=" pl-0 pr-0" id="headingTwo">
                             <h5 class="mb-0 text-secondary negrilla divTituloPregunta" style="width: 762px;
-                            height: 44px"> <span>¿Los servicios del ecosistema tienen algún costo adicional al
+                            height: 44px" >
+                            
+                                <span *ngIf="p2" style="color: #ec1c24;">¿Los servicios del ecosistema tienen algún costo adicional al
                                     seguro?</span>
+                                 <span *ngIf="!p2" >¿Los servicios del ecosistema tienen algún costo adicional al
+                                        seguro?</span>
+                                    </h5>
                                 <button class="btn btn-link oval collapsed" data-toggle="collapse"
-                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" (click)="goP2()"> 
                                     <span class="abrirMas"><i class="fas fa-chevron-down"></i></span>
                                     <span class="abrirMenos"><i class="fas fa-chevron-up"></i></span>
                                 </button>
-                            </h5>
+                            
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body pl-0 pr-0 pPreguntas">
@@ -3777,18 +3784,23 @@ background-size: 400px;">
                     <div >
                         <div class="card-header" id="headingOne"></div>
                     </div>
-                    <div class="card">
+                    <div class="card" style="margin-top: 2%;">
                         <div >
                             <h5 class="mb-0 text-secondary negrilla divTituloPregunta" style="width: 762px;
-                            height: 44px"> <span>¿Si no cuento con un
+                            height: 44px"> 
+                                    <span *ngIf="p3" style="color: #ec1c24;">¿Si no cuento con un
                                     seguro, cómo puedo
                                     adquirirlo?</span>
+                                    <span *ngIf="!p3" >¿Si no cuento con un
+                                        seguro, cómo puedo
+                                        adquirirlo?</span>
+                                </h5>
                                 <button class="btn btn-link oval collapsed" data-toggle="collapse"
-                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo"  (click)="goP3()"> 
                                     <span class="abrirMas"><i class="fas fa-chevron-down"></i></span>
                                     <span class="abrirMenos"><i class="fas fa-chevron-up"></i></span>
                                 </button>
-                            </h5>
+                            
                         </div>
 
                         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -3823,9 +3835,9 @@ background-size: 400px;">
         <div class=" col-1 text-white"></div>
     </div>
     <br />
-    <app-contact-help></app-contact-help>
-    <!-- <div class="container d-block d-xl-none d-lg-none quieroUnirmeMovile" (click)="login.goLogin()"
+   <!-- <div class="container d-block d-xl-none d-lg-none quieroUnirmeMovile" (click)="login.goLogin()"
         *ngIf="!login.isActive()">
         <p><i class="icon-Login iconSize"></i>&nbsp;&nbsp;&nbsp;Regístrate ya</p>
     </div> -->
 </div>
+<app-contact-help></app-contact-help>
