@@ -6,7 +6,8 @@ $color-nolink: #034797;
 
 .dropdown-submenu>.dropdown-menu {
     top: 0;
-    left: 100%;
+    //left: 100%;
+    right: 0;
     margin-top: -6px;
     margin-left: -1px;
     -webkit-border-radius: 0 6px 6px 6px;
@@ -29,7 +30,8 @@ $color-nolink: #034797;
 }
 
 .dropdown-submenu.pull-left>.dropdown-menu {
-    left: -100%;
+    //left: -100%;
+    right: 0;
     margin-left: 10px;
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
@@ -82,9 +84,12 @@ $color-nolink: #034797;
         border: solid 1px #d6d6d6;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
-        left: 10px;
+        //left: 10px;
+        right: 0;
         width: calc(90% + 90px);
+        //width:  90px;
         //padding-left: 20px;
+        
     }
     .ecoHeaderNoMovil{
         padding: 8px 24px 8px 10px !important;
@@ -145,6 +150,7 @@ $color-nolink: #034797;
 .nav-item.dropdown.active{    
      margin-top: 10px;
     border-bottom: 0px;
+    right: 0;
 
 }
 .collapse.show > .navbar-nav, .collapsing > .navbar-nav{ 
@@ -161,14 +167,16 @@ $color-nolink: #034797;
     display: block;
     width: 100%; 
     background-color: white; 
-    left: 0;
+    //left: 0;
+    right: 0;
     border: none
 }
 .collapse.show > ul > .dropdown.show > .dropdown-menu.show{ 
     display: block;
     width: 100%; 
     background-color: white; 
-    left: 0px;
+    //left: 0px;
+    right: 0;
     border: none
 }
 

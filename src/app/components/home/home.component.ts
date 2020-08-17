@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
     this.innerWidth = window.innerWidth;
     // console.log(this.innerWidth);
     if (this.login.isActive() && this.innerWidth > 992) {
-      this.cookieService.set('primeraSesion', 'Activo');
+      this.cookieService.set('primeraSesion', 'Activo',7*24*60*60*1000,'/','',true,'None');
       this.cookieValue = this.cookieService.get('primeraSesion');
     }
     let counter: number = 0;
@@ -170,7 +170,7 @@ export class HomeComponent implements OnInit {
   cerrarCoockie() {
     // console.log("entra");
     this.isShown = !this.isShown;
-    this.cookieService.set('coockies', 'Acepta');
+    this.cookieService.set('coockies', 'Acepta',7*24*60*60*1000,'/','',true,'None');
   }
   // Cargar tipos de documento
   getTiposDoc() {

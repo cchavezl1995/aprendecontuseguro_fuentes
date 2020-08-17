@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import sha256 from "sha256";
 import Swal from 'sweetalert2';
 import * as $ from 'jquery';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
   loader: boolean;
 
 
-  constructor(private register: RegisterService, private diccionario: DiccionarioService,private route: ActivatedRoute) { }
+  constructor(private register: RegisterService, private diccionario: DiccionarioService,private route: ActivatedRoute,public router: Router) { }
 
   ngOnInit() {
     this.items = [
@@ -394,5 +394,12 @@ export class RegisterComponent implements OnInit {
     }
   }
   
+
+  goInicioSesion() {
+    this.router.navigateByUrl('/inicia-sesion/1').then(e => {
+      //window.location.reload();
+      console.log(this.router.url);
+    });
+  }
 
 }
