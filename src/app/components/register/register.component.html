@@ -12,7 +12,7 @@
             {{message}}
         </div>
         <div *ngIf="alert" class="alert alert-dismissible"
-            style="background-color: rgba(235, 34, 48, 0.04);border: solid 1px #f5a623;">
+            style="background-color: rgba(235, 34, 48, 0.04);border: solid 1px #f5a623;text-align:center">
             <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
             <i class="text-warning icon fas fa-exclamation-triangle" style="position: relative; left: 178px;"></i> <br>
             <p style="position: relative; left: 34px;"> Ya existe un usuario con este documento. 
@@ -24,7 +24,7 @@
             <!-- <p-steps [model]="items" [(activeIndex)]="count" styleClass="steps-custom" [readonly]="true"></p-steps> -->
             <app-steps [step]="1"></app-steps>
             <div class="form-group">
-                <label for="numeroCelular" style="opacity: 0.9;">Tipo de documento</label>
+                <label for="numeroCelular" style="opacity: 0.8;">Tipo de documento</label>
                 <select [ngClass]="{
                     'is-invalid': errorTipo
                     }" id="tipoDocumento" [(ngModel)]="form.idTipoDocumento" name="tipoDocumento" id="cboTipoDocumento" class="form-control"
@@ -35,7 +35,7 @@
                 <p *ngIf="errorTipo" class="text-danger">Selecciona el tipo de documento</p>
             </div>
             <div class="form-group">
-                <label for="numeroDocumento"  style="opacity: 0.9;">Número de documento</label>
+                <label for="numeroDocumento"  style="opacity: 0.8;">Número de documento</label>
                 <input [ngClass]="{
                     'is-invalid': errorNum
                     }" [(ngModel)]="form.tipoDocumento" min="0" id="numeroDocumento" name="numeroDocumento"
