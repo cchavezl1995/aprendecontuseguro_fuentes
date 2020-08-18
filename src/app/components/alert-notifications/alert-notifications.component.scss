@@ -71,10 +71,6 @@ $des_eco6_backColor: #009DD6;
 
 
 
-
-
-
-
 .tituloInteres{
   font-family: OpenSans;
   font-size: 22px;
@@ -86,11 +82,17 @@ $des_eco6_backColor: #009DD6;
   color: #333333;
 }
 .containerIntereses{
-  //min-height: 578px;
+  min-height: 578px;
   background-color: #f6f8fa;
-  width: 100%;
 }
 .cardInteres{
+  border-radius: 6px;
+  box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  height: 420px;
+  max-width: 325px;
+}
+.cardInteres2{
   border-radius: 6px;
   box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
@@ -108,6 +110,7 @@ $des_eco6_backColor: #009DD6;
   color: #556056;
   opacity: 0.9;
 }
+
 .cardInteres > .card-body > .card-text{
   font-family: OpenSans;
   font-size: 14px;
@@ -118,6 +121,7 @@ $des_eco6_backColor: #009DD6;
   letter-spacing: normal;
   color: #9b9b9b;
 }
+
 .linkConoceMas{
   border-top: 1px solid lightgray;
   margin-top: -30px;
@@ -133,6 +137,11 @@ $des_eco6_backColor: #009DD6;
   cursor:pointer;
 }
 .imgInteres{
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  height: 187px;
+}
+.imgInteres2{
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   height: 187px;
