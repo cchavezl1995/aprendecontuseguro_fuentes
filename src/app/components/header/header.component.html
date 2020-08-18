@@ -196,31 +196,31 @@
   <div *ngIf="opcionesMovil" class="collapse navbar-collapse botonResponsive manito" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto botonResponsive">
       <li class="nav-item active"   >
-        <a class="nav-link2 active enlace" routerLink="/inicio"
+        <a class="nav-link2 active enlace" routerLink="/inicio" (click)="goSlide0()"
           (click)="goHome(); " routerLinkActive="activated">
           <span  ><p>Inicio</p></span><span class="sr-only">(current)</span>
         </a>  
-        <a class="nav-link2 active enlace" routerLink="/inicio"
+        <a class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide1()"
           (click)="goHome(); " routerLinkActive="activated">
           <span  ><p >Aprende Idiomas</p></span><span class="sr-only">(current)</span>
         </a> 
-        <a class="nav-link2 active enlace" routerLink="/inicio"
+        <a class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide2()"
           (click)="goHome(); " routerLinkActive="activated">
           <span  ><p >Habilidades de Negocio</p></span><span class="sr-only">(current)</span>
         </a>  
-        <a class="nav-link2 active enlace" routerLink="/inicio"
+        <a class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide3()"
           (click)="goHome(); " routerLinkActive="activated">
           <span  ><p >Desarrollo Humano</p></span><span class="sr-only">(current)</span>
         </a>  
-        <a class="nav-link2 active enlace" routerLink="/inicio"
+        <a class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide4()"
           (click)="goHome(); " routerLinkActive="activated">
           <span  ><p >Ciencia de Datos</p></span><span class="sr-only">(current)</span>
         </a>  
-        <a class="nav-link2 active enlace" routerLink="/inicio"
+        <a class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide5()"
           (click)="goHome();" routerLinkActive="activated">
           <span  ><p >Tecnología</p></span><span class="sr-only">(current)</span>
-        </a>  
-        <a class="nav-link2 active enlace" routerLink="/lista-de-cursos"
+        </a> 
+        <a class="nav-link2 active enlace" routerLink="/lista-de-cursos" 
            routerLinkActive="activated" *ngIf="login.isActive()">
           <span  ><p >Ver listado de Cursos</p></span><span class="sr-only">(current)</span>
         </a> 
