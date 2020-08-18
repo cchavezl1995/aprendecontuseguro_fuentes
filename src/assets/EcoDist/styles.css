@@ -813,6 +813,22 @@ ol li {
     letter-spacing: -0.19px;
 }
 
+.tituloModulo80{
+  font-family: GoogleSans;
+    font-size: 38px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -0.15px;
+    color: #ffffff;
+    margin-top: 30px;
+    margin-left: 10%;
+    letter-spacing: -0.19px;
+}
+
+
+
 .tituloModulo8{
   font-family: GoogleSans;
     font-size: 50px;

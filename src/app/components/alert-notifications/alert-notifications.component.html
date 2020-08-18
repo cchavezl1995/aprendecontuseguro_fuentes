@@ -30,10 +30,11 @@
             background-image: url('assets/img/fraude2/score/score-woman.png');
             margin-top: 20px;">
 
-        <h1 class="tituloModulo ">
-            <br>Para aprender no hay <br> fecha de vencimiento... <br> ¡Seleciona tu     <br> curso, estudia <br> y certifícate! <br> online. </h1>
+        <h2 class="tituloModulo80 " >
+            <br>Para aprender no hay <br> fecha de vencimiento... <br> ¡Seleciona tu     <br> curso, estudia <br> y certifícate! <br> online.
+         </h2>
 
-            <button *ngIf="login.isActive()" class="btnMain20" style="margin-top: 15%; margin-left:18%;margin-right:18%"
+            <button *ngIf="login.isActive()" class="btnMain20" style="margin-top: 25%; margin-left:18%;margin-right:18%"
             (click)="accedeCoursera()">Comiensa a estudiar
         </button>
         <!--<button *ngIf="!login.isActive()" class="btnMain20" style="margin-top: 15%; margin-left:18%;"
@@ -121,6 +122,7 @@
     </div>
 
 
+    <div  class="d-none d-lg-block" > 
         <div class="row m-2">
             <div class="col-lg-10 col-md-10 offset-md-1 col-sm-12">
                 <div class="row">
@@ -139,7 +141,33 @@
                 </div>
             </div>
         </div>
+        </div>
 
+
+        <div  class="d-block d-xl-none d-lg-none"  > 
+            <div class="row m-2">
+                <div class="col-lg-10 col-md-10 offset-md-1 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-1 col-sm-0"></div>
+                        <div class="col-lg-8 col-md-10 col-sm-12" style="width: 770px; text-align: left;">
+                            <h2 class="font-weight-bold text-dark text-center mt-3 mb-3">
+                                La plataforma #1 de <br> aprendizaje en línea.
+                            </h2>
+                            <p style="font-size: 22px; margin-left: 10%;">
+                                Coursera es una plataforma de educación <br>
+                                virtual, que reúne contenidos y clases de <br>
+                                muchas universidades a través del  <br>
+                                mundo, con el fin de brindar una  <br>
+                                educación de calidad, con cursos en <br>
+                                inglés y español.
+                            </p>
+    
+                        </div>
+                        <div class="col-lg-2 col-md-1 col-sm-0"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
 
         <div class="d-none d-lg-block" >
         <div class="container  pt-5">
@@ -221,7 +249,7 @@
         </div>
 
         <div class="d-block d-xl-none d-lg-none" >
-            <div class="container  pt-5">
+            <div class="container  pt-2">
                 <div class="row mt-2">
                     <div class="col-lg-0"></div>
                     

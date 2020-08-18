@@ -16,12 +16,14 @@ export class HeaderComponent implements OnInit {
 
 
 
-  carrusel_0 : number=1;
+  carrusel_0 : number=0;
   carrusel_1 : number=0;
   carrusel_2 : number=0;
   carrusel_3 : number=0;
   carrusel_4 : number=0;
   carrusel_5 : number=0;
+  verlistado : number=0;
+  conoce : number=0;
 
   desempleo: boolean = false;
   itt: boolean = false;
@@ -91,6 +93,9 @@ export class HeaderComponent implements OnInit {
     }
     if(this.ruta=='/lista-de-cursos'){
       this.rutalistado=true;
+    }
+    if(this.ruta=='/conoce-mas'){
+      this.conoce=1;
     }
 
 
@@ -245,6 +250,8 @@ export class HeaderComponent implements OnInit {
     this.carrusel_3=0;
     this.carrusel_4=0;
     this.carrusel_5=0;
+    this.verlistado=0;
+    this.conoce=0;
   }
 
   goSlide1(){
@@ -255,7 +262,8 @@ export class HeaderComponent implements OnInit {
     this.carrusel_3=0;
     this.carrusel_4=0;
     this.carrusel_5=0;
-    
+    this.verlistado=0;
+    this.conoce=0;
   }
 
   goSlide2(){
@@ -266,6 +274,8 @@ export class HeaderComponent implements OnInit {
     this.carrusel_3=0;
     this.carrusel_4=0;
     this.carrusel_5=0;
+    this.verlistado=0;
+    this.conoce=0;
   }
 
   goSlide3(){
@@ -276,6 +286,8 @@ export class HeaderComponent implements OnInit {
     this.carrusel_3=1;
     this.carrusel_4=0;
     this.carrusel_5=0;
+    this.verlistado=0;
+    this.conoce=0;
   }
 
   goSlide4(){
@@ -286,6 +298,8 @@ export class HeaderComponent implements OnInit {
     this.carrusel_3=0;
     this.carrusel_4=1;
     this.carrusel_5=0;
+    this.verlistado=0;
+    this.conoce=0;
   }
 
   goSlide5(){
@@ -296,8 +310,35 @@ export class HeaderComponent implements OnInit {
     this.carrusel_3=0;
     this.carrusel_4=0;
     this.carrusel_5=1;
+    this.verlistado=0;
+    this.conoce=0;
   }
 
+
+  goListado(){
+    
+    this.carrusel_0=0;
+    this.carrusel_1=0;
+    this.carrusel_2=0;
+    this.carrusel_3=0;
+    this.carrusel_4=0;
+    this.carrusel_5=0;
+    this.verlistado=1;
+    this.conoce=0;
+    this.rutalistado=true;
+  }
+
+  goConocemas(){
+    
+    this.carrusel_0=0;
+    this.carrusel_1=0;
+    this.carrusel_2=0;
+    this.carrusel_3=0;
+    this.carrusel_4=0;
+    this.carrusel_5=0;
+    this.verlistado=0;
+    this.conoce=0;
+  }
 
 
 }
