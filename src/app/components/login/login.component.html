@@ -1,8 +1,24 @@
 <app-block-loader [blocked]="loader"></app-block-loader>
 <div *ngIf="count == 0" class="margen formLogin">
+  
+  <div    class="d-none d-lg-block"  >
+  
   <h3 class="title text-center">Inicia sesión</h3>
 
   <p class="text-center mt-4 mb-4">Disfruta los servicios de tu seguro.</p>
+
+  </div>
+
+
+  <div    class="d-block d-xl-none d-lg-none"  >
+  
+    <h3 class="title titLogin text-center"> Inicia sesión</h3>
+
+        <p style="font-size: 40px;">Disfruta los servicios de tu seguro.
+        </p>
+  
+    </div>
+
   <div *ngIf="error || errorData" class="alert alert-dismissible" style="
       background-color: rgba(235, 34, 48, 0.04);
       border: solid 1px #d0021b;

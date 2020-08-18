@@ -12,6 +12,22 @@ import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localeCO, 'es-CO');
 
+
+
+import { RegisterService } from "src/app/services/register.service";
+
+import * as $ from 'jquery';
+import { Diccionario } from 'src/app/interfaces/diccionario';
+import { DiccionarioService } from 'src/app/services/diccionario.service';
+import { UserLogin } from 'src/app/interfaces/register/user-login';
+import { password, user } from 'src/app/config/variables';
+import { ContactService } from "src/app/services/contact.service";
+import * as CryptoJS from 'crypto-js';
+import sha256 from "sha256";
+
+
+
+
 import Swal from 'sweetalert2';
 import { CurriculumFile } from 'src/app/interfaces/curriculum-file';
 import { CurriculumService } from 'src/app/services/curriculum.service';
@@ -33,588 +49,528 @@ import { Router } from "@angular/router";
   styleUrls: ['./scheduling.component.scss']
 })
 export class SchedulingComponent implements OnInit {
-
-  @Input() typeSchedule?: number;
-  @Input() module?: string;
-  
-  count: number = 0;
-  bsInlineValue = new Date();
-  pipe = new DatePipe('es-CO');
-  textoCargarHV: string = "Cargar nueva hoja de vida";
-
-  //Fechas y Formatos
-  datePickerConfig:Partial<BsDatepickerConfig>;
-  dateFormat = 'dd/MM/yyyy';
-  hourFormat = 'HH:MM'
-  locale = 'es';
-  isOpen: boolean = true;
-  // Form
-  formContact: FormGroup;
-  submitted: boolean = false;
-
-  // Data
-  schedules: any[] = [];
-  typeSchedules: any[] = [];
-  obj: any;
-  action: string = "new";
-
-  // 
-  checked: boolean = false;
-  curriculumArchivos: CurriculumFile = {};
-  dragging: boolean = false;
-  loaded: boolean = false;
-  imageLoaded: boolean = false;
-  imageSrc: string = '';
-  loader: boolean;
-  iframe:any;
-
-  //
-  tipoAgenda: string = ""; 
-  tipoConsultaBool: boolean;
-  showConfirm: boolean = false;
-  step: number = 0;
-  currentDate = new Date();
-  currentDate2 = new Date();
-  created: boolean;
-  dates: boolean;
-
-  mostrarH: boolean = false;
-
-  constructor(public localeService: BsLocaleService, public booking:BookingService, public login: LoginService,
-              private curriculumService:CurriculumService
-              , public ch:CurriculumHomeComponent
-              , public cv: CurriculumVitaeComponent
-              , public ps: PsicoComponent
-              , private sanitizer: DomSanitizer
-              , public sch: SchedulePipe
-              , public ad: AdvisoryComponent, public router: Router
-              , private logs:LogsService) {
-    setInterval(() => {
-      this.currentDate = new Date();
-      // console.log(this.currentDate);
-      
-    }, 1);
-
-    this.dates = `${this.currentDate.getFullYear()}/${this.currentDate.getMonth()+1}/${this.currentDate.getDate()}` == `${this.currentDate2.getFullYear()}/${this.currentDate2.getMonth()+1}/${this.currentDate2.getDate()}`;
-    
-    this.datePickerConfig = Object.assign(
-      {}, 
-      {
-        containerClass: 'theme-default', 
-        showWeekNumbers:false,
-        dateInputFormat: 'MMMM Do YYYY',
-        outsideClick : true, 
-        adaptivePosition: true,
-        minDate: new Date()
-      }
-    );
-
-    
-   }
-
-   AddLog(pagina: string, control: string, extra?: string){
-    if(this.login.isActive()){
-      this.logs.addLog(pagina,control,extra);
+  verbarra1 : boolean=false;
+  verbarra2 : boolean=false;
+  socials = [
+    {
+      id: 1,
+      name: 'Canal de contacto',
+      icon: 'fas fa-info mt-2',
+      color: '#d8d8d8',
+      type: '',
+      value: '',
+      show: true
     }
+  ];
+
+  redes = []
+
+  constructor(private diccionarioService: DiccionarioService, public login: LoginService, public reg: RegisterService,
+    public contact: ContactService) { }
+  form: UserLogin = {};
+  pagina: number = 0;
+  jsonPersonalInfo: any = {};
+  jsonPassword: any = {};
+  nombres: string;
+  apellidos: string;
+  correoElectronico: string;
+  numeroCelular: string;
+  tiposDocumento: Diccionario[];
+  tipoDocumento: string;
+  nroDocumento: string;
+  loader: boolean = false;
+  claveNueva: string = "";
+  claveActual: string = "";
+  claveConfirmada: string = "";
+  isplaceNumber: boolean = true;
+
+  ngOnInit() {
+    this.login.verifySesion();
+    this.nombres = this.login.getDataUser().nombres;
+    this.apellidos = this.login.getDataUser().apellidoPaterno;
+    this.correoElectronico = this.login.getDataUser().correoElectronico;
+    this.numeroCelular = this.login.getDataUser().numeroCelular;
+    this.nroDocumento = this.login.getDataUser().identificacion;
+    this.getTipoDocumento();
+    this.form = { "usuario": this.nroDocumento, "password": this.login.getDataUser().clave, "sitioUsuario": `${user}`, "sitioPassword": `${password}` }
+    this.getContacts();
+    
   }
 
-   onDateChange(event){
-    //  console.log(event);
-     this.formContact.get('fechaAgenda').setValue(event);
-   }
-
-   onTimeChange(event){
-    let elements = document.getElementsByClassName('hour selected');
-    if (elements.length > 0) {
-      elements[0].className = 'hour';
-    }
-    
-    this.formContact.get('horaAgenda').setValue(event['target']['innerText'])
-    this.showConfirm = true;
-    return event['target']['className'] = 'hour selected';
-   }
-
-   get f() { return this.formContact.controls; }
-
-  ngOnInit() {    
-    // debugger;
-    this.loader = true;
-    this.localeService.use('es');
-    this.login.isActive();
-    this.booking.getSchedules(this.login.getDataUser().idUsuario).subscribe(
-      res => {        
-        this.loader = false;
-        let schedulesAux = [];
-        if (res['codigo'] == 0 && res['data'] != null) {
-          for (let i = 0; i < res['data'].length; i++) {
-            res['data'][i]['horaAgenda'] = String(res['data'][i]['horaAgenda']).substr(0,5);
-            res['data'][i]['fechaAgenda'] = String(res['data'][i]['fechaAgenda']).substr(0,10);
-            schedulesAux.push(res['data'][i]);  
-          }
-          
-          this.loadTypeSchedules(schedulesAux);
-        }else{
-          this.count = 1;
-        }
+  getContacts() {
+    this.contact.getContacts(this.login.getDataUser().idUsuario).subscribe(
+      (res: any) => {
+        // console.log(res);  
+        this.redes = res;
       }
-    );    
-
-    this.formContact = new FormGroup({
-      idAgenda : new FormControl(''), 
-      idAgendaTipo : new FormControl(this.typeSchedule?this.typeSchedule:2023), 
-      DiscriminadorAgendamiento : new FormControl('',Validators.compose( [Validators.required])), 
-      idUsuario : new FormControl(this.login.getDataUser().idUsuario), 
-      contacto : new FormControl('', Validators.compose( [Validators.required])), 
-      fechaAgenda : new FormControl('', Validators.compose( [Validators.required])), 
-      horaAgenda : new FormControl('', Validators.compose( [Validators.required]))
-    });
+    )
     
   }
 
-  loadTypeSchedules(schedules){    
-    this.loader = true;
-    let modulo = this.module;
-    this.module == 'HojaVida-1'? modulo = 'HojaVida':this.module;
-    
-    // Get schedules types
-    this.booking.getScheduleTypes(modulo).subscribe(
-      res => {
-        // console.log('Asignando...typeSchedules');
-        this.typeSchedules = res['data'];
-        this.loader = false;
-        
-        this.schedules = this.sch.transform(schedules, this.typeSchedules);
-        // console.log(this.schedules);
-        if (this.schedules.length == 0 && (this.module == 'Entrevista' || this.module == 'HojaVida' || this.module == 'Ayuda')) {
-          this.count = 1
-        }
-        
-      }
-    );
-  }
-
-  // getSchedules(){
-  //   // Get schedules
-  //   console.log('getSchedules');
-    
-  //   this.booking.getSchedules(this.login.getDataUser().idUsuario).subscribe(
-  //     res => {
-  //       // console.log(res);
-  //       if (res['codigo'] == 0 && res['data'] != null) {
-  //         for (let i = 0; i < res['data'].length; i++) {
-  //           res['data'][i]['horaAgenda'] = String(res['data'][i]['horaAgenda']).substr(0,5);
-  //           res['data'][i]['fechaAgenda'] = String(res['data'][i]['fechaAgenda']).substr(0,10);
-            
-  //           this.schedules.push(res['data'][i]);  
-  //         }
-  //       }        
-  //     }
-  //   );
-  // }
-
-
-  onsubmit(){   
-    this.submitted = true;
-    this.loader = true;
-
-    // console.log(this.formContact.get('fechaAgenda').value);
-    
-    if (this.formContact.get('fechaAgenda').value == '') {
+  guardarDatosPersonales() {
+    var re = /[a-zA-Z ]+.*@[^ÑñáéíóúÁÉÍÓÚ]+.[com,org,co,net,es]+$/;
+    if (!re.test(this.correoElectronico)) {
       Swal.fire({
-        title: 'Ops!',
-        text: `Debes proporcionar una fecha.`,
-        type: 'error',
-        confirmButtonText: 'Aceptar'
-      }).then(res => {
-        this.step=0;
-      });
-      this.loader = false;
-      return;
-    }
-    
-
-    let dateAux = new Date(this.formContact.get('fechaAgenda').value);
-    // let date = new Date(`${dateAux.getDate()}/${dateAux.getMonth()+1}/${dateAux.getFullYear()}`);
-    let date = new Date(`${dateAux.getFullYear()}/${dateAux.getMonth()+1}/${dateAux.getDate()}`);
-    // console.log(date);
-    // this.pipe.transform(this.formContact.get('fechaAgenda').value, this.dateFormat)
-    this.formContact.get('fechaAgenda').setValue(date);
-    this.formContact.get('contacto').setValue(String(this.formContact.get('contacto').value).includes("@")?`${this.formContact.get('contacto').value}`:`${this.formContact.get('contacto').value}`)
-    // console.log(this.formContact.value);
-
-    if (this.formContact.invalid) {
-      Swal.fire({
-        title: 'Ops!',
-        text: `Debes ingresar los campos que son obligatorios.`,
-        type: 'error',
-        confirmButtonText: 'Aceptar'
-      });
-      this.loader = false;
-      return;
-    }else{
-            
-      if (this.action == "new") {
-        this.booking.addSchedule(this.formContact.value).subscribe(
-          res => {
-            // console.log(res);
-            this.formContact.get('idAgenda').setValue(res['data']['idAgenda']);
-            
-            if (res['codigo']==0) {
-              res['data']['horaAgenda'] = String(res['data']['horaAgenda']).substr(0,5);
-              res['data']['fechaAgenda'] = String(res['data']['fechaAgenda']).substr(0,10);
-              this.schedules.push(res['data']);
-              Swal.fire({
-                title: 'Agendado',
-                text: `Se ha realizado el agendamiento exitosamente!.`,
-                type: 'success',
-                confirmButtonText: 'Aceptar'
-              });
-              this.booking.sendSMSEmail(res['data']['idAgenda'],'Agendar').subscribe(
-                res => {
-                  // console.log(res);
-                }
-              );
-              this.step = 2;
-              this.created = true;
-
-              // Hacemos correción de la fecha para visualizarla bein
-              let dateAux = new Date(this.formContact.get('fechaAgenda').value);
-              // let date = new Date(`${dateAux.getDate()}/${dateAux.getMonth()+1}/${dateAux.getFullYear()}`);
-              let date = `${dateAux.getFullYear()}/${dateAux.getMonth()+1}/${dateAux.getDate()}`;
-              this.formContact.get('fechaAgenda').setValue(date);
-            }            
-            this.loader = false;
-          }
-        );
-      } else if(this.action == "update") {
-        this.booking.updateSchedule(this.formContact.value).subscribe(
-          res => {
-            if (res['codigo']==0) {
-              Swal.fire({
-                title: 'Actualizado',
-                text: `Se ha realizado la actulizarción exitosamente!.`,
-                type: 'success',
-                confirmButtonText: 'Aceptar'
-              }).then(
-                res => {
-                  this.step = 2;
-                }
-              );
-              this.booking.sendSMSEmail(res['data']['idAgenda'],'Agendar').subscribe(
-                res => {
-                  // console.log(res);
-                }
-              )
-              
-              this.loader = false;
-              this.created = true;
-            }
-            this.loader = false;
-             // Hacemos correción de la fecha para visualizarla bein
-             let dateAux = new Date(this.formContact.get('fechaAgenda').value);
-             // let date = new Date(`${dateAux.getDate()}/${dateAux.getMonth()+1}/${dateAux.getFullYear()}`);
-             let date = `${dateAux.getFullYear()}/${dateAux.getMonth()+1}/${dateAux.getDate()}`;
-             this.formContact.get('fechaAgenda').setValue(date);
-          }
-        );
-        let obj = this.schedules.find(x => x.idAgenda == this.formContact.get('idAgenda').value);
-        this.schedules.splice(obj, 1);
-        this.schedules.push(this.formContact.value);
-      }
-      // this.decrement();
-    }  
-  }
-  
-  increment(){
-    window.scroll(0, 0);
-    this.count++;
-  }
-
-  decrement(){
-    window.scroll(0, 0);
-    this.count--;
-  }
-
-  alerta(element){
-    // alert(element);
-    if (element == 'whatsapp') {
-      document.getElementById(element).className = 'btn1 active';
-      document.getElementById('skype').className = 'btn1';
-      document.getElementById('phone').className = 'btn1';
-      document.getElementById('contacto').className = 'fab fa-whatsapp';
-      document.getElementById('iconWa').className = 'fab fa-whatsapp whatsapp';
-      document.getElementById('whatsappImg').style.display = 'none';
-      this.formContact.get('DiscriminadorAgendamiento').setValue('1');
-      this.formContact.get('contacto').setValidators([Validators.pattern('[0-9 ]{9,12}'),Validators.required]);
-     // this.formContact.get('contacto').setValue(String(this.login.getDataUser().numeroCelular).substr(2,String(this.login.getDataUser().numeroCelular).length));
-          this.formContact.get('contacto').setValue(String(this.login.getDataUser().numeroCelular));
-
-    } else if(element == 'skype') {
-      document.getElementById(element).className = 'btn1 active';
-      document.getElementById('whatsapp').className = 'btn1';
-      document.getElementById('phone').className = 'btn1';
-      document.getElementById('contacto').className = 'fab fa-skype';
-      document.getElementById('iconWa').className = 'fab fa-whatsapp whatsapp d-none';
-      document.getElementById('whatsappImg').style.display = 'block';
-      this.formContact.get('DiscriminadorAgendamiento').setValue('2');
-      this.formContact.get('contacto').setValidators([Validators.pattern('[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+.[com,org,co,net,es]'),Validators.required]);
-      this.formContact.get('contacto').setValue(this.login.getDataUser().correoElectronico);
-    } else if(element == 'phone') {
-      document.getElementById(element).className = 'btn1 active';
-      document.getElementById('whatsapp').className = 'btn1';
-      document.getElementById('skype').className = 'btn1';
-      document.getElementById('contacto').className = 'fas fa-phone-alt';
-      document.getElementById('iconWa').className = 'fab fa-whatsapp whatsapp d-none';
-      document.getElementById('whatsappImg').style.display = 'block';
-      this.formContact.get('DiscriminadorAgendamiento').setValue('0');
-      this.formContact.get('contacto').setValidators([Validators.pattern('[0-9 ]{9,12}'),Validators.required]);
-    //  this.formContact.get('contacto').setValue(String(this.login.getDataUser().numeroCelular).substr(2,String(this.login.getDataUser().numeroCelular).length));
-     this.formContact.get('contacto').setValue(String(this.login.getDataUser().numeroCelular));
-    }
-  }
-
-  delete(id){
-    Swal.fire({
-      title: 'Cancelación de asesoría',
-      text: "¿Estás seguro de cancelar tu asesoría?",
-    
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonClass:  'botoncancelado', 
-
-      confirmButtonText: 'Sí',
-      cancelButtonText : 'No'
-    }).then((result) => {
-      if (result.value) {
-        this.booking.deleteSchedule(id).subscribe(
-          res => {
-            // console.log(res);
-            if (res['codigo']==0) {
-              Swal.fire({
-                title: 'Tu asesoría ha sido cancelada con éxito',
-                text: `Se ha eliminado el agendamiento exitosamente.`,
-                type: 'success',
-                confirmButtonText: 'Aceptar'
-              }).then( res => {
-                //console.log(this.typeSchedule);
-                location.reload();
-                // if (this.typeSchedule == 2024 ) {
-                //   this.ps.count = 0;                  
-                // }else if(this.typeSchedule == 2023){
-                //   this.cv.step = 0;
-                // }else if(this.module == 'Legal'){
-                //   this.ad.count = 0;
-                // }
-              });
-              let obj = this.schedules.find(x => x.idAgenda == id);
-              this.schedules.splice(obj, 1);
-              // this.step = 0;
-              this.increment();
-              this.clear();
-            }
-          }
-        );
-        this.clear();
-      }
-    })
-    
-    
-  }
-
-  loadData(id){
-    Swal.fire({
-      title: 'Editar',
-      text: "¿Estás seguro de editar este agendamiento?",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí',
-      cancelButtonText : 'No'
-
-    }).then((result) => {
-    this.action = "update";
-      if (result.value) {
-        this.action = "update";
-        this.obj = this.schedules.find(x => x.idAgenda == id);
-        //console.log(this.obj);
-        let date = String(this.obj['horaAgenda']).split(':');
-
-        this.formContact.get('idAgenda').setValue(this.obj['idAgenda']);
-        this.formContact.get('DiscriminadorAgendamiento').setValue(this.obj['DiscriminadorAgendamiento']);
-        this.formContact.get('contacto').setValue(this.obj['contacto']);
-        this.formContact.get('fechaAgenda').setValue(this.obj['fechaAgenda']);
-        this.formContact.get('horaAgenda').setValue(`${date[0]}:${date[1]}`);
-        this.step = 0;
-        this.count = 1;
-        // this.decrement();
-        // console.log(this.count);
-        this.created = false;
-      }
-      
-    })
-  }
-
-  validate(){
-    // Verifica que el campo no esté vacio
-    // console.log(this.tipoAgenda);
-    
-    if (this.tipoAgenda == '') {
-      // console.log('debe diligenciar ese campo...');
-      this.tipoConsultaBool = true;
-      return;
-    }else{
-      this.formContact.get('idAgendaTipo').setValue(this.tipoAgenda);
-    }
-
-    // Todo bien
-    this.tipoConsultaBool = false;
-    // this.step = 1;
-    this.increment();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    // console.log('entró al anchanges!...');
-    
-    // console.log(this.show);
-    // console.log(this.typeSchedule);
-    // console.log(this.module);     
-
-    window.scroll(0, 0);
-    
-    // if(this.obj['DiscriminadorAgendamiento']==0) {
-    //   document.getElementById('phone').click();
-    // } else if(this.obj['DiscriminadorAgendamiento']==1) {
-    //   document.getElementById('whatsapp').click();
-    // }else if(this.obj['DiscriminadorAgendamiento']==2) {
-    //   document.getElementById('skype').click();
-    // }
-  }
-
-  clear(){
-    this.formContact.get('contacto').setValue('');
-    this.formContact.get('fechaAgenda').setValue('');
-    this.formContact.get('horaAgenda').setValue('');
-    this.showConfirm = false;
-    this.created = false;
-  }
-
-
-  //Cargar Archivos
-  uploadFile(){
-    document.getElementById("inpPhoto").click();
-  }
-
-  handleInputChange(e) {
-    
-    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];      
-    var pattern = /application\/pdf/;
-    var reader = new FileReader();
-    
-    if (!file.type.match(pattern)) {
-      Swal.fire({
-        title: 'Aviso',
-        text: 'El formato no es correcto.',
+        title: 'Advertencia',
+        text: 'Correo inválido, por favor verifícalo',
         type: 'warning',
         confirmButtonText: 'Aceptar'
       });
-      
+      $('#resetGuardarDatosPersonales').trigger('click');
       return;
-    }     
-    this.loaded = false;      
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
-  
-  _handleReaderLoaded(e) {
-    
-    var reader = e.target;
-    this.imageSrc = reader.result;
-    //console.log(this.imageSrc);
-    this.textoCargarHV = "Cargar otro archivo";
-    
-    this.loaded = true;
+    }
 
-    this.curriculumArchivos.idUsuario = this.login.getDataUser().idUsuario;
-    this.curriculumArchivos.imagenBase64 = this.imageSrc.split("base64,")[1];
-    this.curriculumArchivos.idImagen = this.imageSrc.split("base64,")[0] + "base64,";
-    this.curriculumArchivos.tipoArchivo = "hojaVida";
+    this.jsonPersonalInfo = {
+      "idUsuario": this.login.getDataUser().idUsuario,
+      "nombres": this.nombres,
+      "apellidoPaterno": this.apellidos,
+      "apellidoMaterno": "",
+      "correoElectronico": this.correoElectronico,
+      "numeroCelular": this.numeroCelular,
+    };
 
-    this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(this.imageSrc);
-
-    // console.log(JSON.stringify(this.curriculumArchivos));
-
-    this.curriculumService.savePhotoCurriculum(this.curriculumArchivos).subscribe(
+    this.loader = true;
+    this.reg.changePersonalInfo(this.jsonPersonalInfo).subscribe(
       (data: any) => {
-        Swal.fire({
-          title: 'Listo!',
-          text: 'El archivo se ha cargado exitosamente.',
-          type: 'success',
-          confirmButtonText: 'Aceptar'
-        });
+        this.logearNuevamente(1);
+        localStorage.setItem('token', CryptoJS.AES.encrypt(data.data, "eco_scotia"));
 
-        this.curriculumArchivos.imagenBase64 = this.imageSrc;
-      },
-      (error: any) => console.log(error)
+      }
     );
   }
 
-  descargarPdf() {
-    const downloadLink = document.createElement("a");
-    const fileName = "CurriculumVitae.pdf";
 
-    downloadLink.href = this.imageSrc;
-    downloadLink.download = fileName;
-    downloadLink.click();
+  agregarInvitado() {
+    var re = /[a-zA-Z ]+.*@[^ÑñáéíóúÁÉÍÓÚ]+.[com,org,co,net,es]+$/;
+    if (!re.test(this.correoElectronico)) {
+      Swal.fire({
+        title: 'Advertencia',
+        text: 'Correo inválido, por favor verifícalo',
+        type: 'warning',
+        confirmButtonText: 'Aceptar'
+      });
+      $('#resetGuardarDatosPersonales').trigger('click');
+      return;
+    }
+
+    this.jsonPersonalInfo = {
+      
+      "idUsuario": this.login.getDataUser().idUsuario,
+      "fono": "",
+      "email": this.correoElectronico,
+      "identificacion": this.nroDocumento,
+      "paterno": this.apellidos,
+      "materno": "",
+      "nombre": this.nombres,
+      "nombreTipoIdentificacion": this.tipoDocumento
+
+
+    };
+
+    this.loader = true;
+    this.reg.addInvitado(this.jsonPersonalInfo).subscribe(
+      (data: any) => {
+        this.logearNuevamente(1);
+        localStorage.setItem('token', CryptoJS.AES.encrypt(data.data, "eco_scotia"));
+
+      }
+    );
+
+
   }
 
-  toInt(str){
-    return parseInt(str)
-  }
 
-  compareDates(date1, date2){    
-    return date1 == date2;
-  }
-  mostrarHora(){
-    this.mostrarH = !this.mostrarH;
-  }
 
-  goHome(){
-    if (this.module == 'HojaVida-1') {
-      this.router.navigateByUrl('/curriculumhome?p=1').then(
-        res => {
-          window.location.reload();
+
+  guardarPassword() {
+    let pattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{7,15}/
+    // Verificacion de contraseñas con el patrón
+    if (!pattern.test(this.claveNueva)) {
+      Swal.fire({
+        title: 'Advertencia',
+        text: `
+        La nueva contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+        NO puede tener otros símbolos.
+        Ejemplo:
+        w3Unpocodet0d0
+        `,
+        type: 'warning',
+        confirmButtonText: 'Aceptar'
+      });
+      return;
+      
+    } else if (!pattern.test(this.claveConfirmada)) {
+      Swal.fire({
+        title: 'Advertencia',
+        text: `
+        La confirmación contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+        NO puede tener otros símbolos.
+        Ejemplo:
+        w3Unpocodet0d0
+        `,
+        type: 'warning',
+        confirmButtonText: 'Aceptar'
+      });
+      return;
+    }
+    //console.log(this.login.getDataUser().idUsuario);
+    if (this.claveNueva == this.claveConfirmada) {
+      this.jsonPassword = {
+        "idUsuario": this.login.getDataUser().idUsuario,
+        "clave": sha256(this.claveNueva),
+        "claveAnterior": sha256(this.claveActual)
+      };
+      this.loader = true;
+      this.reg.changePassword(this.jsonPassword).subscribe(
+        (data: any) => {
+          if (data.codigo == 0) {
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Tu contraseña ha sido actualizada',
+              type: 'success',
+              confirmButtonText: 'Aceptar'
+            });
+            this.login.logOut()
+          } else {
+            this.loader = false;
+            Swal.fire({
+              title: 'Advertencia',
+              text: data.mensaje,
+              type: 'warning',
+              confirmButtonText: 'Aceptar'
+            });
+          }
         }
-      )
-    }else if(this.module == 'Entrevista'){
-      this.router.navigateByUrl('/psico?p=0').then(
-        res => {
-          window.location.reload();
-        }
-      )
-    }else if(this.module == 'Legal'){
-      this.router.navigateByUrl('/advisory').then(
-        res => {
-          window.location.reload();
-        }
-      )
+      );
+    } else {
+      Swal.fire({
+        title: 'Advertencia',
+        text: 'La confirmación de la contraseña no coincide.',
+        type: 'warning',
+        confirmButtonText: 'Aceptar'
+      });
     }
   }
-  goBack(){
-    //console.log(this.module);    
+
+  getTipoDocumento() {
+    this.diccionarioService.getDiccionario(1)
+      .subscribe(
+        (data: any) => {
+          this.tiposDocumento = data.data;
+          this.tipoDocumento = this.tiposDocumento.filter(item => item.id == this.login.getDataUser().dicTipoDocumento)[0].text;
+          // console.log(this.tiposDocumento)
+          // console.log(this.tipoDocumento)
+        },
+        (error: any) => console.log(error)
+      );
+  }
+
+  logearNuevamente(i) {
+      
+      // Obtenemos los datos del usuario con session
+      this.login.getSession(this.login.getToken()).subscribe(
+        res => {
+          // console.log(JSON.stringify(res));
+          localStorage.setItem('user', CryptoJS.AES.encrypt(JSON.stringify(res), "eco_scotia"));
+          this.loader = false;
+          if (i == 1) {
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Tu información personal ha sido actualizada',
+              type: 'success',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+          if (i == 2) {
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Tu contraseña ha sido actualizada',
+              type: 'success',
+              confirmButtonText: 'Aceptar'
+            });
+            this.claveNueva = "";
+            this.claveActual = "";
+            this.claveConfirmada = "";
+          }
+        });
+   // });
+  }
+
+  addSocial(e) {
+    // console.log(this.socials[0]);
+
+
+    if (this.socials[0].value == '' || this.socials[0].type == '') {
+      Swal.fire({
+        title: 'Ops!',
+        text: 'Debes ingresar los campos',
+        type: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+
+      return;
+    }
+
+    this.socials[0].show = true;
+
+    let element = {
+      tipoContacto: this.socials[0].type,
+      contacto: this.socials[0].value,
+      idUsuario: this.login.getDataUser().idUsuario
+    }
+
+    // console.log(element);
+
+
+    this.contact.createContact(element).subscribe(
+      res => {
+        // console.log(res);
+        this.getContacts();
+      }
+    )
+
+    // this.redes.push(element);
+
+    // Limpiar campos
+    this.socials[0].type = '';
+    this.socials[0].value = '';
+
+  }
+
+  deleteSocial(e) {
+    // console.log('remove social ',e);
+    this.contact.deleteContact(e).subscribe(
+      res => {
+        // console.log(res);        
+      }
+    );
+
+    let item = this.redes.findIndex(x => x.id == e);
+    this.redes.splice(item, 1);
+  }
+
+  toggleSocial() {
+    this.socials[0].show = false;
+  }
+
+  cancellSocial(e) {
+    this.socials[0].show = true;
+  }
+
+  onKeyUp(event: any) {
+    if (event.target.name == 'claveNueva') {
+      this.checkStrength(event.target.value);
+      if(this.claveNueva.length>0){
+        this.verbarra1=true;
+      }else {
+        this.verbarra1=false;
+      }
+      
+    } else if (event.target.name == 'claveConfirmada') {
+      this.checkStrength2(event.target.value);
+
+      if(this.claveConfirmada.length>0){
+        this.verbarra2=true;
+      }else {
+        this.verbarra2=false;
+      }
+
+    }
+
     
-    if (this.module == 'HojaVida-1') {
-      window.scroll(0, 0);
-      this.ch.count = 0;
-    }else if (this.module == 'Entrevista') {
-      window.scroll(0, 0);
-      this.ps.count = 0;
-    }else if(this.module == 'Legal'){
-      window.scroll(0, 0);      
-      this.count = 0;
+
+
+  }
+
+  checkStrength(password: string) {
+    var strength: number = 0;
+    //If password contains both lower and uppercase characters, increase strength value.
+    
+    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+      strength += 1;
+
+      $('.low-upper-case').addClass('text-success');
+      $('.low-upper-case i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+    } else {
+      $('.low-upper-case').removeClass('text-success');
+      $('.low-upper-case i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
     }
+
+    //If it has numbers and characters, increase strength value.
+    if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) {
+      strength += 1;
+      $('.one-number').addClass('text-success');
+      $('.one-number i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+
+    } else {
+      $('.one-number').removeClass('text-success');
+      $('.one-number i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
+    }
+
+    //If it has one special character, increase strength value.
+    if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+      strength += 1;
+      $('.one-special-char').addClass('text-success');
+      $('.one-special-char i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+
+    } else {
+      $('.one-special-char').removeClass('text-success');
+      $('.one-special-char i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
+    }
+
+    if (password.length > 7) {
+      strength += 1;
+      $('.eight-character').addClass('text-success');
+      $('.eight-character i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+
+    } else {
+      $('.eight-character').removeClass('text-success');
+      $('.eight-character i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
+    }
+
+    // If value is less than 2
+
+    if (strength < 2) {
+      $('#result').removeClass()
+      $('#password-strength').addClass('progress-bar bg-danger');
+
+      $('#result').addClass('text-danger').text('Débil');
+      $('#password-strength').css('width', '10%');
+    } else if (strength == 2) {
+      $('#result').removeClass('text-danger');
+      $('#password-strength').removeClass('progress-bar bg-danger');
+      $('#password-strength').addClass('progress-bar bg-warning');
+      $('#result').addClass('text-warning').text('Moderada')
+      $('#password-strength').css('width', '60%');
+      return 'Week'
+    } else if (strength == 4) {
+      $('#result').removeClass('text-warning')
+      $('#result').addClass('strong');
+      $('#password-strength').removeClass('progress-bar bg-warning');
+      $('#password-strength').addClass('progress-bar bg-success');
+      $('#result').addClass('text-success').text('Fuerte');
+      $('#password-strength').css('width', '100%');
+
+      return 'Strong'
+    }
+  }
+
+  checkStrength2(password: string) {
+    var strength: number = 0;
+    //If password contains both lower and uppercase characters, increase strength value.
+    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+      strength += 1;
+
+      $('.low-upper-case').addClass('text-success');
+      $('.low-upper-case i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+    } else {
+      $('.low-upper-case').removeClass('text-success');
+      $('.low-upper-case i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
+    }
+
+    //If it has numbers and characters, increase strength value.
+    if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) {
+      strength += 1;
+      $('.one-number').addClass('text-success');
+      $('.one-number i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+
+    } else {
+      $('.one-number').removeClass('text-success');
+      $('.one-number i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
+    }
+
+    //If it has one special character, increase strength value.
+    if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+      strength += 1;
+      $('.one-special-char').addClass('text-success');
+      $('.one-special-char i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+
+    } else {
+      $('.one-special-char').removeClass('text-success');
+      $('.one-special-char i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
+    }
+
+    if (password.length > 7) {
+      strength += 1;
+      $('.eight-character').addClass('text-success');
+      $('.eight-character i').removeClass('fa-file-text').addClass('fa-check');
+      $('#popover-password-top').addClass('hide');
+
+    } else {
+      $('.eight-character').removeClass('text-success');
+      $('.eight-character i').addClass('fa-file-text').removeClass('fa-check');
+      $('#popover-password-top').removeClass('hide');
+    }
+
+    // If value is less than 2
+
+    if (strength < 2) {
+      $('#result2').removeClass()
+      $('#password-strength2').addClass('progress-bar2 bg-danger');
+
+      $('#result2').addClass('text-danger').text('Débil');
+      $('#password-strength2').css('width', '10%');
+    } else if (strength == 2) {
+      $('#result2').removeClass('text-danger');
+      $('#password-strength2').removeClass('progress-bar2 bg-danger');
+      $('#password-strength2').addClass('progress-bar2 bg-warning');
+      $('#result2').addClass('text-warning').text('Moderada')
+      $('#password-strength2').css('width', '60%');
+      return 'Week'
+    } else if (strength == 4) {
+      $('#result2').removeClass('text-warning')
+      $('#result2').addClass('strong');
+      $('#password-strength2').removeClass('progress-bar2 bg-warning');
+      $('#password-strength2').addClass('progress-bar2 bg-success');
+      $('#result2').addClass('text-success').text('Fuerte');
+      $('#password-strength2').css('width', '100%');
+
+      return 'Strong'
+    }
+  }
+
+  isNumber(event: KeyboardEvent) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (
+      // Allow: Delete, Backspace, Tab, Escape, Enter
+      [46, 8, 9, 27, 13].indexOf(charCode) !== -1 || 
+      (charCode === 65 && event.ctrlKey === true) || // Allow: Ctrl+A
+      (charCode === 67 && event.ctrlKey === true) || // Allow: Ctrl+C
+      (charCode === 86 && event.ctrlKey === true) || // Allow: Ctrl+V
+      (charCode === 88 && event.ctrlKey === true) || // Allow: Ctrl+X
+      (charCode === 65 && event.metaKey === true) || // Cmd+A (Mac)
+      (charCode === 67 && event.metaKey === true) || // Cmd+C (Mac)
+      (charCode === 86 && event.metaKey === true) || // Cmd+V (Mac)
+      (charCode === 88 && event.metaKey === true) || // Cmd+X (Mac)
+      (charCode >= 35 && event.keyCode <= 39) // Home, End, Left, Right
+    ) {
+      return;  // let it happen, don't do anything
+    }
+    //console.log(charCode);
+    
+    // valida solo los numeros con el codigo ascci
+    if ((charCode < 48 || charCode > 57) && (charCode < 96 || charCode > 105)) {
+      return false;
+    }
+    return true;
+  }
+    
+  placeText(e) {
+    //console.log('entro!');
+    this.isplaceNumber = !this.isplaceNumber;
   }
 }

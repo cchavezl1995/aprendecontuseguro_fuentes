@@ -276,9 +276,45 @@
         </div>
     </div>
 
-    <div style="width: 100%;height: 900px;background-color: white;">
+  
 
+    <div class="content" style="padding-top: 230px;background-color: #f6f8fa">
+        <div *ngIf="pagina==0" class="row mt-2">
+            <div class="col-lg-1 col-md-2 col-sm-0"></div>
+            <section class="col-lg-10 col-md-8 col-sm-12 accordionPerfil pb-5 sectionVTS">  
+                <section class="cardsPerfil mb-5"  style="margin-left: 100px;margin-right: 100px;">
+                    <div class="card mb-3" style="border:1px solid lightgray !important">
+                        <div class="row" style="height: 124px;"  routerLink="/informacion" routerLinkActive="activated" >      
+                            <img src="../../../assets/img/fraude2/score/ico_info_personal.png" class="card-img-top" 
+                            style="width: 54px;height: 41px;margin-top: 10%; margin-left: 15%;">
+                            <p style="margin-left: 10%;font-size: 24px;margin-top: 5%;font-weight: bold;color: gray;">
+                                Tu información <br> personal</p>
+                        </div>
+
+                        
+                    </div>
+                </section>
+            </section>
+            
+            <section class="col-lg-10 col-md-8 col-sm-12 accordionPerfil pb-5 sectionVTS">  
+                <section class="cardsPerfil mb-5"  style="margin-left: 100px;margin-right: 100px;">
+                    <div class="card mb-3" style="border:1px solid lightgray !important">
+                        <div class="row" style="height: 124px;"  routerLink="/cambiar-contraseña" routerLinkActive="activated" >      
+                            <img src="../../../assets/img/fraude2/score/ico_change_password.png" class="card-img-top" 
+                            style="width: 54px;height: 41px;margin-top: 10%; margin-left: 15%;">
+                            <p style="margin-left: 10%;font-size: 24px;margin-top: 5%;font-weight: bold;color: gray;">
+                                Cambiar <br> Contraseña</p>
+                        </div>
+
+                        
+                    </div>
+                </section>
+            </section>
+
+            <div class="col-lg-1 col-md-2 col-sm-0"></div>
+        </div>
     </div>
+
 
 
     </div>

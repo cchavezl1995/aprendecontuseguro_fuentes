@@ -1,84 +1,182 @@
+.tab-content{
+  border: 1px solid lightgray;
+  padding: 35px;
+}
+.tab-pane > h3{
+  color: black;
+}
+.nav-link{
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #58595b;
+}
+.nav-link.active{ 
+  color: #ec1c24;
+  font-weight: bold;
+  border-bottom: 3px #ec1c24 solid;
+}
+.divRaya{ 
+  background: #ec1c24; 
+  left: 0; 
+  width: 40px;
+  height: 3px;
+  margin-bottom: 10px;
+}
+.btnTop2 {
+border-color: #ec1c24 2px solid;
+border: 0px;
+border-radius: 50px;
+font-size: px;
+background-color:#ec1c24;
+color: white;
+padding: 15px 15px;
+width: 250px;
+}
+.nav{
+  border-bottom: 1px solid lightgray;
+}
+
+.yellow {
+  color: #ffb400;
+}
 
 
-$des_eco2_backColor: #91ddf8;
-   
-  .iconSize {
-    font-size: 17px;
-  }
-  .btnTop2 {
-    border-color: #ffb400 2px solid;
-    border: 0px;
-    border-radius: 50px;
-    font-size: px;
-    background-color: #ffb400;
-    color: #034797;
-    padding: 10px 15px;
-    width: 221px;
-    height:50px;
-  }
-  .titulo {
-    font-family: GoogleSans;
-    font-size: 50px !important;
-    color: white;
-    margin-top: 50px;
-  }  
-  .modal.left.fade.show .modal-dialog {
-    left: 0;
-  }
-  .foto1{
-    position:absolute; z-index: 1;
-    margin-left: 6%;
-    margin-top: 110px;
-    width: 393px;
-    height: 633px;
-  }  
-  .imgMovil{
-  background-image: url("/../../../assets/img/itt2/coursera/coursera.png") !important;
-  background-size: 350px;
-  background-color: $des_eco2_backColor;
-  background-position: center bottom 0% !important;
-  background-repeat: no-repeat;
+.drag:hover {
+  cursor: pointer;
 }
-.social {
-  position: absolute;
-  left: -75px; 
-  top: 42px;
-}
-@media (min-width: 845px) {
-  .social {
-    left: 68px;
-    z-index: 999;
-  }
-}
-  .social ul {
-    list-style: none;
-  }
- 
-  .social ul li a {
-    border-radius: 50%;
-    display: inline-block;
-    color:gray;
-    background: #fff;
-    padding: 15px 15px;
-    text-decoration: none;
-    -webkit-transition:all 500ms ease;
-    -o-transition:all 500ms ease;
-    transition:all 500ms ease; 
-  }
 
-  .social ul li .icon-facebook:hover {background:#3b5998;color:white;} 
-  .social ul li .icon-twitter:hover {background: #00abf0;color:white;}
-  .social ul li .icon-linkedin:hover {background: #007bb5;color:white;}
-
-  .card-footer {
-    padding: 0.75rem 1.25rem;
-    background-color: rgb(255, 255, 255);
-    border-top: 0 solid rgba(0, 0, 0, 0.125);
-  }
-  .card-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0);
+.circulo1 {
+  width: 40px;
+  height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #d8d8d8;
+  padding: 2px;
 }
-.icon-facebook {
-  width: 100%;
+
+.circulo2 {
+  width: 40px;
+  height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #1779c7;
+  padding: 2px;
+}
+
+.circulo3 {
+  width: 40px;
+  height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #66d17e;
+  padding: 2px;
+}
+
+.circulo4 {
+  width: 40px;
+  height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #30aefb;
+  padding: 2px;
+}
+
+.circulo5 {
+  width: 40px;
+  height: 40px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #228f99;
+  padding: 2px;
+}
+
+.btn-vinculo {
+  width: 103px;
+  height: 22px;
+  font-family: Helvetica;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.83;
+  letter-spacing: -0.03px;
   text-align: center;
+  color: #ffffff;
+  width: 103px;
+  height: 28px;
+  border-radius: 14px;
+  border: 0px;
+  background-color: #ec1c24;
+}
+
+.right{
+  float: right;
+}
+
+.Guardar {
+  width: 55px;
+  height: 22px;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: right;
+  color: #ec1c24;
+}
+
+.xicon{
+  width: 10px;
+  height: 10px;
+  color: #888b94;
+}
+
+.xicon:hover{
+  cursor: pointer;
+}
+
+.Guardar:hover{
+  cursor: pointer;
+}
+
+.input {
+  width: 181px;
+  height: 38px;
+  border-radius: 4px;
+  border: solid 1px #979797;
+  background-color: #ffffff;
+  padding: .375rem .75rem;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.skype {
+  color: #d8d8d8;
+}
+.facebook {
+  color: #1779c7;
+}
+.whatsapp {
+  color: #66d17e;
+}
+.celular {
+  color: #1779c7;
+}
+
+.progress {
+  height: 5px;
+}
+@media only screen and (min-width: 769px) {
+  .pad-tit {
+      padding-left: 95px !important;
+  }
 }

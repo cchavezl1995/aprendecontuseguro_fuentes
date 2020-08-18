@@ -1,10 +1,20 @@
 <app-block-loader [blocked]="loader"></app-block-loader>
 <div *ngIf="count == 0" class="margen formLogin">
     <div *ngIf="noUser">
-        <h3 class="title titLogin text-center"></h3>
+        
 
-        <p class="text-center mt-3">Estás a tres pasos de disfrutar los beneficios que <br> Scotiabank y BNP Paribas Cardif tienen para ti.
+        <div    class="d-none d-lg-block"  >    
+            <p class="text-center mt-3">Estás a tres pasos de disfrutar los beneficios que <br> Scotiabank y BNP Paribas Cardif tienen para ti.
+            </p>
+            </div>
+
+        <div   class="d-block d-xl-none d-lg-none" >
+        <h3 class="title titLogin text-center"> Regístrate</h3>
+
+        <p class="text-center mt-3" style="font-size: 20px;">Estás a tres pasos de disfrutar los <br> beneficios que Scotiabank y BNP <br> Paribas Cardif tienen para ti.
         </p>
+        </div>
+
         <div *ngIf="errorTipo || errorNum" class="alert alert-dismissible"
             style="background-color: rgba(235, 34, 48, 0.04);border: solid 1px #d0021b;">
             <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->

@@ -22,6 +22,7 @@ import { CurriculumHomeComponent } from "./components/curriculum-home/curriculum
 import { CurriculumSchedulingComponent} from "./components/curriculum-scheduling/curriculum-scheduling.component";
 import { BlockLoaderComponent } from "./components/block-loader/block-loader.component";
 
+
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { DigitalBrandingComponent } from './components/digital-branding/digital-branding.component';
 import { DigitalBrandingServiceComponent } from './components/digital-branding/digital-branding-service/digital-branding-service.component';
@@ -95,7 +96,7 @@ const routes: Routes = [
   },
   { path: 'mejorar-hoja-de-vida-agenda', component: CurriculumSchedulingComponent },
   {
-    path: 'estudiar-coursera', component: StudyComponent
+    path: 'cambiar-contraseña', component: StudyComponent
   },
   {
     path: 'estudiar-coursera-itt', component: StudyIttComponent
@@ -131,7 +132,7 @@ const routes: Routes = [
   { path: 'prueba-psicologica', component: PsicoComponent },
   { path: 'prueba-psicologica-agenda', component: PsicoSchedulingComponent },
   { path: 'prueba-psicologica-ejercicio', component: PsicoTestsComponent },
-  { path: 'agenda', component: SchedulingComponent },
+  { path: 'informacion', component: SchedulingComponent },
   { path: 'agenda-asesoria-legal', component: SchedulingComponent },
   {
     path: 'mejorar-hoja-de-vida-inicio', component: CurriculumHomeComponent
