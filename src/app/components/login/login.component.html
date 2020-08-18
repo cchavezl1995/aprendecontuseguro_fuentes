@@ -5,7 +5,7 @@
   
   <h3 class="title text-center">Inicia sesión</h3>
 
-  <p class="text-center mt-4 mb-4">Disfruta los servicios de tu seguro.</p>
+  <p class="text-center mt-3">Disfruta los servicios de tu seguro.</p>
 
   </div>
 
@@ -14,7 +14,7 @@
   
     <h3 class="title titLogin text-center"> Inicia sesión</h3>
 
-        <p style="font-size: 40px;">Disfruta los servicios de tu seguro.
+        <p class="text-center mt-3" style="font-size: 18px;">Disfruta los servicios de tu seguro.
         </p>
   
     </div>
@@ -125,10 +125,21 @@
 <div *ngIf="count == 1" class="margen"  >
   <h3 class="Olvidaste-tu-contra" style="position: center;margin-left: 7%;"> ¿Olvidaste tu contraseña?</h3>
 
+
+  <div    class="d-none d-lg-block"  >    
   <p class="text-center texto-plano mt-4">
     No hay problema. Ingresa tu número de DNI. La información para recuperar tu contraseña será enviada a tu celular y
     correo electrónico registrado.
   </p>
+  </div>
+
+  <div   class="d-block d-xl-none d-lg-none"  >    
+    <p class="text-center texto-plano mt-4">
+      No hay problema. Ingresa tu número de <br> DNI. La información para recuperar tu<br> contraseña será enviada a tu celular y<br>
+      correo electrónico registrado.
+    </p>
+    </div>
+
   <div *ngIf="false" class="alert alert-dismissible" style="
       background-color: rgba(235, 34, 48, 0.04);
       border: solid 1px #d0021b;
@@ -165,7 +176,8 @@
       </button>
       <br />
       <button (click)="goback()" class="mt-2 btn btn-link btn-block" style="color: #ec1c24;">
-        <i class="fas fa-chevron-left"></i> Volver
+        <img src="../../../assets/img/fraude2/score/ico_circle_back.png" class="card-img-top" 
+            style="width: 20px;height: 20px;margin-top: 2%; margin-left: 5%;" routerLink="/perfil" routerLinkActive="activated"> Volver
       </button>
     </div>
   </form>

@@ -991,7 +991,7 @@ ol li {
 }
 .formLogin > p, .formLogin > div > p, .formLogin > form > p, .formLogin > div > form > p, .btnOlvidoContrasena{
   font-family: OpenSans;
-  font-size: 14px !important;
+  font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
