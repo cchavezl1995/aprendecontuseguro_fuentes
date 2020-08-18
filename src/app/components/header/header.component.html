@@ -2,11 +2,13 @@
   style="z-index: 777;background-color:white">
   <button (click)="showCollapse(); opcionesMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-    aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    aria-label="Toggle navigation" style="margin-left: 5%;" > <span class="navbar-toggler-icon"></span> </button>
   <a class="navbar-brand logoBanco d-none d-lg-block" href="#">
     <img (click)="goHome()" class="logoResponsive" src="assets/img/logo-cardif.png" alt="CarDif" />
   </a>
-  <a class="navbar-brand logoBanco d-block d-xl-none d-lg-none" href="#" (clickOutside)="onClickedOutsideDatos()">
+  <a class="navbar-brand logoBanco d-block d-xl-none d-lg-none" href="#" (clickOutside)="onClickedOutsideDatos()"
+  
+  >
     <img (click)="goHome()" class="logoResponsive" src="assets/img/logo-cardif.png" alt="CarDif" />
     <!--<svg xmlns="http://www.w3.org/2000/svg" width="82" height="29" viewBox="0 0 82 29">
       <g fill="none" fill-rule="evenodd">
@@ -21,12 +23,14 @@
     </svg>-->
   </a>
 
-  <button (click)=" personaMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
+  <div (click)=" personaMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false"
-    aria-label="Toggle navigation"> <span class="icon-user iconSize"></span> </button>
+    aria-label="Toggle navigation" style="margin-left: 30%;" > 
+    <span class="icon-user iconSize"></span> 
+  </div>
 
-  <div *ngIf="personaMovil" class="collapse navbar-collapse botonResponsive" id="navbarSupportedContent2">
-    <ul class="navbar-nav ml-auto botonResponsive listaMovil">
+  <div *ngIf="personaMovil" class="collapse navbar-collapse botonResponsive" id="navbarSupportedContent2" >
+    <ul class="navbar-nav ml-auto botonResponsive listaMovil" style="border-top: solid;border-color: #d6d6d6;">
       <li class="nav-item dropdown" *ngIf="!login.isActive()"> <a class="nav-link active enlace txt-nav"
           routerLink="/inicia-sesion/1" routerLinkActive="activated"><i class="icon-user iconSize "></i><span
             class="textLi  " style="font-size: 17.6px !important;"> Inicia sesión</span></a>
@@ -34,6 +38,10 @@
       <li class="nav-item dropdown" *ngIf="!login.isActive()"> <a class="nav-link active enlace txt-nav linkRegistro"
           routerLink="/registro/2" routerLinkActive="activated"><i class="fas fa-sign-in-alt"></i><span class="textLi "
             style="font-size: 17.6px !important;">Regístrate</span></a> </li>
+      <li class="nav-item dropdown" *ngIf="!login.isActive()"> 
+        <table style="height:760px;width: 260px; ">
+        </table>
+      </li>
       <li class="nav-item dropdown" *ngIf="login.isActive()">
         <a class="dropdown-item" routerLink="/perfil" routerLinkActive="activated">
           <table style="height:200px;width: 260px; ">
@@ -59,6 +67,10 @@
           </tr>
           </table>
   
+        </a>
+        <a class="nav-item dropdown" *ngIf="login.isActive()"> 
+          <table style="height:760px;width: 260px; ">
+          </table>
         </a>
       </li>
     </ul>
@@ -217,20 +229,24 @@
           <span  ><p >Sobre Coursera</p></span><span class="sr-only">(current)</span>
         </a>      
       </li>
-
+    </ul>
+  </div>
       
-    <li class="nav-item inicia" *ngIf="!login.isActive()"> <a class="nav-link active enlace" routerLink="/inicia-sesion/1"
-      routerLinkActive="activated">
+
+
+  <div *ngIf="opcionesMovil" class="collapse navbar-collapse botonResponsive manito" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto botonResponsive">
+    <li class="nav-item inicia" *ngIf="!login.isActive()"> 
+      <a class="nav-link active enlace" routerLink="/inicia-sesion/1"  routerLinkActive="activated">
       <table>
         <tr>
-          <td><i class="icon-user iconSize mr-1"></i></td><span class="textLi"> Inicia sesión</span>
-          <td></td>
+          <td><i class="icon-user iconSize mr-1"></i></td><span class="textLi"> Inicia sesiónss</span>
         </tr>
       </table>
-    </a>
-  </li>
-  <li class="nav-item registrate" style="box-shadow: #cf141b !important" *ngIf="!login.isActive()"> <a
-      style="width:240px" class="nav-link active btn-info enlace linkRegistro" routerLink="/registro/2"
+      </a>
+    </li>
+    <li class="nav-item registrate" style="box-shadow: #cf141b !important" *ngIf="!login.isActive()"> 
+    <a style="width:240px" class="nav-link active btn-info enlace linkRegistro" routerLink="/registro/2"
       routerLinkActive="activated">
       <table>
         <tr>
@@ -238,7 +254,8 @@
           <td><span style="color: #fff;padding-bottom: 2px;" class="textLi">&nbsp; Regístrate</span></td>
         </tr>
       </table>
-    </a> </li>
+    </a>
+   </li>
   <li class="nav-item dropdown inicia" *ngIf="login.isActive()">
     <a (click)="datosSesionFun()" (clickOutside)="onClickedOutsideDatos()" href="#" id="datosSesion"
       class="nav-link active enlace" data-toggle="dropdown">

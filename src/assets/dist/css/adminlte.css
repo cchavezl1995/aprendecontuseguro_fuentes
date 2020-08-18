@@ -2990,7 +2990,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-link:disabled, .btn-link.disabled {
-  color: #6c757d;
+  color: #6c7d72;
   pointer-events: none;
 }
 
@@ -4270,8 +4270,18 @@ input[type="button"].btn-block {
   font-size: 1.25rem;
   line-height: 1;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 10px solid transparent;
   border-radius: 0.25rem;
+}
+.navbar-togglerr {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;  
 }
 
 .navbar-toggler:hover, .navbar-toggler:focus {

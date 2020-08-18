@@ -2,12 +2,13 @@ $color-link: #f07c05;
 $color-nolink: #034797;
 .dropdown-submenu {
     position: relative;
+    right: 50%;
 }
 
 .dropdown-submenu>.dropdown-menu {
     top: 0;
     //left: 100%;
-    right: 0;
+    right: 50%;
     margin-top: -6px;
     margin-left: -1px;
     -webkit-border-radius: 0 6px 6px 6px;
@@ -31,11 +32,12 @@ $color-nolink: #034797;
 
 .dropdown-submenu.pull-left>.dropdown-menu {
     //left: -100%;
-    right: 0;
+    right: 50%;
     margin-left: 10px;
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
+    
 }
 .dropdown-header{
     font-size: 16px !important;
@@ -43,7 +45,7 @@ $color-nolink: #034797;
     font-family: sans-serif !important
 }
 .logoBanco{
-    padding-left: 48px;
+    padding-left: 40px;
 }
 
 @media(min-width:992px){
@@ -84,11 +86,12 @@ $color-nolink: #034797;
         border: solid 1px #d6d6d6;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
-        //left: 10px;
-        right: 0;
+        //left: 100px;
+        right: 500px;
         width: calc(90% + 90px);
-        //width:  90px;
+        //width:  550px;
         //padding-left: 20px;
+        position: absolute;
         
     }
     .ecoHeaderNoMovil{
@@ -150,7 +153,7 @@ $color-nolink: #034797;
 .nav-item.dropdown.active{    
      margin-top: 10px;
     border-bottom: 0px;
-    right: 0;
+    
 
 }
 .collapse.show > .navbar-nav, .collapsing > .navbar-nav{ 
@@ -161,14 +164,15 @@ $color-nolink: #034797;
     list-style: none;
 }
 .collapse.show > .navbar-nav > .registrate, .collapsing > .navbar-nav > .registrate, .collapse.show > .navbar-nav > .inicia, .collapsing > .navbar-nav > .inicia{ 
-    display: none
+    display: none;
+    
 }
 .collapse.show > ul > .dropdown.show{ 
     display: block;
     width: 100%; 
     background-color: white; 
     //left: 0;
-    right: 0;
+    right: 50%;
     border: none
 }
 .collapse.show > ul > .dropdown.show > .dropdown-menu.show{ 
@@ -176,12 +180,14 @@ $color-nolink: #034797;
     width: 100%; 
     background-color: white; 
     //left: 0px;
-    right: 0;
+    right: 50%;
     border: none
 }
 
 .collapse.show > ul > .dropdown.show > .dropdown-menu.show > a.dropdown-item{ 
     margin-top: 18px;
+    right: 50%;
+
 
 }
 .nav-item{
