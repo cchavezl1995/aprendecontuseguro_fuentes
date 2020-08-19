@@ -25,12 +25,8 @@ export class HomeComponent implements OnInit {
   
   carrusel : number=0;
   carrusel_i : number=0;
-  carrusel_0 : boolean = true;
-  carrusel_1 : boolean = true;
-  carrusel_2 : boolean = true;
-  carrusel_3 : boolean = true;
-  carrusel_4 : boolean = true;
-  carrusel_5 : boolean = true;
+  carrusel_netxt : boolean = true;
+  carrusel_prev : boolean = false;
 
   p1 :boolean=true;
   p2 :boolean=false;
@@ -269,6 +265,5 @@ export class HomeComponent implements OnInit {
     console.log(this.carrusel_i);
   }
   
-
 
 }

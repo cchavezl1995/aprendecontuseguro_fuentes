@@ -1535,11 +1535,11 @@ background-size: 400px;">
     </div>
 
 
-    <a  class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev">
+    <a *ngIf="carrusel_i!=0"  class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next">
+      <a *ngIf="carrusel_i!=5" class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -3754,8 +3754,7 @@ background-size: 400px;">
         
                 </div>
             </div>
-        
-        
+              
             <div *ngIf="carrusel_i==1" class="carousel-item active">
                 <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#FB6330;
