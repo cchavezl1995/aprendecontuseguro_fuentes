@@ -14,7 +14,7 @@
   
     <h3 class="title titLogin text-center"> Inicia sesión</h3>
 
-        <p class="text-center mt-3" style="font-size: 18px;">Disfruta los servicios de tu seguro.
+        <p class="text-center mt-3" style="font-size: 16px;">Disfruta los servicios de tu seguro.
         </p>
   
     </div>
@@ -38,7 +38,7 @@
   </div>
   <form (ngsubmit)="sendForm($event)">
     <div class="form-group">
-      <label for="numeroDocumento" style="opacity: 0.8;">Número de documento</label>
+      <label for="numeroDocumento" style="opacity: 0.8;" style="font-size: 16px;">Número de documento</label>
       <input [ngClass]="{
           'is-invalid': error
         }" [(ngModel)]="form.usuario" min="0" id="numeroDocumento" name="numeroDocumento" class="form-control"
@@ -70,7 +70,7 @@
     <!-- Password input-->
 
     <div class="form-group">
-      <label for="password" style="opacity: 0.8;" >Contraseña</label>
+      <label for="password" style="opacity: 0.8;"  style="font-size: 16px;" >Contraseña</label>
       <div class="input-group-append">
         <input [ngClass]="{
             'is-invalid': error
@@ -111,13 +111,13 @@
     </div>
     <p>
       <button (click)="pass()" class="mt-2 btn btn-link btn-block mt-2 btnOlvidoContrasena">
-        <span style="color: #ec1c24; text-decoration: underline;">¿Olvidaste tu contraseña?</span>
+        <span style="color: #ec1c24; text-decoration: underline;font-size: 16px;">¿Olvidaste tu contraseña?</span>
       </button>
     </p>
-    <p class="text-center mt-2">
+    <p class="text-center mt-2" style="font-size: 16px;">
       ¿Aún no tienes una cuenta?
       <a routerLink="/registro/2"
-      routerLinkActive="activated" (click)="goRegistrar()" ><span style="color: #ec1c24; text-decoration: underline;">Regístrate aquí</span></a>
+      routerLinkActive="activated" (click)="goRegistrar()" ><span style="color: #ec1c24; text-decoration: underline;font-size: 16px;">Regístrate aquí</span></a>
     </p>
   </form>
 </div>

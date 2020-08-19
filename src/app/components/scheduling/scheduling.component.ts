@@ -134,9 +134,10 @@ export class SchedulingComponent implements OnInit {
       (data: any) => {
         this.logearNuevamente(1);
         localStorage.setItem('token', CryptoJS.AES.encrypt(data.data, "eco_scotia"));
-
+        console.log(this.login.getDataUser().correoElectronico);
       }
     );
+
   }
 
 
@@ -170,7 +171,7 @@ export class SchedulingComponent implements OnInit {
     this.loader = true;
     this.reg.addInvitado(this.jsonPersonalInfo).subscribe(
       (data: any) => {
-        this.logearNuevamente(1);
+
         localStorage.setItem('token', CryptoJS.AES.encrypt(data.data, "eco_scotia"));
 
       }
@@ -267,34 +268,65 @@ export class SchedulingComponent implements OnInit {
 
   logearNuevamente(i) {
       
-      // Obtenemos los datos del usuario con session
-      this.login.getSession(this.login.getToken()).subscribe(
-        res => {
-          // console.log(JSON.stringify(res));
-          localStorage.setItem('user', CryptoJS.AES.encrypt(JSON.stringify(res), "eco_scotia"));
-          this.loader = false;
-          if (i == 1) {
-            Swal.fire({
-              title: 'Éxito',
-              text: 'Tu información personal ha sido actualizada',
-              type: 'success',
-              confirmButtonText: 'Aceptar'
-            });
-          }
-          if (i == 2) {
-            Swal.fire({
-              title: 'Éxito',
-              text: 'Tu contraseña ha sido actualizada',
-              type: 'success',
-              confirmButtonText: 'Aceptar'
-            });
-            this.claveNueva = "";
-            this.claveActual = "";
-            this.claveConfirmada = "";
-          }
+    // Obtenemos los datos del usuario con session
+    this.login.getSession(this.login.getToken()).subscribe(
+      res => {
+        // console.log(JSON.stringify(res));
+        localStorage.setItem('user', CryptoJS.AES.encrypt(JSON.stringify(res), "eco_scotia"));
+        this.loader = false;
+        if (i == 1) {
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Tu información personal ha sido actualizada',
+            type: 'success',
+            confirmButtonText: 'Aceptar'
+          });
+          
+
+
+        }
+        if (i == 2) {
+          Swal.fire({
+            title: 'Éxito',
+            text: 'Tu contraseña ha sido actualizada',
+            type: 'success',
+            confirmButtonText: 'Aceptar'
+          });
+          this.claveNueva = "";
+          this.claveActual = "";
+          this.claveConfirmada = "";
+        }
+        
+      });
+ // });
+}
+
+logearNuevamente2(i) {
+      
+  this.loader = false;
+      if (i == 1) {
+        Swal.fire({
+          title: 'Éxito',
+          text: 'Tu información personal ha sido actualizada',
+          type: 'success',
+          confirmButtonText: 'Aceptar'
         });
-   // });
-  }
+        
+
+
+      }
+      if (i == 2) {
+        Swal.fire({
+          title: 'Éxito',
+          text: 'Tu contraseña ha sido actualizada',
+          type: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+        this.claveNueva = "";
+        this.claveActual = "";
+        this.claveConfirmada = "";
+      }
+}
 
   addSocial(e) {
     // console.log(this.socials[0]);

@@ -267,14 +267,27 @@ export class HomeComponent implements OnInit {
 
     if(this.carrusel_i==0){
       this.carrusel_prev=false;
-      this.carrusel_netxt=false;
-
+      this.carrusel_netxt=true;
     }
-
+    if(this.carrusel_i==1){
+      this.carrusel_prev=true;
+      this.carrusel_netxt=true;
+    }
+    if(this.carrusel_i==2){
+      this.carrusel_prev=true;
+      this.carrusel_netxt=true;
+    }
+    if(this.carrusel_i==3){
+      this.carrusel_prev=true;
+      this.carrusel_netxt=true;
+    }
+    if(this.carrusel_i==4){
+      this.carrusel_prev=true;
+      this.carrusel_netxt=true;
+    }
     if(this.carrusel_i==5){
+      this.carrusel_prev=true;
       this.carrusel_netxt=false;
-    }else{
-      this.carrusel_netxt=true
     }
 
   }

@@ -82,6 +82,11 @@
     display: table-cell;
 }
 
+.prueba {
+    margin:auto;
+    max-width: 550px;
+}
+
 
 @media only screen and (max-width: 992px) {
  
@@ -118,5 +123,16 @@
         padding-top: 18px;
         border-bottom:  white 1px solid !important;
     }
+
+}
+
+
+@media only screen and (max-width: 400 px) {
+ 
+    .prueba {
+        margin:auto;
+        max-width: 450px;
+    }
+
 
 }
