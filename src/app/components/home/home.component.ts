@@ -263,6 +263,20 @@ export class HomeComponent implements OnInit {
   goCarrusel(event){
     this.carrusel_i=event;
     console.log(this.carrusel_i);
+
+
+    if(this.carrusel_i==0){
+      this.carrusel_prev=false;
+      this.carrusel_netxt=false;
+
+    }
+
+    if(this.carrusel_i==5){
+      this.carrusel_netxt=false;
+    }else{
+      this.carrusel_netxt=true
+    }
+
   }
   
 
