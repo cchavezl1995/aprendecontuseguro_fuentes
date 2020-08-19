@@ -9,7 +9,7 @@ import { count } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { LogsService } from 'src/app/services/logs/logs.service';
 import { Router } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
+
 
 
 
@@ -22,10 +22,15 @@ import { HeaderComponent } from '../header/header.component';
 
 export class HomeComponent implements OnInit {
   
-
   
   carrusel : number=0;
   carrusel_i : number=0;
+  carrusel_0 : boolean = true;
+  carrusel_1 : boolean = true;
+  carrusel_2 : boolean = true;
+  carrusel_3 : boolean = true;
+  carrusel_4 : boolean = true;
+  carrusel_5 : boolean = true;
 
   p1 :boolean=true;
   p2 :boolean=false;
@@ -148,10 +153,16 @@ export class HomeComponent implements OnInit {
     }
     this.carrusel=1;
   }
-  setSlide_v(event) {
-    this.carrusel_i=event.mes;
+ 
+
+  setSlide_c(event) {
+    
+    this.carrusel_i=event;
     this.carrusel=1;
+    console.log(this.carrusel_i);
   }
+
+
   pauseSlide() {
     this.pause = false;
     clearInterval(this.slideInterval);
@@ -253,6 +264,10 @@ export class HomeComponent implements OnInit {
     this.p3=true;
   }
 
+  goCarrusel(event){
+    this.carrusel_i=event;
+    console.log(this.carrusel_i);
+  }
   
 
 

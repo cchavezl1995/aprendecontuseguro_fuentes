@@ -13,11 +13,11 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
 
  @Input() carrusel : number;
- @Output() CambiaCarrusel = new EventEmitter<any>();
+ @Output() carrusel_out :EventEmitter<number> = new EventEmitter<number>();
 
 
 
-  carrusel_i : number=0;
+  carrusel_i : number=10;
   verlistado : number=0;
   conoce : number=0;
 
@@ -86,6 +86,7 @@ export class HeaderComponent implements OnInit {
 
     if( this.ruta =='/inicio'){
       this.rutahome=true;
+      this.carrusel_i=0;
     }
     if(this.ruta=='/lista-de-cursos'){
       this.rutalistado=true;
@@ -107,10 +108,7 @@ export class HeaderComponent implements OnInit {
     
   }
 
-
-  applyDates() {
-    this.CambiaCarrusel.emit({mes: this.carrusel_i});
-  }
+  
 
   onClickedOutside() {
     if (this.servicios) {
@@ -245,9 +243,10 @@ export class HeaderComponent implements OnInit {
 
   goSlide0(){
     
-    this.carrusel_i=1;
+    this.carrusel_i=0;
     this.verlistado=0;
     this.conoce=0;
+    this.carrusel_out.emit(this.carrusel_i);
   }
 
   goSlide1(){
@@ -255,31 +254,21 @@ export class HeaderComponent implements OnInit {
     this.carrusel_i=1;
     this.verlistado=0;
     this.conoce=0;
-
-    this.router.navigate(['/inicio','ggg1']).then(e => {
-      //window.location.reload();
-      console.log(this.ruta);
-    });
-
-    
+    this.carrusel_out.emit(this.carrusel_i);
   }
 
   goSlide2(){
-    
     this.carrusel_i=2;
     this.verlistado=0;
     this.conoce=0;
-
-    
-
-
+    this.carrusel_out.emit(this.carrusel_i);
   }
 
   goSlide3(){
-
     this.carrusel_i=3;
     this.verlistado=0;
     this.conoce=0;
+    this.carrusel_out.emit(this.carrusel_i);
   }
 
   goSlide4(){
@@ -287,6 +276,7 @@ export class HeaderComponent implements OnInit {
     this.carrusel_i=4;
     this.verlistado=0;
     this.conoce=0;
+    this.carrusel_out.emit(this.carrusel_i);
   }
 
   goSlide5(){
@@ -294,12 +284,13 @@ export class HeaderComponent implements OnInit {
     this.carrusel_i=5;
     this.verlistado=0;
     this.conoce=0;
+    this.carrusel_out.emit(this.carrusel_i);
   }
 
 
   goListado(){
     
-    this.carrusel_i=0;
+    this.carrusel_i=7;
     this.verlistado=1;
     this.conoce=0;
     this.rutalistado=true;
@@ -307,7 +298,7 @@ export class HeaderComponent implements OnInit {
 
   goConocemas(){
     
-    this.carrusel_i=0;
+    this.carrusel_i=7;
     this.verlistado=0;
     this.conoce=0;
   }

@@ -1,6 +1,6 @@
 <div class="sticky-top">
     <app-header  [carrusel]="carrusel"
-
+        (carrusel_out)="goCarrusel($event)"
     ></app-header>
     </div>
 
@@ -781,17 +781,18 @@ background-size: 400px;">
     <div class="carousel-inner">
 
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleControls__" data-slide-to="0" (click)="setSlide(0)"></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="1" (click)="setSlide(1)"></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="2" (click)="setSlide(2)"></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="3" (click)="setSlide(3)"></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="4" (click)="setSlide(4)"></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="5" (click)="setSlide(5)"></li>
+            
+            <li  data-target="#carouselExampleControls__" data-slide-to="0"  ></li>
+            <li  data-target="#carouselExampleControls__" data-slide-to="1"   ></li>
+            <li data-target="#carouselExampleControls__" data-slide-to="2"   ></li>
+            <li data-target="#carouselExampleControls__" data-slide-to="3"  ></li>
+            <li data-target="#carouselExampleControls__" data-slide-to="4"   ></li>
+            <li data-target="#carouselExampleControls__" data-slide-to="5"   ></li>
     
           </ol>
 
 
-    <div class="carousel-item active">
+    <div *ngIf="carrusel_i==0" class="carousel-item active">
 
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#009DD6;
@@ -847,10 +848,78 @@ background-size: 400px;">
                 <!--<div class="col-9 boton" *ngIf="login.isActive()">
                     <button routerLink="/lista-de-cursos"
                         class="btnMain2">Quiero
-                        hacerlo</button>
+                        hacerlo</button> routerLink="/conoce-mas"goConoce()
                 </div>-->
                 <div class="col-8 boton" style="margin-left: 2%;">
-                    <button routerLink="/conoce-mas" class="btnMain3" (click)="goConoce()">Conoce más</button>
+                    <button  class="btnMain3" (click)="setSlide_c(4)">Conoce más</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+    <div *ngIf="carrusel_i!=0" class="carousel-item">
+
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        background-color:#009DD6;
+        background-image: url('assets/img/desempleo2/img-woman-min.png'); 
+        background-repeat: no-repeat;
+        background-position: bottom -140px center;
+        background-size: 600px;">
+            <div class="row text-center">
+                <div class="col-10" style="margin:auto;text-align: center">
+                    
+                    <div >
+                        <img src="../../../assets/img/security/coursera-logo.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                    </div>   
+
+                    <h2 class="mt-4" style="color:white !important; font-size: 38px;">Aprende habilidades <br> de alta demanda</h2>
+                             
+                </div>
+                <div class="col-9" style="margin:auto">
+                    <div class="row">
+                        <div class="col-4">
+                            <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                <span style="color:white" class="mt-2">Tipo Documento</span>
+                                <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                    <option value="5">C.C.</option>
+                                    <option value="6">C.E.</option>
+                                    <option value="7">PAS</option>
+
+                                </select>
+                            </div>-->
+                        </div>
+                        <!--'ppp'  <div class="col-8">
+                            <div class="form-group text-left pt-4" style="width:100%">
+                                <span style="color:white" class="mt-2">Número de documento</span>
+                                <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                    class="form-control mt-3">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row ">
+                        <!-- <div class="col-lg-12 text-center">
+                            <button (click)="registrarse()" class="btnMain2 mt-2"
+                                style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row " >
+                <div class="col-8 boton" *ngIf="!login.isActive()" style="margin-left: 2%;">
+                    <button (click)="login.goLogin()" class="btnMain2">Únete aquí
+                    </button>
+                </div>
+                <!--<div class="col-9 boton" *ngIf="login.isActive()">
+                    <button routerLink="/lista-de-cursos"
+                        class="btnMain2">Quiero
+                        hacerlo</button> routerLink="/conoce-mas"goConoce()
+                </div>-->
+                <div class="col-8 boton" style="margin-left: 2%;">
+                    <button  class="btnMain3" (click)="setSlide_c(4)">Conoce más</button>
                 </div>
 
             </div>
@@ -861,7 +930,7 @@ background-size: 400px;">
     </div>
 
 
-    <div class="carousel-item" id="gg1">
+    <div *ngIf="carrusel_i==1" class="carousel-item active" >
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#FB6330;
         background-image: url('assets/img/home/img.png')  ; 
@@ -924,7 +993,130 @@ background-size: 400px;">
         </div>
     </div>
 
-        <div class="carousel-item" id="gg2">
+    <div *ngIf="carrusel_i!=1" class="carousel-item" >
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        background-color:#FB6330;
+        background-image: url('assets/img/home/img.png')  ; 
+        background-repeat: no-repeat;
+        background-position: bottom 20px center;
+        background-size: 500px">
+            <div class="row text-center">
+                <div class="col-10" style="margin:auto;text-align: center">
+                    <div >
+                        <img src="../../../assets/img/security/coursera-logo1.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                    </div>   
+                    <h2 class="mt-4" style="color:white !important; font-size: 38px;"> Idiomas orientados<br> a negocios</h2>
+                    
+                    
+                </div>
+                <div class="col-9" style="margin:auto">
+                    <div class="row">
+                        <div class="col-4">
+                            <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                <span style="color:white" class="mt-2">Tipo Documento</span>
+                                <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                    <option value="5">C.C.</option>
+                                    <option value="6">C.E.</option>
+                                    <option value="7">PAS</option>
+
+                                </select>
+                            </div>-->
+                        </div>
+                        <!--'ppp'  <div class="col-8">
+                            <div class="form-group text-left pt-4" style="width:100%">
+                                <span style="color:white" class="mt-2">Número de documento</span>
+                                <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                    class="form-control mt-3">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row ">
+                        <!-- <div class="col-lg-12 text-center">
+                            <button (click)="registrarse()" class="btnMain2 mt-2"
+                                style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 boton" *ngIf="!login.isActive()" style="margin-left: 2%;">
+                    <button (click)="login.goLogin()" class="btnGreen">Únete aquí
+                    </button>
+                </div>
+                <!--<div class="col-9 boton" *ngIf="login.isActive()">
+                    <button routerLink="/lista-de-cursos"
+                        class="btnGreen">Quiero
+                        hacerlo</button>
+                </div>-->
+                <div class="col-8 boton" style="margin-left: 2%;">
+                    <button routerLink="/conoce-mas" class="btnGreen2" (click)="goConoce()">Conoce más</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="carrusel_i==2" class="carousel-item active" >
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        background-color:#EC1C24;
+        background-image: url('assets/img/fraude2/alerts/alerts.png'); 
+        background-repeat: no-repeat;
+        background-position: bottom -140px center;
+        background-size: 400px;">
+            <div class="row text-center">
+                <div class="col-10" style="margin:auto;text-align: center">
+                    <div >
+                        <img src="../../../assets/img/security/coursera-logo2.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                    </div>   
+                    <h2 class="mt-4" style="color:white !important; font-size: 38px;">Fortalece tu perfil <br> profesional</h2>
+
+                    
+                </div>
+                <div class="col-9" style="margin:auto">
+                    <div class="row">
+                        <div class="col-4">
+                            <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                <span style="color:white" class="mt-2">Tipo Documento</span>
+                                <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                    <option value="5">C.C.</option>
+                                    <option value="6">C.E.</option>
+                                    <option value="7">PAS</option>
+
+                                </select>
+                            </div>-->
+                        </div>
+                        <!--'ppp'  <div class="col-8">
+                            <div class="form-group text-left pt-4" style="width:100%">
+                                <span style="color:white" class="mt-2">Número de documento</span>
+                                <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                    class="form-control mt-3">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row ">
+                        <!-- <div class="col-lg-12 text-center">
+                            <button (click)="registrarse()" class="btnMain2 mt-2"
+                                style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 boton" *ngIf="!login.isActive()" style="margin-left: 2%;">
+                    <button (click)="login.goLogin()" class="btnOrange">Únete aquí</button>
+                </div>
+
+                <div class="col-8 boton" style="margin-left: 2%;">
+                    <button routerLink="/conoce-mas"
+                        class="btnOrange2" (click)="goConoce()" >Conoce
+                        más</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="carrusel_i!=2" class="carousel-item" >
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#EC1C24;
         background-image: url('assets/img/fraude2/alerts/alerts.png'); 
@@ -985,7 +1177,66 @@ background-size: 400px;">
         </div>
     </div>
 
-    <div class="carousel-item">
+    <div *ngIf="carrusel_i==3" class="carousel-item active">
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        background-color:#068468;
+        background-image: url('assets/img/fraude2/finantial/finantial.png'); 
+        background-repeat: no-repeat;
+        background-position: bottom -140px center;
+        background-size: 400px;">
+            <div class="row text-center">
+                <div class="col-10" style="margin:auto;text-align: center">
+                    <div >
+                        <img src="../../../assets/img/security/coursera-logo3.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                    </div>   
+                    <h2 class="mt-4" style="color:white !important; font-size: 38px;">Invierte en ti <br></h2>
+
+                    
+                </div>
+                <div class="col-9" style="margin:auto">
+                    <div class="row">
+                        <div class="col-4">
+                            <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                <span style="color:white" class="mt-2">Tipo Documento</span>
+                                <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                    <option value="5">C.C.</option>
+                                    <option value="6">C.E.</option>
+                                    <option value="7">PAS</option>
+
+                                </select>
+                            </div>-->
+                        </div>
+                        <!--'ppp'  <div class="col-8">
+                            <div class="form-group text-left pt-4" style="width:100%">
+                                <span style="color:white" class="mt-2">Número de documento</span>
+                                <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                    class="form-control mt-3">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row ">
+                        <!-- <div class="col-lg-12 text-center">
+                            <button (click)="registrarse()" class="btnMain2 mt-2"
+                                style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 boton" *ngIf="!login.isActive()" style="margin-left: 2%;">
+                    <button (click)="login.goLogin()" class="btnBlue">Únete aquí</button>
+                </div>
+
+                <div class="col-8 boton" style="margin-left: 2%;">
+                    <button routerLink="/conoce-mas" class="btnBlue2" (click)="goConoce()" >Conoce
+                        más</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="carrusel_i!=3" class="carousel-item">
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#068468;
         background-image: url('assets/img/fraude2/finantial/finantial.png'); 
@@ -1045,7 +1296,66 @@ background-size: 400px;">
         </div>
     </div>
 
-    <div class="carousel-item">
+    <div *ngIf="carrusel_i==4"  class="carousel-item active">
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        background-color:#7849b8;
+        background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
+        background-repeat: no-repeat;
+        background-position: bottom -300px center;
+        background-size: 400px;">
+            <div class="row text-center">
+                <div class="col-10" style="margin:auto;text-align: center">
+                    <div>
+                        <img src="../../../assets/img/security/coursera-logo4.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                    </div>   
+                    <h2 class="mt-4" style="color:white !important; font-size: 38px;">Afina tu capacidad <br> de análisis</h2>
+
+                    
+                </div>
+                <div class="col-9" style="margin:auto">
+                    <div class="row">
+                        <div class="col-4">
+                            <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                <span style="color:white" class="mt-2">Tipo Documento</span>
+                                <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                    <option value="5">C.C.</option>
+                                    <option value="6">C.E.</option>
+                                    <option value="7">PAS</option>
+
+                                </select>
+                            </div>-->
+                        </div>
+                        <!--'ppp'  <div class="col-8">
+                            <div class="form-group text-left pt-4" style="width:100%">
+                                <span style="color:white" class="mt-2">Número de documento</span>
+                                <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                    class="form-control mt-3">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row ">
+                        <!-- <div class="col-lg-12 text-center">
+                            <button (click)="registrarse()" class="btnMain2 mt-2"
+                                style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 boton" *ngIf="!login.isActive()"style="margin-left: 2%;">
+                    <button (click)="login.goLogin()" class="btnPurple">Únete aquí</button>
+                </div>
+
+                <div class="col-8 boton"style="margin-left: 2%;">
+                    <button routerLink="/conoce-mas" class="btnPurple2" (click)="goConoce()">Conoce
+                        más</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="carrusel_i!=4"  class="carousel-item">
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#7849b8;
         background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
@@ -1105,7 +1415,66 @@ background-size: 400px;">
         </div>
     </div>
 
-    <div class="carousel-item">
+    <div *ngIf="carrusel_i==5" class="carousel-item active">
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        background-color:#333333;
+        background-image: url('assets/img/fraude2/security/security.png'); 
+        background-repeat: no-repeat;
+        background-position: bottom -140px center;
+        background-size: 400px;">
+            <div class="row text-center">
+                <div class="col-10" style="margin:auto;text-align: center">
+                    <div >
+                        <img src="../../../assets/img/security/coursera-logo5.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                    </div>   
+                    <h2 class="mt-4" style="color:white !important; font-size: 38px;">Ubícate un paso <br> más adelante</h2>
+                
+                </div>
+                <div class="col-9" style="margin:auto">
+                    <div class="row">
+                        <div class="col-4">
+                            <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                <span style="color:white" class="mt-2">Tipo Documento</span>
+                                <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                    <option value="5">C.C.</option>
+                                    <option value="6">C.E.</option>
+                                    <option value="7">PAS</option>
+
+                                </select>
+                            </div>-->
+                        </div>
+                        <!--'ppp'  <div class="col-8">
+                            <div class="form-group text-left pt-4" style="width:100%">
+                                <span style="color:white" class="mt-2">Número de documento</span>
+                                <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                    class="form-control mt-3">
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row ">
+                        <!-- <div class="col-lg-12 text-center">
+                            <button (click)="registrarse()" class="btnMain2 mt-2"
+                                style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8 boton" *ngIf="!login.isActive()"style="margin-left: 2%;">
+                    <button (click)="login.goLogin()" class="btnBlack">Únete aquí</button>
+                </div>
+
+                <div class="col-8 boton" style="margin-left: 2%;">
+                    <button routerLink="/conoce-mas"
+                        class="btnBlack2" (click)="goConoce()">Conoce
+                        más</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="carrusel_i!=5" class="carousel-item">
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#333333;
         background-image: url('assets/img/fraude2/security/security.png'); 
@@ -3235,9 +3604,7 @@ background-size: 400px;">
 
         <div id="carouselExampleControls_" class="carousel slide" data-ride="carousel">
     
- 
-    
-            <div class="carousel-inner">
+            <div >
         
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleControls_" data-slide-to="0" class="active" (click)="setSlide(0)"></li>
@@ -3250,7 +3617,7 @@ background-size: 400px;">
                   </ol>
         
         
-            <div class="carousel-item active">
+            <div *ngIf="carrusel_i==0"class="carousel-item active">
         
                 <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#009DD6;
@@ -3306,7 +3673,76 @@ background-size: 400px;">
                         <!--<div class="col-9 boton" *ngIf="login.isActive()">
                             <button routerLink="/lista-de-cursos"
                                 class="btnMain2">Quiero
-                                hacerlo</button>
+                                hacerlo</button>goConoce()
+                        </div>-->
+                        <div class="col-8 boton" style="margin-left: 2%;">
+                            <button routerLink="/conoce-mas" class="btnMain3" (click)="goConoce()">Conoce más</button>
+                        </div>
+        
+                    </div>
+        
+        
+        
+                </div>
+            </div>
+
+            <div *ngIf="carrusel_i!=0" class="carousel-item">
+        
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                background-color:#009DD6;
+                background-image: url('assets/img/desempleo2/img-woman-min.png'); 
+                background-repeat: no-repeat;
+                background-position: bottom -140px center;
+                background-size: 600px;">
+                    <div class="row text-center">
+                        <div class="col-10" style="margin:auto;text-align: center">
+                            
+                            <div >
+                                <img src="../../../assets/img/security/coursera-logo.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                            </div>   
+        
+                            <h2 class="mt-4" style="color:white !important; font-size: 38px;">Aprende habilidades <br> de alta demanda</h2>
+                                     
+                        </div>
+                        <div class="col-9" style="margin:auto">
+                            <div class="row">
+                                <div class="col-4">
+                                    <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                        <span style="color:white" class="mt-2">Tipo Documento</span>
+                                        <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                            <option value="5">C.C.</option>
+                                            <option value="6">C.E.</option>
+                                            <option value="7">PAS</option>
+        
+                                        </select>
+                                    </div>-->
+                                </div>
+                                <!--'ppp'  <div class="col-8">
+                                    <div class="form-group text-left pt-4" style="width:100%">
+                                        <span style="color:white" class="mt-2">Número de documento</span>
+                                        <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                            class="form-control mt-3">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row ">
+                                <!-- <div class="col-lg-12 text-center">
+                                    <button (click)="registrarse()" class="btnMain2 mt-2"
+                                        style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row " >
+                        <div class="col-8 boton" *ngIf="!login.isActive()" style="margin-left: 2%;">
+                            <button (click)="login.goLogin()" class="btnMain2">Únete aquí
+                            </button>
+                        </div>
+                        <!--<div class="col-9 boton" *ngIf="login.isActive()">
+                            <button routerLink="/lista-de-cursos"
+                                class="btnMain2">Quiero
+                                hacerlo</button>goConoce()
                         </div>-->
                         <div class="col-8 boton" style="margin-left: 2%;">
                             <button routerLink="/conoce-mas" class="btnMain3" (click)="goConoce()">Conoce más</button>
@@ -3320,7 +3756,69 @@ background-size: 400px;">
             </div>
         
         
-            <div class="carousel-item">
+            <div *ngIf="carrusel_i==1" class="carousel-item active">
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                background-color:#FB6330;
+                background-image: url('assets/img/home/img.png')  ; 
+                background-repeat: no-repeat;
+                background-position: bottom 20px center;
+                background-size: 500px">
+                    <div class="row text-center">
+                        <div class="col-10" style="margin:auto;text-align: center">
+                            <div >
+                                <img src="../../../assets/img/security/coursera-logo1.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                            </div>   
+                            <h2 class="mt-4" style="color:white !important; font-size: 38px;"> Idiomas orientados<br> a negocios</h2>
+                            
+                            
+                        </div>
+                        <div class="col-9" style="margin:auto">
+                            <div class="row">
+                                <div class="col-4">
+                                    <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                        <span style="color:white" class="mt-2">Tipo Documento</span>
+                                        <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                            <option value="5">C.C.</option>
+                                            <option value="6">C.E.</option>
+                                            <option value="7">PAS</option>
+        
+                                        </select>
+                                    </div>-->
+                                </div>
+                                <!--'ppp'  <div class="col-8">
+                                    <div class="form-group text-left pt-4" style="width:100%">
+                                        <span style="color:white" class="mt-2">Número de documento</span>
+                                        <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                            class="form-control mt-3">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row ">
+                                <!-- <div class="col-lg-12 text-center">
+                                    <button (click)="registrarse()" class="btnMain2 mt-2"
+                                        style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 boton" *ngIf="!login.isActive()" style="margin-left: 2%;">
+                            <button (click)="login.goLogin()" class="btnGreen">Únete aquí
+                            </button>
+                        </div>
+                        <!--<div class="col-9 boton" *ngIf="login.isActive()">
+                            <button routerLink="/lista-de-cursos"
+                                class="btnGreen">Quiero
+                                hacerlo</button>
+                        </div>-->
+                        <div class="col-8 boton" style="margin-left: 2%;">
+                            <button routerLink="/conoce-mas" class="btnGreen2" (click)="goConoce()">Conoce más</button>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="carrusel_i!=1" class="carousel-item">
                 <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#FB6330;
                 background-image: url('assets/img/home/img.png')  ; 
@@ -3383,7 +3881,66 @@ background-size: 400px;">
                 </div>
             </div>
         
-                <div class="carousel-item">
+            <div *ngIf="carrusel_i==2" class="carousel-item active">
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                background-color:#EC1C24;
+                background-image: url('assets/img/fraude2/alerts/alerts.png'); 
+                background-repeat: no-repeat;
+                background-position: bottom -140px center;
+                background-size: 400px;">
+                    <div class="row text-center">
+                        <div class="col-10" style="margin:auto;text-align: center">
+                            <div >
+                                <img src="../../../assets/img/security/coursera-logo2.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                            </div>   
+                            <h2 class="mt-4" style="color:white !important; font-size: 38px;">Fortalece tu perfil <br> profesional</h2>
+        
+                            
+                        </div>
+                        <div class="col-9" style="margin:auto">
+                            <div class="row">
+                                <div class="col-4">
+                                    <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                        <span style="color:white" class="mt-2">Tipo Documento</span>
+                                        <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                            <option value="5">C.C.</option>
+                                            <option value="6">C.E.</option>
+                                            <option value="7">PAS</option>
+        
+                                        </select>
+                                    </div>-->
+                                </div>
+                                <!--'ppp'  <div class="col-8">
+                                    <div class="form-group text-left pt-4" style="width:100%">
+                                        <span style="color:white" class="mt-2">Número de documento</span>
+                                        <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                            class="form-control mt-3">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row ">
+                                <!-- <div class="col-lg-12 text-center">
+                                    <button (click)="registrarse()" class="btnMain2 mt-2"
+                                        style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="col-8 boton" *ngIf="!login.isActive()"style="margin-left: 2%;">
+                            <button (click)="login.goLogin()" class="btnOrange">Únete aquí</button>
+                        </div>
+                        <div class="col-8 boton"style="margin-left: 2%;">
+                            <button routerLink="/conoce-mas"
+                                class="btnOrange2" (click)="goConoce()">Conoce
+                                más</button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+            <div *ngIf="carrusel_i!=2" class="carousel-item">
                 <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#EC1C24;
                 background-image: url('assets/img/fraude2/alerts/alerts.png'); 
@@ -3443,7 +4000,66 @@ background-size: 400px;">
                 </div>
             </div>
         
-            <div class="carousel-item">
+            <div *ngIf="carrusel_i==3" class="carousel-item active">
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                background-color:#068468;
+                background-image: url('assets/img/fraude2/finantial/finantial.png'); 
+                background-repeat: no-repeat;
+                background-position: bottom -140px center;
+                background-size: 400px;">
+                    <div class="row text-center">
+                        <div class="col-10" style="margin:auto;text-align: center">
+                            <div >
+                                <img src="../../../assets/img/security/coursera-logo3.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                            </div>   
+                            <h2 class="mt-4" style="color:white !important; font-size: 38px;">Invierte en ti <br></h2>
+        
+                            
+                        </div>
+                        <div class="col-9" style="margin:auto">
+                            <div class="row">
+                                <div class="col-4">
+                                    <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                        <span style="color:white" class="mt-2">Tipo Documento</span>
+                                        <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                            <option value="5">C.C.</option>
+                                            <option value="6">C.E.</option>
+                                            <option value="7">PAS</option>
+        
+                                        </select>
+                                    </div>-->
+                                </div>
+                                <!--'ppp'  <div class="col-8">
+                                    <div class="form-group text-left pt-4" style="width:100%">
+                                        <span style="color:white" class="mt-2">Número de documento</span>
+                                        <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                            class="form-control mt-3">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row ">
+                                <!-- <div class="col-lg-12 text-center">
+                                    <button (click)="registrarse()" class="btnMain2 mt-2"
+                                        style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="col-8 boton" *ngIf="!login.isActive()"style="margin-left: 2%;">
+                            <button (click)="login.goLogin()" class="btnBlue">Únete aquí</button>
+                        </div>
+
+                        <div class="col-8 boton"style="margin-left: 2%;">
+                            <button routerLink="/conoce-mas" class="btnBlue2">Conoce
+                                más</button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+            <div *ngIf="carrusel_i!=3" class="carousel-item">
                 <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#068468;
                 background-image: url('assets/img/fraude2/finantial/finantial.png'); 
@@ -3503,7 +4119,66 @@ background-size: 400px;">
                 </div>
             </div>
         
-            <div class="carousel-item">
+            <div  *ngIf="carrusel_i==4" class="carousel-item active">
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                background-color:#7849b8;
+                background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
+                background-repeat: no-repeat;
+                background-position: bottom -300px center;
+                background-size: 400px;">
+                    <div class="row text-center">
+                        <div class="col-10" style="margin:auto;text-align: center">
+                            <div>
+                                <img src="../../../assets/img/security/coursera-logo4.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                            </div>   
+                            <h2 class="mt-4" style="color:white !important; font-size: 38px;">Afina tu capacidad <br> de análisis</h2>
+        
+                            
+                        </div>
+                        <div class="col-9" style="margin:auto">
+                            <div class="row">
+                                <div class="col-4">
+                                    <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                        <span style="color:white" class="mt-2">Tipo Documento</span>
+                                        <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                            <option value="5">C.C.</option>
+                                            <option value="6">C.E.</option>
+                                            <option value="7">PAS</option>
+        
+                                        </select>
+                                    </div>-->
+                                </div>
+                                <!--'ppp'  <div class="col-8">
+                                    <div class="form-group text-left pt-4" style="width:100%">
+                                        <span style="color:white" class="mt-2">Número de documento</span>
+                                        <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                            class="form-control mt-3">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row ">
+                                <!-- <div class="col-lg-12 text-center">
+                                    <button (click)="registrarse()" class="btnMain2 mt-2"
+                                        style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="col-8 boton" *ngIf="!login.isActive()"style="margin-left: 2%;">
+                            <button (click)="login.goLogin()" class="btnPurple">Únete aquí</button>
+                        </div>
+
+                        <div class="col-8 boton"style="margin-left: 2%;">
+                            <button routerLink="/conoce-mas" class="btnPurple2">Conoce
+                                más</button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+            <div  *ngIf="carrusel_i!=4" class="carousel-item">
                 <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#7849b8;
                 background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
@@ -3563,7 +4238,66 @@ background-size: 400px;">
                 </div>
             </div>
         
-            <div class="carousel-item">
+            <div *ngIf="carrusel_i==5" class="carousel-item active">
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                background-color:#333333;
+                background-image: url('assets/img/fraude2/security/security.png'); 
+                background-repeat: no-repeat;
+                background-position: bottom -140px center;
+                background-size: 400px;">
+                    <div class="row text-center">
+                        <div class="col-10" style="margin:auto;text-align: center">
+                            <div >
+                                <img src="../../../assets/img/security/coursera-logo5.png" class="card-img-top" style="width: auto;height: auto; margin-top: 30px;">
+                            </div>   
+                            <h2 class="mt-4" style="color:white !important; font-size: 38px;">Ubícate un paso <br> más adelante</h2>
+                        
+                        </div>
+                        <div class="col-9" style="margin:auto">
+                            <div class="row">
+                                <div class="col-4">
+                                    <!--  <div class="form-group pr-4 text-left" style="width:110px;float:right">
+                                        <span style="color:white" class="mt-2">Tipo Documento</span>
+                                        <select class="form-control mt-3" [(ngModel)]="idTipoDocumento">
+                                            <option value="5">C.C.</option>
+                                            <option value="6">C.E.</option>
+                                            <option value="7">PAS</option>
+        
+                                        </select>
+                                    </div>-->
+                                </div>
+                                <!--'ppp'  <div class="col-8">
+                                    <div class="form-group text-left pt-4" style="width:100%">
+                                        <span style="color:white" class="mt-2">Número de documento</span>
+                                        <input type="number" [(ngModel)]="doc" placeholder="Ingresa tu número de documento"
+                                            class="form-control mt-3">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row ">
+                                <!-- <div class="col-lg-12 text-center">
+                                    <button (click)="registrarse()" class="btnMain2 mt-2"
+                                        style="color:#ff969c;border-color:#ff969c;">Continuar</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row">
+                        <div class="col-8 boton" *ngIf="!login.isActive()"style="margin-left: 2%;">
+                            <button (click)="login.goLogin()" class="btnBlack">Únete aquí</button>
+                        </div>
+
+                        <div class="col-8 boton"style="margin-left: 2%;">
+                            <button routerLink="/conoce-mas"
+                                class="btnBlack2" (click)="goConoce()">Conoce
+                                más</button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+            <div *ngIf="carrusel_i!=5" class="carousel-item">
                 <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#333333;
                 background-image: url('assets/img/fraude2/security/security.png'); 
