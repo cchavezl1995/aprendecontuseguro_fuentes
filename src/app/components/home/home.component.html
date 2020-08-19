@@ -4,6 +4,8 @@
     ></app-header>
     </div>
 
+    <div class="content-wrapper" style="margin-left: 0px;padding-bottom: 60px;background-color: #F6F6F6;">
+
 <input type="hidden" [(ngModel)]="api">
 <div class="content d-none d-lg-block" *ngIf="!login.isActive()" style="height:100%;background-color: white;
 background-image: url(assets/img/home/group-7.png);
@@ -664,9 +666,6 @@ background-size: 400px;">
 
 </div>
 
-
-
-
 <div class="content d-none d-lg-block" *ngIf="!login.isActive() && modalHomeEco==1" style="
                             height:600px;background-color:#84d8c6;
                             background-image: url(assets/img/home/img-woman-1.png);
@@ -773,7 +772,6 @@ background-size: 400px;">
 
     </div>
 </div>
-
 
 <div id="carouselExampleControls__" class="carousel slide" data-ride="carousel">
     
@@ -1547,8 +1545,6 @@ background-size: 400px;">
 
     </div>
 </div>
-
-    
 
 
 
@@ -4369,11 +4365,9 @@ background-size: 400px;">
         
             </div>
         
-      
         </div>
         
     </div>
-
 
 
 </div>
@@ -4693,5 +4687,7 @@ background-size: 400px;">
         *ngIf="!login.isActive()">
         <p><i class="icon-Login iconSize"></i>&nbsp;&nbsp;&nbsp;Regístrate ya</p>
     </div> -->
+</div>
+
 </div>
 <app-contact-help></app-contact-help>
