@@ -1,5 +1,7 @@
 <div class="sticky-top">
-    <app-header  [carrusel]="carrusel"></app-header>
+    <app-header  [carrusel]="carrusel"
+
+    ></app-header>
     </div>
 
 <input type="hidden" [(ngModel)]="api">
@@ -775,12 +777,11 @@ background-size: 400px;">
 
 <div id="carouselExampleControls__" class="carousel slide" data-ride="carousel">
     
- 
-    
+
     <div class="carousel-inner">
 
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleControls__" data-slide-to="0" class="active" (click)="setSlide(0)"></li>
+            <li data-target="#carouselExampleControls__" data-slide-to="0" (click)="setSlide(0)"></li>
             <li data-target="#carouselExampleControls__" data-slide-to="1" (click)="setSlide(1)"></li>
             <li data-target="#carouselExampleControls__" data-slide-to="2" (click)="setSlide(2)"></li>
             <li data-target="#carouselExampleControls__" data-slide-to="3" (click)="setSlide(3)"></li>
@@ -860,7 +861,7 @@ background-size: 400px;">
     </div>
 
 
-    <div class="carousel-item">
+    <div class="carousel-item" id="gg1">
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#FB6330;
         background-image: url('assets/img/home/img.png')  ; 
@@ -923,7 +924,7 @@ background-size: 400px;">
         </div>
     </div>
 
-        <div class="carousel-item">
+        <div class="carousel-item" id="gg2">
         <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
         background-color:#EC1C24;
         background-image: url('assets/img/fraude2/alerts/alerts.png'); 
@@ -1176,13 +1177,9 @@ background-size: 400px;">
 
 
     </div>
-
-
-    
-  
-
 </div>
 
+    
 
 
 
@@ -3567,7 +3564,7 @@ background-size: 400px;">
             </div>
         
             <div class="carousel-item">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
                 background-color:#333333;
                 background-image: url('assets/img/fraude2/security/security.png'); 
                 background-repeat: no-repeat;

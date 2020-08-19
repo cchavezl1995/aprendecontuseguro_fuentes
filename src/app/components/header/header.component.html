@@ -1,12 +1,16 @@
 <nav (clickOutside)="onClickedOutside()" class="navbar navbar-expand-lg navbar-light NAVBAR"
   style="z-index: 777;background-color:white">
-  <button (click)="showCollapse(); opcionesMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
+  
+  
+  <div (click)="showCollapse(); opcionesMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-    aria-label="Toggle navigation" style="margin-left: 5%;" > <span class="navbar-toggler-icon"></span> </button>
+    aria-label="Toggle navigation" style="margin-left: 5%;" > <span class="navbar-toggler-icon"></span> </div>
+
+
   <a class="navbar-brand logoBanco d-none d-lg-block" href="#">
     <img (click)="goHome()" class="logoResponsive" src="assets/img/logo-cardif.png" alt="CarDif" />
   </a>
-  <a class="navbar-brand logoBanco d-block d-xl-none d-lg-none" href="#" (clickOutside)="onClickedOutsideDatos()"
+  <a class=" d-block d-xl-none d-lg-none" href="#" (clickOutside)="onClickedOutsideDatos()"
   
   >
     <img (click)="goHome()" class="logoResponsive" src="assets/img/logo-cardif.png" alt="CarDif" />
@@ -23,16 +27,17 @@
     </svg>-->
   </a>
 
-  <div (click)=" personaMovilFun()" class="navbar-toggler" type="button" data-toggle="collapse"
+  <div (click)=" personaMovilFun()" type="button"  class="navbar-toggler" data-toggle="collapse"
     data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false"
-    aria-label="Toggle navigation" style="margin-left: 30%;" > 
+    aria-label="Toggle navigation" style="margin-right: 1%;" > 
     <span class="icon-user iconSize"></span> 
   </div>
 
   <div *ngIf="personaMovil" class="collapse navbar-collapse botonResponsive" id="navbarSupportedContent2" >
     <ul class="navbar-nav ml-auto botonResponsive listaMovil" style="border-top: solid;border-color: #d6d6d6;">
       <li class="nav-item dropdown" *ngIf="!login.isActive()"> <a class="nav-link active enlace txt-nav"
-          routerLink="/inicia-sesion/1" routerLinkActive="activated"><i class="icon-user iconSize "></i><span
+          routerLink="/inicia-sesion/1" routerLinkActive="activated">
+          <i class="icon-user iconSize "></i><span
             class="textLi  " style="font-size: 17.6px !important;"> Inicia sesión</span></a>
       </li>
       <li class="nav-item dropdown" *ngIf="!login.isActive()"> <a class="nav-link active enlace txt-nav linkRegistro"
@@ -196,30 +201,29 @@
   <div *ngIf="opcionesMovil" class="collapse navbar-collapse botonResponsive manito" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto botonResponsive">
       <li class="nav-item active"   >
-        <a *ngIf="carrusel_0==1"   routerLink="/inicio" (click)="goSlide0()" style="background-color: #9be4ff;"
+        <a *ngIf="carrusel_i==0"   routerLink="/inicio" (click)="goSlide0()" style="background-color: #9be4ff;"
            routerLinkActive="activated" >
           <span  ><p style="color:#009DD6 ;">Inicio</p></span><span class="sr-only">(current)</span>
         </a> 
-        <a *ngIf="carrusel_0==0"   routerLink="/inicio" (click)="goSlide0()"
+        <a *ngIf="carrusel_i!=0"   routerLink="/inicio" (click)="goSlide0()"
          routerLinkActive="activated">
         <span  ><p>Inicio</p></span><span class="sr-only">(current)</span>
       </a>
 
-        <a  *ngIf="carrusel_1==0" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide1()"
-          routerLinkActive="activated">
+        <a  *ngIf="carrusel_i!=1" class="nav-link2 active enlace"   (click)="goSlide1()"
+          >
           <span  ><p >Aprende Idiomas</p></span><span class="sr-only">(current)</span>
         </a> 
-        <a *ngIf="carrusel_1==1"  class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide1()" style="background-color: #9be4ff;"
-          routerLinkActive="activated">
+        <a *ngIf="carrusel_i==1"  class="nav-link2 active enlace"  (click)="goSlide1()" style="background-color: #9be4ff;"
+          >
           <span  ><p style="color:#009DD6 ;">Aprende Idiomas</p></span><span class="sr-only">(current)</span>
         </a> 
 
-
-        <a *ngIf="carrusel_2==0"  class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide2()"
+        <a *ngIf="carrusel_i!=2"  class="nav-link2 active enlace" routerLink="['/inicio',gg2]"  (click)="goSlide2()"
            routerLinkActive="activated">
           <span  ><p >Habilidades de Negocio</p></span><span class="sr-only">(current)</span>
         </a> 
-        <a *ngIf="carrusel_2==1"  class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide2()" style="background-color: #9be4ff;"
+        <a *ngIf="carrusel_i==2"  class="nav-link2 active enlace" routerLink="['/inicio',gg2]"  (click)="goSlide2()" style="background-color: #9be4ff;"
            routerLinkActive="activated">
           <span  ><p  style="color:#009DD6 ;">Habilidades de Negocio</p></span><span class="sr-only">(current)</span>
         </a>  
@@ -227,12 +231,12 @@
 
 
 
-        <a *ngIf="carrusel_3==0" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide3()"
+        <a *ngIf="carrusel_i!=3" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide3()"
            routerLinkActive="activated">
           <span  ><p >Desarrollo Humano</p></span><span class="sr-only">(current)</span>
         </a>  
 
-        <a *ngIf="carrusel_3==1" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide3()"  style="background-color: #9be4ff;"
+        <a *ngIf="carrusel_i==3" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide3()"  style="background-color: #9be4ff;"
         routerLinkActive="activated">
        <span  ><p  style="color:#009DD6 ;">Desarrollo Humano</p></span><span class="sr-only">(current)</span>
      </a>  
@@ -241,22 +245,22 @@
 
 
 
-        <a *ngIf="carrusel_4==0" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide4()"
+        <a *ngIf="carrusel_i!=4" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide4()"
            routerLinkActive="activated">
           <span  ><p >Ciencia de Datos</p></span><span class="sr-only">(current)</span>
         </a>  
 
-        <a *ngIf="carrusel_4==1" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide4()"  style="background-color: #9be4ff;"
+        <a *ngIf="carrusel_i==4" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide4()"  style="background-color: #9be4ff;"
            routerLinkActive="activated">
           <span  ><p   style="color:#009DD6 ;">Ciencia de Datos</p></span><span class="sr-only">(current)</span>
         </a>  
 
 
-        <a *ngIf="carrusel_5==0" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide5()"
+        <a *ngIf="carrusel_i!=5" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide5()"
            routerLinkActive="activated">
           <span  ><p >Tecnología</p></span><span class="sr-only">(current)</span>
         </a> 
-        <a *ngIf="carrusel_5==1" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide5()"  style="background-color: #9be4ff;"
+        <a *ngIf="carrusel_i==5" class="nav-link2 active enlace" routerLink="/inicio"  (click)="goSlide5()"  style="background-color: #9be4ff;"
            routerLinkActive="activated">
           <span  ><p   style="color:#009DD6 ;">Tecnología</p></span><span class="sr-only">(current)</span>
         </a>  

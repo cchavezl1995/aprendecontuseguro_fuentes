@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { LoginService } from "../../services/login.service";
 import { Router, ResolveEnd } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -13,15 +13,11 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
 
  @Input() carrusel : number;
+ @Output() CambiaCarrusel = new EventEmitter<any>();
 
 
 
-  carrusel_0 : number=0;
-  carrusel_1 : number=0;
-  carrusel_2 : number=0;
-  carrusel_3 : number=0;
-  carrusel_4 : number=0;
-  carrusel_5 : number=0;
+  carrusel_i : number=0;
   verlistado : number=0;
   conoce : number=0;
 
@@ -109,6 +105,11 @@ export class HeaderComponent implements OnInit {
       document.getElementById('datosServices').click();
     }
     
+  }
+
+
+  applyDates() {
+    this.CambiaCarrusel.emit({mes: this.carrusel_i});
   }
 
   onClickedOutside() {
@@ -244,72 +245,53 @@ export class HeaderComponent implements OnInit {
 
   goSlide0(){
     
-    this.carrusel_0=1;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
+    this.carrusel_i=1;
     this.verlistado=0;
     this.conoce=0;
   }
 
   goSlide1(){
     
-    this.carrusel_0=0;
-    this.carrusel_1=1;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
+    this.carrusel_i=1;
     this.verlistado=0;
     this.conoce=0;
+
+    this.router.navigate(['/inicio','ggg1']).then(e => {
+      //window.location.reload();
+      console.log(this.ruta);
+    });
+
+    
   }
 
   goSlide2(){
     
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=1;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
+    this.carrusel_i=2;
     this.verlistado=0;
     this.conoce=0;
+
+    
+
+
   }
 
   goSlide3(){
 
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=1;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
+    this.carrusel_i=3;
     this.verlistado=0;
     this.conoce=0;
   }
 
   goSlide4(){
 
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=1;
-    this.carrusel_5=0;
+    this.carrusel_i=4;
     this.verlistado=0;
     this.conoce=0;
   }
 
   goSlide5(){
     
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=1;
+    this.carrusel_i=5;
     this.verlistado=0;
     this.conoce=0;
   }
@@ -317,12 +299,7 @@ export class HeaderComponent implements OnInit {
 
   goListado(){
     
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
+    this.carrusel_i=0;
     this.verlistado=1;
     this.conoce=0;
     this.rutalistado=true;
@@ -330,12 +307,7 @@ export class HeaderComponent implements OnInit {
 
   goConocemas(){
     
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
+    this.carrusel_i=0;
     this.verlistado=0;
     this.conoce=0;
   }

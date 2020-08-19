@@ -11,6 +11,8 @@ import { LogsService } from 'src/app/services/logs/logs.service';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   
   carrusel : number=0;
+  carrusel_i : number=0;
 
   p1 :boolean=true;
   p2 :boolean=false;
@@ -143,6 +146,10 @@ export class HomeComponent implements OnInit {
     } else {
       clearInterval(this.slideInterval);
     }
+    this.carrusel=1;
+  }
+  setSlide_v(event) {
+    this.carrusel_i=event.mes;
     this.carrusel=1;
   }
   pauseSlide() {

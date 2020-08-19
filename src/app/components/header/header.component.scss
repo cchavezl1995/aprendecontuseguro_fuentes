@@ -100,9 +100,9 @@ $color-nolink: #034797;
     .logoResponsive{
        
 
-        width: 140px;
-  height: 25px;
-  object-fit: contain;
+        width: auto;
+            height: 25px;
+            object-fit: contain;
 
     }
 }
@@ -172,6 +172,7 @@ $color-nolink: #034797;
     width: 100%; 
     background-color: white; 
     //left: 0;
+    
     right: 50%;
     border: none
 }
