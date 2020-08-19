@@ -575,7 +575,26 @@ ol li {
 .container {
     max-width: 100% !important;
 }
+
+
+.tituloModulo{
+  font-family: GoogleSans;
+    font-size: 10px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -0.15px;
+    color: #ffffff;
+    margin-top: 30px;
+    margin-left: 10%;
+    letter-spacing: -0.19px;
 }
+}
+
+
+
+
 .tab-content2 {
   visibility: visible;
   background-color: #034797;
@@ -827,6 +846,19 @@ ol li {
     letter-spacing: -0.19px;
 }
 
+.tituloModulo81{
+  font-family: GoogleSans;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -0.15px;
+    color: #ffffff;
+    margin-top: 30px;
+    margin-left: 10%;
+    letter-spacing: -0.19px;
+}
 
 
 .tituloModulo8{
