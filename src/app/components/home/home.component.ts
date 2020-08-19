@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Input,ViewChild } from '@angular/core';
 import { LoginService } from "../../services/login.service";
 import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
@@ -20,14 +20,7 @@ import { HeaderComponent } from '../header/header.component';
 
 export class HomeComponent implements OnInit {
   
-  
-  @Input() carrusel_0 : number ;
-  @Input()carrusel_1 : number ;
-  @Input()carrusel_2 : number ;
-  @Input()carrusel_3 : number ;
-  @Input()carrusel_4 : number ;
-  @Input()carrusel_5 : number ;
-  
+
   
   carrusel : number=0;
 
@@ -47,9 +40,13 @@ export class HomeComponent implements OnInit {
   pause: boolean = true;
   pauso: boolean = true;
   public innerWidth: any;
+  
   constructor(public login: LoginService, private cookieService: CookieService, private diccionario: DiccionarioService, private logs:LogsService,
     public router : Router
     ) {
+
+      
+
     // if(this.header.cobertura == 'Desempleo')
     // {
     //   $('#vert-tabs-home-tab-d').click();
@@ -249,65 +246,7 @@ export class HomeComponent implements OnInit {
     this.p3=true;
   }
 
-  goSlide0(){
-    this.carrusel=1;
-    this.carrusel_0=1;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
-  }
-
-  goSlide1(){
-    this.carrusel=1;
-    this.carrusel_0=0;
-    this.carrusel_1=1;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
-  }
-
-  goSlide2(){
-    this.carrusel=1;
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=1;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
-  }
-
-  goSlide3(){
-    this.carrusel=1;
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=1;
-    this.carrusel_4=0;
-    this.carrusel_5=0;
-  }
-
-  goSlide4(){
-    this.carrusel=1;
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=1;
-    this.carrusel_5=0;
-  }
-
-  goSlide5(){
-    this.carrusel=1;
-    this.carrusel_0=0;
-    this.carrusel_1=0;
-    this.carrusel_2=0;
-    this.carrusel_3=0;
-    this.carrusel_4=0;
-    this.carrusel_5=1;
-  }
+  
 
 
 }
