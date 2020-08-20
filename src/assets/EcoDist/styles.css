@@ -834,14 +834,14 @@ ol li {
 
 .tituloModulo80{
   font-family: GoogleSans;
-    font-size: 38px;
+    font-size: 36px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.25;
     letter-spacing: -0.15px;
     color: #ffffff;
-    margin-top: 30px;
+    margin-top: 00px;
     margin-left: 10%;
     letter-spacing: -0.19px;
 }
@@ -878,7 +878,7 @@ ol li {
 
 .tituloModulo2{
   font-family: GoogleSans;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
@@ -1161,6 +1161,18 @@ ol li {
   color: #009DD6;
   padding: 10px 15px;
   width: 256px;
+}
+
+.btnMain21 {
+  font-family: GoogleSans;
+  font-weight: bold;
+  border: solid 1px #ffffff;
+  background-color: #ffffff;
+  border-radius: 50px;
+  font-size: 16px;
+  color: #009DD6;
+  padding: 10px 15px;
+  width: 356px;
 }
 
 .btnMain20 {

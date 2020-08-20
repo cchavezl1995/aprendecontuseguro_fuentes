@@ -14,7 +14,7 @@
   
     <h3 class="title titLogin text-center"> Inicia sesión</h3>
 
-        <p class="text-center mt-3" style="font-size: 16px;">Disfruta los servicios de tu seguro.
+        <p class="text-center mt-3" style="font-size: 18px;">Disfruta los servicios de tu seguro.
         </p>
   
     </div>
@@ -72,21 +72,21 @@
     <div class="form-group">
       <label for="password" style="opacity: 0.8;"  style="font-size: 16px;" >Contraseña</label>
       <div class="input-group-append">
+        
         <input [ngClass]="{
             'is-invalid': error
           }" [(ngModel)]="form.password" (keyup)="onKeyUp($event)" (focus)="muestraStrength = 1"
-          (focusout)="muestraStrength = 0" id="password" name="password" class="form-control" type="password"
+          (focusout)="muestraStrength = 0" id="password" name="password" 
+          class="form-control" 
+          type="password"
           placeholder="Ingresa tu contraseña" />
 
 
-        <div class="input-group-text">
+        <div class="input-group-text1">
           <i *ngIf="eye" (click)="showEye()" class="fa fa-eye"></i>
           <i *ngIf="!eye" (click)="showEye()" class="fa fa-eye-slash"></i>
         </div>
-
-
-
-
+     
       </div>
       <p *ngIf="error" class="text-danger">Ingresa una contraseña</p>
       <!-- <div id="popover-password" *ngIf="muestraStrength==1 || form.password!=''">
@@ -135,8 +135,10 @@
   </div>
 
   <div   class="d-block d-xl-none d-lg-none"  >    
-    <p class="text-center texto-plano mt-4">
-      No hay problema. Ingresa tu número de <br> DNI. La información para recuperar tu<br> contraseña será enviada a tu celular y<br>
+    <p  class="text-center texto-plano mt-4" style="font-size: 18px;" >
+      No hay problema. Ingresa tu número de <br> 
+      DNI. La información para recuperar tu<br> 
+      contraseña será enviada a tu celular y<br>
       correo electrónico registrado.
     </p>
     </div>
