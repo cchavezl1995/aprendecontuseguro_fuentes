@@ -5,7 +5,7 @@
 <div>
     <div class="d-block d-xl-none d-lg-none imgMovil" style="width:100%;height:700px;
             background-image: url('assets/img/fraude2/score/score-woman.png');
-            margin-top: 20px;">
+            margin-top: 0px;">
 
         <h1 class="tituloModulo81 ">
             <br>Explora cursos de <br>
@@ -14,7 +14,7 @@
             líderes en <br> 
             el mundo. </h1>
             <!--style="margin-top: 15%; margin-left:18%;-->
-            <button *ngIf="login.isActive()" class="btnMain20" style="margin-top: 25%; margin-left:18%;margin-right:18%"
+            <button *ngIf="login.isActive()" class="btnMain20" style="margin-top: 50%; margin-left:18%;margin-right:18%"
             routerLink="/lista-de-cursos" (click)="goVerlistado()">Ver listado de cursos
         </button>
         <button *ngIf="!login.isActive()" class="btnMain20" style="margin-top: 50%; margin-left:18%;"
@@ -35,7 +35,7 @@
             </div>
         </div>
         <h1 class="tituloModulo8"style="margin-top: 5%;">Explora cursos de las <br>
-            universidades y compañías <br> líderes en el mundo </h1>
+            universidades y compañías <br> líderes en el mundo. </h1>
         <button *ngIf="login.isActive()" class="btnMain40" style="margin-top: 2%; margin-left:10%;"
             routerLink="/lista-de-cursos" (click)="goVerlistado()">Ver listado de cursos
         </button>
@@ -61,21 +61,23 @@
 
    
    <div  class="d-none d-lg-block" > 
-    <div style="margin-top: 5%;">
+    <div style="margin-top: 3%;">
     <div class="row m-5" >
         <div class="col-lg-10 col-md-10 offset-md-1 col-sm-12">
             <div class="row">
-                <div class="col-lg-2 col-md-1 col-sm-0"></div>
-                <div class="col-lg-8 col-md-10 col-sm-12" style="width: 770px; text-align: justify;">
-                    <h2 class="font-weight-bold text-dark text-center mt-3 mb-3" style="font-size: 35px;">
+                <div class="col-lg-1 col-md-1 col-sm-0"></div>
+                <div class="col-lg-10 col-md-10 offset-md-0 col-sm-12" style="width: 770px; text-align: left;">
+                    <h2 class="font-weight-bold text-dark text-center mt-3 mb-3" style="font-size: 30px;">
                         La plataforma #1 de aprendizaje en línea.
                     </h2>
-                    <br>
-                    <p style="font-size: 14px;">Coursera es una plataforma de educación virtual, que reúne contenidos y clases de muchas <br>
-                        universidades a través del mundo, con el fin de brindar una educación de calidad, con cursos en inglés 
+                    <p style="font-size: 16px; padding-left: 13%;">
+                        Coursera es una plataforma de educación virtual, que reúne contenidos y clases de muchas  <br>
+                        universidades a través del mundo, con el fin de brindar una educación de calidad, con cursos en inglés  <br>
                         y español.
                     </p>
+
                 </div>
+                <div class="col-lg-1 col-md-1 col-sm-0"></div>
             </div>
         </div>
     </div>
@@ -111,8 +113,10 @@
 
         <div class="imgInteres">
             <img src="../../../assets/img/fraude2/score/carreras_movil.png" class="card-img-top" style="width: 100%;height: auto;">
-        </div>   
+        </div>
             
+
+
     </div>
 
     <div  class="d-none d-lg-block" >
@@ -130,16 +134,14 @@
         <div class="container">
             <div class="row m-4">
                 <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
-                    <div class="row">                          
+                    <div class="row" style="padding-left: 2%;">                          
                         <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0">
                                 <h1 class="font-weight-bold text-dark text-left mt-1 mb-5">
                                     +200 universidades y empresas líderes
                                 </h1>
-                                <div class="col-md-12 text-left">
-                                    <p  style="font-size: 20px;">
-                                        Los mejores cursos en línea del mundo, enseñados por expertos académicos y de la industria.</p>   
-                                </div>
-                                <div class="col-2"></div>
+                                <p  style="font-size: 20px;">
+                                    Los mejores cursos en línea del mundo, enseñados por expertos académicos y de la industria.</p>  
+                          
                         </div>
                     </div>
                 </div>
@@ -157,11 +159,9 @@
                                         <h1 class="font-weight-bold text-dark text-left mt-1 mb-5">
                                             +200 universidades y empresas líderes
                                         </h1>
-                                        <div class="col-md-12 text-left">
-                                            <p  style="font-size: 20px;">
-                                                Los mejores cursos en línea del mundo, <br> enseñados por expertos académicos y de <br> la industria.</p>   
-                                        </div>
-                                        <div class="col-2"></div>
+                                        <p  style="font-size: 19px;">
+                                            Los mejores cursos en línea del mundo, <br> enseñados por expertos académicos y de <br> la industria.</p>   
+                     
                                 </div>
                             </div>
                         </div>
@@ -171,10 +171,36 @@
 
 
             <div  class="d-block d-xl-none d-lg-none" >
+ 
 
-                <div class="imgInteres">
-                    <img src="../../../assets/img/security/universidades_movil.png" class="card-img-top" style="width: 100%;height: auto;">    
-                </div>   
+                <div id="carouselUniv" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+        
+                        <ol class="carousel-indicators" >
+                            <li data-target="#carouselUniv" data-slide-to="0" class="active" ></li>
+                            <li data-target="#carouselUniv" data-slide-to="1" ></li>
+                        </ol>
+        
+                        <div class="carousel-item active">
+        
+                            <div class="imgInteres">
+                                <img src="../../../assets/img/security/m1.png" class="card-img-top" style="width: 100%;height: auto;">    
+                            </div>  
+        
+                        </div>
+        
+                        <div class="carousel-item ">
+        
+                            <div class="imgInteres">
+                                <img src="../../../assets/img/security/m2.png" class="card-img-top" style="width: 100%;height: auto;">
+                            </div>
+        
+                        </div>
+        
+                    </div>
+        
+                </div>
                     
             </div>
         
@@ -213,9 +239,9 @@
             <div  class="d-block d-xl-none d-lg-none"  >
                 <div class="container" >
                     <div class="row m-4">
-                        <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
+                        <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-0 col-sm-12">
                             <div class="row">                          
-                                <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0"  style="margin-left: 4%;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 offset-lg-0"  style="margin-left: 0%;">
                                         <h1 class="font-weight-bold text-dark text-left mt-2 mb-5" style="font-size: 35px;" >
                                             ¿Qué hace de la <br> experiencia educativa <br> de Coursera algo tan <br> especial?
                                         </h1>
@@ -248,28 +274,34 @@
                                       
                                         <div class="row ">
                                                                                    
-                                          <div class="col-lg-4 col-md-4 col-sm-12 col-12 black border-right">
-                                            <img src="assets/img/ico-aprendizaje.png">
+                                          <div class="col-lg-4 col-md-4 col-sm-8 mb-4 mt-4 black border-right ">
+                                            <div class="card cardInteres ml-1 mr-1" style="width: 300px; height: 250px;">
+                                            <img src="assets/img/ico-aprendizaje.png" style="width: 40px; height: 40px;" >
                                             <p  style="font-weight: bold; margin-top: 20px;color: black;font-size: 25px;" >Domina habilidades <br> cotizadas</p>
                                             <p  class="text-secondary" style="font-weight: lighter ; margin-top: 20px;font-size: 18px;" >
-                                              Especializaciones impactantes en <br> habilidades de tecnología y negocios.</p>
+                                              Especializaciones impactantes en <br> habilidades de tecnología y <br> negocios.</p>
+                                            </div>
                                           </div>               
                                 
-                                          <div class="col-lg-4 col-md-4 col-sm-12 col-12 black">
-                                            <img src="assets/img/ico-tiempo.png">
-                                            
+                                          <div class="col-lg-4 col-md-4 col-sm-8 mb-4 mt-4  black">
+                                            <div class="card cardInteres ml-1 mr-1" style="width: 300px; height: 250px;">
+                                            <img src="assets/img/ico-tiempo.png" style="width: 40px; height: 40px;">                                              
                                             <p  style="font-weight: bold; margin-top: 20px;color: black;font-size: 25px;" >Aprendizaje flexible a tu <br>
                                                  propio ritmo</p>
                                             <p  class="text-secondary" style="font-weight: lighter ; margin-top: 20px;font-size: 18px;" >
                                               Aprende habilidades en cualqier  <br> momento y lugar.</p>
+                                            </div>
                                           </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-12 col-12 black border-left">
-                                            <img src="assets/img/ico-certificado.png">
-                                            <p  style="font-weight: bold; margin-top: 20px;color: black;font-size: 25px;" >Obtén un valioso <br>certificado
+                                          <div class="col-lg-4 col-md-4 col-sm-8 mb-4 mt-4  black  border-left" >
+                                            <div class="card cardInteres ml-1 mr-1" style="width: 340px; height: 250px;">
+                                            <img src="assets/img/ico-certificado.png"  style="width: 40px; height: 40px;">
+                                            <p  style="font-weight: bold; margin-top: 20px;color: black;font-size: 25px;" >Obtén un valioso certificado
+                                            <br>
                                             <br>
                                             </p>
                                             <p  class="text-secondary" style="font-weight: lighter ; margin-top: 20px;font-size: 18px;" >
                                               Impulsa tu hoja de vida con certificados reconocidos por las mejores empresas.</p>
+                                            </div>
                                           </div>
                                           <!-- <div class="footerEnd"></div> -->
                                         </div>
@@ -298,7 +330,7 @@
                         <div class="col-lg-1 col-md-12 offset-lg-1 offset-md-1 col-sm-12"></div>
                         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
                             <div class="row">                          
-                                <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0" style="margin-left: 4%;margin-right: 4%;"> 
+                                <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0"  > 
                                         
     
                                     <div class="row" >
@@ -365,13 +397,14 @@
                         <div class="row m-4" >
                             <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
                                 <div class="row">                          
-                                    <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0 "  style="margin-left: 15%;margin-top: 2%;" >
+                                    <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0 "   style="margin-top: 2%; " >
     
-                                        <div style="width: 68%;height: 1.5px; background-color: #555a60;opacity: 0.2;"></div>
-                                                 <p  style="font-size: 20px;margin-top: 2%">
+                                        <div style="width: 100%;height: 1.5px; background-color: #555a60;opacity: 0.2;"></div>
+                                        <div  class="text-center" style="align-items: center;" > 
+                                                 <p  style="font-size: 16px;margin-top: 2%">
                                             Amplía los conocimientos necesarios para que tus ideas o emprendimiento empiecen a crecer.
                                                  </p> 
-                                            <div class="col-md-8 text-center text-secondary">
+                                            
                                                 <!--
                                                 <button *ngIf="login.isActive()" class="btnOrange2" style="margin-top: 55px; margin-left:25%;"
                                                 routerLink="/servicio-score-credito">Ver listado de cursos
@@ -384,9 +417,9 @@
                                                 <button *ngIf="!login.isActive()" class="btnOrange2" style="margin-top: 55px;"
                                                 (click)="login.goLogin()">Únete aquí
                                                 </button>          
-                                            </div>
-                                            <div class="col-2">
-                                            </div>
+                                            
+                                        </div>
+                                            
                                     </div>
                                 </div>
                             </div>
@@ -402,11 +435,13 @@
                     <div class="row m-4" >
                         <div class="col-lg-10 col-md-12 offset-lg-1 offset-md-1 col-sm-12">
                             <div class="row">                          
-                                <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0 "  style="margin-left: 5%;margin-top: 2%;" >
+                                <div class="col-lg-12 col-md-10 col-sm-12 offset-lg-0 "  style="margin-left: 0%;margin-top: 5%;" >
 
                                     <div style="width: 100%;height: 1.5px; background-color: #555a60;opacity: 0.2;"></div>
-                                             <p  style="font-size: 20px;margin-top: 2%">
-                                        Amplía los conocimientos necesarios para que tus ideas o emprendimiento empiecen a crecer.
+                                             <p  style="font-size: 20px;margin-top: 5%">
+                                        Amplía los conocimientos necesarios para <br>
+                                        que tus ideas o emprendimiento empiecen <br>
+                                        a crecer.
                                              </p> 
                                         <div class="col-md-8 text-center text-secondary">
                                             <!--

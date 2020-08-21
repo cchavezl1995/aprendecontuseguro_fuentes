@@ -773,30 +773,36 @@ background-size: 400px;">
     </div>
 </div>
 
-<div id="carouselExampleControls__" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls__" class="carousel slide" >
     
 
     <div class="carousel-inner">
 
         <ol class="carousel-indicators">
             
-            <li  data-target="#carouselExampleControls__" data-slide-to="0"  ></li>
-            <li  data-target="#carouselExampleControls__" data-slide-to="1"   ></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="2"   ></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="3"  ></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="4"   ></li>
-            <li data-target="#carouselExampleControls__" data-slide-to="5"   ></li>
+            <li *ngIf="carrusel_i==0" data-target="#carouselExampleControls__" data-slide-to="0" class="active" ></li>
+            <li *ngIf="carrusel_i!=0" data-target="#carouselExampleControls__" data-slide-to="0"  ></li>
+            <li *ngIf="carrusel_i==1" data-target="#carouselExampleControls__" data-slide-to="1" class="active"    ></li>
+            <li *ngIf="carrusel_i!=1" data-target="#carouselExampleControls__" data-slide-to="1"   ></li>
+            <li *ngIf="carrusel_i==2"data-target="#carouselExampleControls__" data-slide-to="2" class="active"   ></li>
+            <li *ngIf="carrusel_i!=2"data-target="#carouselExampleControls__" data-slide-to="2"   ></li>
+            <li *ngIf="carrusel_i==3" data-target="#carouselExampleControls__" data-slide-to="3" class="active"  ></li>
+            <li *ngIf="carrusel_i!=3"data-target="#carouselExampleControls__" data-slide-to="3"  ></li>
+            <li *ngIf="carrusel_i==4"data-target="#carouselExampleControls__" data-slide-to="4" class="active"   ></li>
+            <li *ngIf="carrusel_i!=4"data-target="#carouselExampleControls__" data-slide-to="4"   ></li>
+            <li *ngIf="carrusel_i==5"data-target="#carouselExampleControls__" data-slide-to="5" class="active"   ></li>
+            <li *ngIf="carrusel_i!=5"data-target="#carouselExampleControls__" data-slide-to="5"   ></li>
     
           </ol>
 
 
     <div *ngIf="carrusel_i==0" class="carousel-item active">
 
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#009DD6;
         background-image: url('assets/img/desempleo2/img-woman-min.png'); 
         background-repeat: no-repeat;
-        background-position: bottom -140px center;
+        background-position: bottom -170px center;
         background-size: 600px;">
             <div class="row text-center">
                 <div class="col-10" style="margin:auto;text-align: center">
@@ -857,14 +863,20 @@ background-size: 400px;">
 
 
         </div>
+
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+            <span class="sr-only">Next</span>
+          </a>
+
     </div>
     <div *ngIf="carrusel_i!=0" class="carousel-item">
 
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#009DD6;
         background-image: url('assets/img/desempleo2/img-woman-min.png'); 
         background-repeat: no-repeat;
-        background-position: bottom -140px center;
+        background-position: bottom -170px center;
         background-size: 600px;">
             <div class="row text-center">
                 <div class="col-10" style="margin:auto;text-align: center">
@@ -925,15 +937,21 @@ background-size: 400px;">
 
 
         </div>
+
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;" >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+
     </div>
 
 
     <div *ngIf="carrusel_i==1" class="carousel-item active" >
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#FB6330;
         background-image: url('assets/img/home/img.png')  ; 
         background-repeat: no-repeat;
-        background-position: bottom 20px center;
+        background-position: bottom 00px center;
         background-size: 500px">
             <div class="row text-center">
                 <div class="col-10" style="margin:auto;text-align: center">
@@ -989,14 +1007,22 @@ background-size: 400px;">
 
             </div>
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next"style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
 
-    <div *ngIf="carrusel_i!=1" class="carousel-item" >
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+    <div *ngIf="carrusel_i!=1" class="carousel-item" > 
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#FB6330;
         background-image: url('assets/img/home/img.png')  ; 
         background-repeat: no-repeat;
-        background-position: bottom 20px center;
+        background-position: bottom 00px center;
         background-size: 500px">
             <div class="row text-center">
                 <div class="col-10" style="margin:auto;text-align: center">
@@ -1052,10 +1078,18 @@ background-size: 400px;">
 
             </div>
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
 
     <div *ngIf="carrusel_i==2" class="carousel-item active" >
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#EC1C24;
         background-image: url('assets/img/fraude2/alerts/alerts.png'); 
         background-repeat: no-repeat;
@@ -1113,9 +1147,17 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
     <div *ngIf="carrusel_i!=2" class="carousel-item" >
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#EC1C24;
         background-image: url('assets/img/fraude2/alerts/alerts.png'); 
         background-repeat: no-repeat;
@@ -1173,10 +1215,18 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev"style=" opacity: 1;" >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
 
     <div *ngIf="carrusel_i==3" class="carousel-item active">
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#068468;
         background-image: url('assets/img/fraude2/finantial/finantial.png'); 
         background-repeat: no-repeat;
@@ -1233,9 +1283,17 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
     <div *ngIf="carrusel_i!=3" class="carousel-item">
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#068468;
         background-image: url('assets/img/fraude2/finantial/finantial.png'); 
         background-repeat: no-repeat;
@@ -1292,10 +1350,18 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
 
     <div *ngIf="carrusel_i==4"  class="carousel-item active">
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#7849b8;
         background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
         background-repeat: no-repeat;
@@ -1352,9 +1418,17 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1; ">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
     <div *ngIf="carrusel_i!=4"  class="carousel-item">
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#7849b8;
         background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
         background-repeat: no-repeat;
@@ -1411,10 +1485,20 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a  class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next" style=" opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
     </div>
+
+    
 
     <div *ngIf="carrusel_i==5" class="carousel-item active">
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#333333;
         background-image: url('assets/img/fraude2/security/security.png'); 
         background-repeat: no-repeat;
@@ -1471,9 +1555,14 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+
     </div>
     <div *ngIf="carrusel_i!=5" class="carousel-item">
-        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="height: 900px;
+        <div class="d-block d-xl-none d-lg-none" *ngIf="!login.isActive()" style="width: 100%;height: 870px;
         background-color:#333333;
         background-image: url('assets/img/fraude2/security/security.png'); 
         background-repeat: no-repeat;
@@ -1530,17 +1619,15 @@ background-size: 400px;">
             </div>
 
         </div>
+        <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" style=" opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+
     </div>
 
 
-    <a    class="carousel-control-prev" href="#carouselExampleControls__" role="button" data-slide="prev" >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a  class="carousel-control-next" href="#carouselExampleControls__" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+    
 
 
     </div>
@@ -3598,28 +3685,34 @@ background-size: 400px;">
 
     <div class="tab-content d-block d-xl-none d-lg-none" style="padding:0px;margin:0px;">
 
-        <div id="carouselExampleControls_" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls_" class="carousel slide" >
     
             <div class="carousel-inner">
         
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleControls_" data-slide-to="0" class="active" (click)="setSlide(0)"></li>
-                    <li data-target="#carouselExampleControls_" data-slide-to="1" (click)="setSlide(1)"></li>
-                    <li data-target="#carouselExampleControls_" data-slide-to="2" (click)="setSlide(2)"></li>
-                    <li data-target="#carouselExampleControls_" data-slide-to="3" (click)="setSlide(3)"></li>
-                    <li data-target="#carouselExampleControls_" data-slide-to="4" (click)="setSlide(4)"></li>
-                    <li data-target="#carouselExampleControls_" data-slide-to="5" (click)="setSlide(5)"></li>
+                    <li *ngIf="carrusel_i==0" data-target="#carouselExampleControls_" data-slide-to="0" class="active" ></li>
+                    <li *ngIf="carrusel_i!=0" data-target="#carouselExampleControls_" data-slide-to="0"  ></li>
+                    <li *ngIf="carrusel_i==1" data-target="#carouselExampleControls_" data-slide-to="1" class="active"    ></li>
+                    <li *ngIf="carrusel_i!=1" data-target="#carouselExampleControls_" data-slide-to="1"   ></li>
+                    <li *ngIf="carrusel_i==2"data-target="#carouselExampleControls_" data-slide-to="2" class="active"   ></li>
+                    <li *ngIf="carrusel_i!=2"data-target="#carouselExampleControls_" data-slide-to="2"   ></li>
+                    <li *ngIf="carrusel_i==3" data-target="#carouselExampleControls_" data-slide-to="3" class="active"  ></li>
+                    <li *ngIf="carrusel_i!=3"data-target="#carouselExampleControls_" data-slide-to="3"  ></li>
+                    <li *ngIf="carrusel_i==4"data-target="#carouselExampleControls_" data-slide-to="4" class="active"   ></li>
+                    <li *ngIf="carrusel_i!=4"data-target="#carouselExampleControls_" data-slide-to="4"   ></li>
+                    <li *ngIf="carrusel_i==5"data-target="#carouselExampleControls_" data-slide-to="5" class="active"   ></li>
+                    <li *ngIf="carrusel_i!=5"data-target="#carouselExampleControls_" data-slide-to="5"   ></li>
             
                   </ol>
         
         
             <div *ngIf="carrusel_i==0"class="carousel-item active">
         
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 870px;width: 100%;
                 background-color:#009DD6;
                 background-image: url('assets/img/desempleo2/img-woman-min.png'); 
                 background-repeat: no-repeat;
-                background-position: bottom -140px center;
+                background-position: bottom -170px center;
                 background-size: 600px;">
                     <div class="row text-center">
                         <div class="col-10" style="margin:auto;text-align: center">
@@ -3680,15 +3773,21 @@ background-size: 400px;">
         
         
                 </div>
+
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;"> 
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+
             </div>
 
             <div *ngIf="carrusel_i!=0" class="carousel-item">
         
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#009DD6;
                 background-image: url('assets/img/desempleo2/img-woman-min.png'); 
                 background-repeat: no-repeat;
-                background-position: bottom -140px center;
+                background-position: bottom -170px center;
                 background-size: 600px;">
                     <div class="row text-center">
                         <div class="col-10" style="margin:auto;text-align: center">
@@ -3749,14 +3848,20 @@ background-size: 400px;">
         
         
                 </div>
+
+
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
               
             <div *ngIf="carrusel_i==1" class="carousel-item active">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#FB6330;
                 background-image: url('assets/img/home/img.png')  ; 
                 background-repeat: no-repeat;
-                background-position: bottom 20px center;
+                background-position: bottom 0px center;
                 background-size: 500px">
                     <div class="row text-center">
                         <div class="col-10" style="margin:auto;text-align: center">
@@ -3812,13 +3917,21 @@ background-size: 400px;">
         
                     </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
             <div *ngIf="carrusel_i!=1" class="carousel-item">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#FB6330;
                 background-image: url('assets/img/home/img.png')  ; 
                 background-repeat: no-repeat;
-                background-position: bottom 20px center;
+                background-position: bottom 00px center;
                 background-size: 500px">
                     <div class="row text-center">
                         <div class="col-10" style="margin:auto;text-align: center">
@@ -3874,10 +3987,18 @@ background-size: 400px;">
         
                     </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
         
             <div *ngIf="carrusel_i==2" class="carousel-item active">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 870px;width: 100%;
                 background-color:#EC1C24;
                 background-image: url('assets/img/fraude2/alerts/alerts.png'); 
                 background-repeat: no-repeat;
@@ -3934,9 +4055,17 @@ background-size: 400px;">
                     </div>
         
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
             <div *ngIf="carrusel_i!=2" class="carousel-item">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 870px;width: 100%;
                 background-color:#EC1C24;
                 background-image: url('assets/img/fraude2/alerts/alerts.png'); 
                 background-repeat: no-repeat;
@@ -3993,10 +4122,18 @@ background-size: 400px;">
                     </div>
         
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
         
             <div *ngIf="carrusel_i==3" class="carousel-item active">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#068468;
                 background-image: url('assets/img/fraude2/finantial/finantial.png'); 
                 background-repeat: no-repeat;
@@ -4053,9 +4190,17 @@ background-size: 400px;">
                     </div>
         
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
             <div *ngIf="carrusel_i!=3" class="carousel-item">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#068468;
                 background-image: url('assets/img/fraude2/finantial/finantial.png'); 
                 background-repeat: no-repeat;
@@ -4112,10 +4257,18 @@ background-size: 400px;">
                     </div>
         
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
         
             <div  *ngIf="carrusel_i==4" class="carousel-item active">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#7849b8;
                 background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
                 background-repeat: no-repeat;
@@ -4171,10 +4324,17 @@ background-size: 400px;">
                         </div>
                     </div>
         
-                </div>
+                </div><a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next" style=" opacity: 1;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
             <div  *ngIf="carrusel_i!=4" class="carousel-item">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#7849b8;
                 background-image: url('assets/img/fraude2/finanzas/finanzas.png'); 
                 background-repeat: no-repeat;
@@ -4231,10 +4391,18 @@ background-size: 400px;">
                     </div>
         
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev"  style=" opacity: 1;"   >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next"  style=" opacity: 1;"  >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </div>
         
             <div *ngIf="carrusel_i==5" class="carousel-item active">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#333333;
                 background-image: url('assets/img/fraude2/security/security.png'); 
                 background-repeat: no-repeat;
@@ -4291,9 +4459,14 @@ background-size: 400px;">
                     </div>
         
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+
             </div>
             <div *ngIf="carrusel_i!=5" class="carousel-item">
-                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="height: 900px;
+                <div class="d-block d-xl-none d-lg-none" *ngIf="login.isActive()" style="width: 100%;height: 870px;
                 background-color:#333333;
                 background-image: url('assets/img/fraude2/security/security.png'); 
                 background-repeat: no-repeat;
@@ -4350,17 +4523,13 @@ background-size: 400px;">
                     </div>
         
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev" style=" opacity: 1;" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+ 
             </div>
         
-        
-            <a class="carousel-control-prev" href="#carouselExampleControls_" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleControls_" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
         
         
             </div>
@@ -4376,15 +4545,24 @@ background-size: 400px;">
 
 <!--<div class="container-fluid fondo" style="display: initial !important;padding-left: 100%;"></div>-->
 
-<div class="container-fluid fondo" >
+<div class="container-fluid fondo" style="width: 100% !important;padding-right: 0.5px !important; 
+padding-left: 0.5px !important;" >
 
     <div style="background-color: #f6f6f6; padding-top: 0;">
 
-        <h4
-            style=" text-align: center; height: 56px; font-size: 32px; line-height: 1.75; color: #333333; padding-top: 78px; margin-top: 0px;">
-            ¿Quieres usar nuestros servicios?</h4>
+        <div  class="d-none d-lg-block" >
+        <h4 style=" text-align: center; height: 56px; font-size: 32px; line-height: 1.75; color: #333333; padding-top: 78px; margin-top: 0px;">
+            ¿Quieres usar nuestros servicios?
+        </h4>
+        </div>
 
-
+        <div class="d-block d-xl-none d-lg-none" >
+            <h4 style=" text-align: center; height: 56px; font-size: 32px; line-height: 1.25; color: #333333; padding-top: 78px; margin-top: 0px;">
+                ¿Quieres usar nuestros <br> servicios?
+            </h4>
+            <br>
+            <br>
+            </div>
 
         <div class="container containerIntereses pt-5">
             <div class="row mt-2">
@@ -4570,17 +4748,22 @@ background-size: 400px;">
                     <div class="card"  style="margin: 0px 2px;">
                     <div style="background-color: #cf141b; height: 5PX;width: 60PX;"></div>
                     <br>
-                    <h1 class="mb-4 dtLargo font-weight-bold text-dark" style="padding-left: 0px !important;">
+                    <p class="mb-4 dtLargo font-weight-bold text-dark" style="padding-left: 0px !important;font-size: 35px !important;">
                         Preguntas frecuentes
-                    </h1>
+                    </p>
                     <br>
-                    <p class="txt-cont-inicio-movil">Aclara todas tus preguntas y dudas más frecuentes sobre nuestro
-                        portafolio de servicios.</p>
+                    <p class="txt-cont-inicio-movil" style="font-size: 20px !important ">
+                        Aclara todas tus preguntas y dudas más <br>
+                        frecuentes sobre nuestro portafolio de <br>
+                        servicios.</p>
                     </div>
                     <br>
-                    <br>    
+                    <br> 
+                    <div>
+                        <div class="card-header" id="headingOne"></div>
+                    </div> 
                     <div id="accordion_" style="margin: 0px 2px;">
-                        <div class="card">
+                        <div class="card" style="margin-top: 5%;">
                             <div >
                                 <h5 class="mb-0 text-secondary negrilla divTituloPregunta" style="width: 100%;
                                 height: 84px "> 
@@ -4595,7 +4778,7 @@ background-size: 400px;">
                                 </button>
                             </div>
                             <div id="collapseOne_" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion_">
-                                <p  style="font-size: 21px;margin-top: 13%;">
+                                <p  style="font-size: 20px;margin-top: 7%;">
                                     Para gozar de los beneficios de tu seguro, verifica que tienes activa tu cuenta.
                                 </p>
                             </div>
@@ -4603,7 +4786,7 @@ background-size: 400px;">
                         <div>
                             <div class="card-header" id="headingOne"></div>
                         </div>
-                        <div class="card" style="margin-top: 2%;">
+                        <div class="card" style="margin-top: 5%;">
                             <div class=" pl-0 pr-0" id="headingTwo">
                                 <h5 class="mb-0 text-secondary negrilla divTituloPregunta" style="width: 100%;
                                 height: 124px" >
@@ -4621,7 +4804,7 @@ background-size: 400px;">
                                 
                             </div>
                             <div id="collapseTwo_" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion_">
-                                <p  style="font-size: 21px;margin-top: 13%;">
+                                <p  style="font-size: 20px;margin-top: 7%;">
                                     No, todos los beneficios están incluidos
                                     dentro del costo del seguro contratado con la entidad finaciera.
                                 </p>
@@ -4630,7 +4813,7 @@ background-size: 400px;">
                         <div >
                             <div class="card-header" id="headingOne"></div>
                         </div>
-                        <div class="card" style="margin-top: 2%;">
+                        <div class="card" style="margin-top: 5%;">
                             <div >
                                 <h5 class="mb-0 text-secondary negrilla divTituloPregunta" style="width: 100%;
                                 height: 84px"> 
@@ -4650,7 +4833,7 @@ background-size: 400px;">
                             </div>
     
                             <div id="collapseThree_" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion_">
-                                <p  style="font-size: 21px;margin-top: 13%;">
+                                <p  style="font-size: 20px;margin-top: 7%;">
                                     Acércate a cualquiera de nuestras oficinas
                                     Scotiabank en todo el país y pregunta por el seguro que más se ajuste a tus necesidades.
                                 </p>

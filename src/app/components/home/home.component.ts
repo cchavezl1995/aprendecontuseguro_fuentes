@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
   pause: boolean = true;
   pauso: boolean = true;
   public innerWidth: any;
+  currentIndex :number ;
   
   constructor(public login: LoginService, private cookieService: CookieService, private diccionario: DiccionarioService, private logs:LogsService,
     public router : Router
@@ -149,7 +150,8 @@ export class HomeComponent implements OnInit {
     }
     this.carrusel=1;
   }
- 
+
+
 
   setSlide_c(event) {
     

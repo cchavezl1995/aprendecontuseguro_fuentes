@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   verlistado : number=0;
   conoce : number=0;
 
+
   desempleo: boolean = false;
   itt: boolean = false;
   fraude: boolean = false;

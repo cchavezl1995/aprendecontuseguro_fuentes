@@ -1,9 +1,40 @@
+#salir  {
+    background:url("../../../assets/img/security/IC_Register.png") no-repeat;
+    height: 20px;
+    width: 22px;
+  }
+
+  #user  {
+    background:url("../../../assets/img/security/IC_user.png") no-repeat;
+    height: 59px;
+    width: 59px;
+  }
+
+  #usernormal  {
+    background:url("../../../assets/img/security/IC_user_normal.png") no-repeat;
+    height: 24px;
+    width: 24px;
+  }
+
+  #useractivo  {
+    background:url("../../../assets/img/security/IC_user_activo.png") no-repeat;
+    height: 24px;
+    width: 24px;
+  }
+
+  #cerrar__  {
+    background:url("../../../assets/img/security/IC_Close.png") no-repeat;
+    height: 15px;
+    width: 15px;
+  }
+
 $color-link: #f07c05;
 $color-nolink: #034797;
 .dropdown-submenu {
     position: relative;
     right: 50%;
 }
+
 
 .dropdown-submenu>.dropdown-menu {
     top: 0;

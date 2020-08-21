@@ -2741,7 +2741,7 @@ fieldset:disabled a.btn {
 .show > .btn-outline-primary.dropdown-toggle {
   color: #ffffff;
   background-color: #ec1c24;
-  border-color: ##ec1c24;
+  border-color: #ec1c24;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -4518,7 +4518,7 @@ input[type="button"].btn-block {
   color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-light .navbar-nav . {
+.navbar-light .navbar-nav  {
   color: rgba(0, 0, 0, 0.5);
 }
 

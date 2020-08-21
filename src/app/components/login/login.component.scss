@@ -201,6 +201,8 @@ select:hover {
   color: #363636;
 }
 
+
+
 .input-group-text1 {
     display: -ms-flexbox;
     display: flex;
@@ -256,5 +258,17 @@ select:hover {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
 }
+
+.form-control1:focus {
+    color: #495057;
+    background-color: #ffffff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), none;
+    z-index: 3;
+    display: -ms-flexbox;
+    display: flex;
+  }
