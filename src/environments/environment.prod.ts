@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  protocol: "http",
-  host: "qaprojects.grupomok.com",
+  protocol: "https",
+  host: "preapi.aprendecontueguro.pe",
   port: '',
   gate: 'api',
   analytics: 'G-GDGY4DY32C'
