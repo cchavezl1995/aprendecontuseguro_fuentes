@@ -266,7 +266,8 @@
         <span  ><p>Inicio</p></span><span class="sr-only">(current)</span>
       </a>
 
-        <a  *ngIf="carrusel_i!=1" 
+        <a  *ngIf="carrusel_i!=1" routerLink="/inicio"  
+        routerLinkActive="activated" 
         type="button"  class="navbar-toggler"
            style=" width: 100% !important;height: 60px !important;padding-top: 4%;
            border: 0px solid transparent !important ;
@@ -275,7 +276,8 @@
           >
          <p >Aprende Idiomas</p>
         </a> 
-        <a *ngIf="carrusel_i==1" 
+        <a *ngIf="carrusel_i==1" routerLink="/inicio"  
+        routerLinkActive="activated" 
         (click)=" goSlide1(); opcionesMovilFun()" 
         type="button"  class="navbar-toggler"
            style="background-color: #9be4ff !important; width: 100% !important;height: 60px !important;padding-top: 4%;
@@ -285,14 +287,16 @@
       </a> 
 
 
-        <a *ngIf="carrusel_i!=2"     (click)=" goSlide2(); opcionesMovilFun()" 
+        <a *ngIf="carrusel_i!=2"   routerLink="/inicio"  
+        routerLinkActive="activated"   (click)=" goSlide2(); opcionesMovilFun()" 
         type="button"  class="navbar-toggler"
         style=" width: 100% !important;height: 60px !important;padding-top: 4%;
         border: 0px solid transparent !important ;
       border-radius: .0rem !important ;" >
           <div  ><p >Habilidades de Negocio</p></div>
         </a> 
-        <a *ngIf="carrusel_i==2"  (click)="goSlide2(); opcionesMovilFun()"
+        <a *ngIf="carrusel_i==2"  routerLink="/inicio"  
+        routerLinkActive="activated"  (click)="goSlide2(); opcionesMovilFun()"
         type="button"  class="navbar-toggler"
         style="background-color: #9be4ff !important; width: 100% !important;height: 60px !important;padding-top: 4%;
         border: 0px solid transparent !important ;
@@ -301,7 +305,8 @@
         </a>  
 
 
-        <a *ngIf="carrusel_i!=3" (click)=" goSlide3(); opcionesMovilFun()"
+        <a *ngIf="carrusel_i!=3" routerLink="/inicio"  
+        routerLinkActive="activated"  (click)=" goSlide3(); opcionesMovilFun()"
         type="button"  class="navbar-toggler"
         style=" width: 100% !important;height: 60px !important;padding-top: 4%;
         border: 0px solid transparent !important ;
@@ -309,7 +314,8 @@
           <div  ><p >Desarrollo Humano</p></div>
         </a>  
 
-        <a *ngIf="carrusel_i==3"    (click)=" goSlide13; opcionesMovilFun()"  type="button"  class="navbar-toggler"
+        <a *ngIf="carrusel_i==3"  routerLink="/inicio"  
+        routerLinkActive="activated"   (click)=" goSlide13; opcionesMovilFun()"  type="button"  class="navbar-toggler"
         style="background-color: #9be4ff !important; width: 100% !important;height: 60px !important;padding-top: 4%;
         border: 0px solid transparent !important ;
       border-radius: .0rem !important ;" >
@@ -317,7 +323,8 @@
      </a>  
 
 
-        <a *ngIf="carrusel_i!=4" (click)="goSlide4(); opcionesMovilFun()" 
+        <a *ngIf="carrusel_i!=4" routerLink="/inicio"  
+        routerLinkActive="activated"  (click)="goSlide4(); opcionesMovilFun()" 
         type="button"  class="navbar-toggler"
         style=" width: 100% !important;height: 60px !important;padding-top: 4%;
         border: 0px solid transparent !important ;
@@ -325,7 +332,8 @@
           <span  ><p >Ciencia de Datos</p></span>
         </a>  
 
-        <a *ngIf="carrusel_i==4"  (click)=" goSlide4(); opcionesMovilFun()" 
+        <a *ngIf="carrusel_i==4" routerLink="/inicio"  
+        routerLinkActive="activated"  (click)=" goSlide4(); opcionesMovilFun()" 
         type="button"  class="navbar-toggler"
         style="background-color: #9be4ff !important; width: 100% !important;height: 60px !important;padding-top: 4%;
         border: 0px solid transparent !important ;
@@ -341,7 +349,8 @@
       border-radius: .0rem !important ;"  >
           <div  ><p >Tecnología</p></div>
         </a> 
-        <a *ngIf="carrusel_i==5" (click)=" goSlide5();opcionesMovilFun()" 
+        <a *ngIf="carrusel_i==5" routerLink="/inicio"  
+        routerLinkActive="activated"  (click)=" goSlide5();opcionesMovilFun()" 
         type="button"  class="navbar-toggler"
         style="background-color: #9be4ff !important; width: 100% !important;height: 60px !important;padding-top: 4%;
         border: 0px solid transparent !important ;
